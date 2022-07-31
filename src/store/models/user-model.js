@@ -38,7 +38,7 @@ export default {
     },
   },
   actions: {
-    async setLoggedinUser1({ commit }, { num }) {
+    async setLoggedinUser({ commit }, { num }) {
       try {
         const user = await userService.getUsers(num)
         console.log(user)
