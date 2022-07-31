@@ -15,11 +15,13 @@
                         </span>
                     </h1>
                 </div>
-                <div v-if="miniSearch" class="mini-search clickable" @click="openSearchBar">
-                    <label>Anywhere</label>
-                    <label>Any week</label>
-                    <label>Add guests</label>
-                    <span></span>
+                <div @click="openSearchBar">
+                    <div v-if="miniSearch" class="mini-search clickable">
+                        <label>Anywhere</label>
+                        <label>Any week</label>
+                        <label>Add guests</label>
+                        <span></span>
+                    </div>
                 </div>
                 <header-nav />
             </section>
@@ -54,7 +56,7 @@ export default {
     created() {
         window.addEventListener("scroll", this.handleScroll)
         this.miniSearch = true
-        this.$emit("minisearch",true)
+        this.$emit("minisearch", true)
         // if(this.$store)
     },
     mounted() {
@@ -68,6 +70,8 @@ export default {
             if (window.scrollY > this.pageTop + 120 || window.scrollY < this.pageTop) {
                 this.miniSearch = true
                 this.$emit('openHeader', false)
+
+
             }
         },
         openSearchBar() {
@@ -95,7 +99,12 @@ export default {
             const res = this.currPage === 'homePage' ? true : false
             console.log(this.currPage)
             return res
-        }
+        },
+        currDest() {
+            var dest = this.$store.getters.getDest;
+            if (!dest) return "Start your search";
+            else return dest;
+        },
     },
     components: {
         datePicker,
@@ -110,8 +119,8 @@ export default {
         "$store.state.currPage": {
             handler() {
                 this.currPage = this.$store.getters.currPage
-                this.miniSearch = this.currPage !== "homePage" && this.currPage !== "explore" 
-                if(this.currPage === "homePage") this.miniSearch = true
+                this.miniSearch = this.currPage !== "homePage" && this.currPage !== "explore"
+                if (this.currPage === "homePage") this.miniSearch = true
                 // this.hideFilter = this.currPage !== "homePage" && this.currPage !== "explore" && this.currPage !== "stayDetails"
             },
             immediate: true,

@@ -1,10 +1,23 @@
 
 <template>
     <section class="dashboard-host-page main-layout">
-
-        <div class="charts flex">
-            <div class="chart">
-                <totalPriceChart v-if="this.prices" :datasets="this.datasets" />
+        <div class="dash-board-header">
+            <h2>pending/accepted</h2>
+            <span>{{ this.orders.length }} items</span>
+        </div>
+        <div class="dash-board-details flex ">
+            <order-list @changeStatus='changeStatus' :orders="orders" />
+            <div class="dash-board-summary">
+                <div class="summary-header flex align-center">
+                    <div>
+                        <h2>Hosting Summary</h2>
+                        <h3>Fantastic job!</h3>
+                        <p>guests love what your doing keep up the good work</p>
+                        <span>view details</span>
+                    </div>
+                    <img src="https://icons-for-free.com/download-icon-complete+done+green+success+valid+icon-1320183462969251652_256.ico" alt="">
+                    <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
+                </div>
             </div>
             <div class="chart ">
                 <orderByMonths />
@@ -92,7 +105,6 @@ export default {
 
     },
     methods: {
-
 
     },
 
