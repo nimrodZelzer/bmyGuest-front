@@ -1,0 +1,42 @@
+// SETUP
+@import 'setup/typography';
+@import 'setup/variables';
+@import 'setup/mixins';
+@import 'setup/functions';
+
+// BASICS
+@import 'basics/helpers';
+@import 'basics/base';
+@import 'basics/layout';
+
+// COMPONENTS
+@import 'components/app-footer.scss';
+@import 'components/app-header.scss';
+@import 'components/stay-filter.scss';
+@import 'components/stay-list.scss';
+@import 'components/stay-preview.scss';
+@import 'components/img-gallery.scss';
+@import 'components/details-header.scss';
+@import 'components/reservation.scss';
+@import 'components/details-description.scss';
+@import 'components/details-amenities.scss';
+@import 'components/details-sticky-header.scss';
+@import 'components/details-reviews.scss';
+@import 'components/stay-select.scss';
+@import 'components/range-filter.scss';
+@import 'components/date-picker.scss';
+@import 'components/labels-select.scss';
+@import 'components/user-msg.scss';
+@import 'components/wishlist.scss';
+@import 'components/details-progress-bars.scss';
+@import 'components/login-modal.scss';
+@import 'components/nav-header.scss';
+@import 'components/app-footer.scss';
+@import 'components/details-map.scss';
+@import 'components/header-map-filter.scss';
+
+//VIEWS
+@import 'views/app-home-view.scss';
+@import 'views/app-stay-view.scss';
+@import 'views/app-stay-details-page.scss';
+@import 'views/app-host-deshboard-page.scss';

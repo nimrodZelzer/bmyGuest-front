@@ -1,0 +1,39 @@
+
+footer{
+    background-color: rgb(243, 243, 243);
+    
+}
+
+.app-footer{
+    height: 366px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    max-width: 1280px;
+    margin: auto;
+    padding-top: 49px;
+    padding-bottom: 49px;
+    align-items: flex-start;
+    span:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    >*{
+        gap: 13px;
+        >*:first-child{
+            font-family: airbnb-bold;
+        }
+    }
+   
+}
+.footer-bottom{
+    height: 69px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1120px;
+    .footer-bottom-txt{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}

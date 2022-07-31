@@ -1,0 +1,68 @@
+.avatar {
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.description-container-right {
+    width: 60%;
+
+    h3 {
+        font-size: rem(22px);
+        margin: 0;
+        line-height: 26px;
+        font-weight: 600;
+        font-size: 22px;
+        padding-bottom: 5px
+    }
+
+    header {
+        justify-content: space-between;
+        padding-bottom: 24px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .txt-container {
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        line-height: 32px;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    .extras-container {
+        padding: 32px 0;
+        flex-direction: column;
+        border-bottom: 1px solid $clr10;
+        border-top: 1px solid $clr10;
+
+        h4{
+            font-weight: 600;
+        }
+        svg, i {
+            font-size: rem(24px);
+            margin-right: 12px;
+        }
+
+        span {
+            color: $clr9;
+            font-size: 14px;
+        }
+
+        >*:not(:last-child) {
+            margin-bottom: rem(24px);
+        }
+    }
+
+    .summary-container {
+        padding: 32px 0 48px;
+    }
+
+}

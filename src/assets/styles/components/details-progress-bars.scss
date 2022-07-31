@@ -1,0 +1,62 @@
+.bar-review-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 40px;
+    >*{
+        max-width: 480px ;
+
+    }
+
+    .left-bar-container {
+        display: flex;
+        flex-direction: column;
+       
+    }
+
+    .rating-container{
+        display: flex;
+        align-items: center;
+        padding-bottom: 6px;
+        justify-content: space-between;
+        margin-right: 16px;
+
+
+
+
+        .bar-preview{
+            flex-direction: row;
+            align-items: center;
+            // margin-right: 40px;
+            span{
+                // margin-right: 100px;
+                font-size: 12px ;
+                font-family: airbnb-bold;
+                color: $clr2;
+            }
+        }
+
+    }
+
+    .bar-container {
+            
+
+        width: 121px;
+        background-color: #DDDDDD;
+        margin-right: 10px;
+        height: 3px;
+        border-radius: 10px;
+        display: inline;
+
+       
+        .bar {
+            width: 40%;
+            background-color: black;
+            height: 3px;
+            padding: 0 8px;
+            border-radius: 10px;
+
+    
+        }
+
+    }
+}

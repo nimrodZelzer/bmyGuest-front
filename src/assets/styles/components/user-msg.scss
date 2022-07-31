@@ -1,0 +1,18 @@
+
+.user-msg {
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 10%;
+    right: 15%;
+    z-index: 20;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding:  0 10px;
+    color:rgb(218, 28, 113);
+    font-family: airbnb-bold;
+
+    .user-msg button {
+        float: right;
+    }
+}

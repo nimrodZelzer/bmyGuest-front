@@ -1,0 +1,32 @@
+.main-layout {
+    padding: 0 rem(80px);
+    margin: 0 auto;
+    max-width: 1280px;
+
+    @include for-mobile-layout {
+        // 375px
+        padding: 0 24px;
+    }
+
+    @include for-narrow-layout {
+        // 744px
+        padding: 0 24px;
+    }
+
+    @include for-normal-layout {
+        // 950px
+        padding: 0 40px;
+    }
+
+    @include for-wide-layout {
+        // 1128px
+        padding: 0 80px;
+    }
+
+    @include for-max-layout {
+        //1440px
+        max-width: 1760px;
+        // padding: 0 80px;
+    }
+
+}

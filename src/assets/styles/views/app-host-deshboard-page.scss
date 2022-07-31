@@ -1,0 +1,63 @@
+.dash-board-details {
+
+    justify-content: space-between;
+
+    .dash-board-summary {
+        width: 35%;
+        margin-top: 14px;
+        border-radius: 10px;
+        border: 1px solid $clr10;
+        padding: 12px 8px;
+        justify-content: space-between;
+
+       
+
+
+    }
+}
+
+.order-list {
+    padding: 0;
+    width: 60%;
+
+    .order-card {
+        justify-content: space-between;
+        align-items: center;
+        min-height: 150px;
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid $clr10;
+
+        .order-right-card {
+            gap: 25px;
+        }
+
+        h3 {
+            color: $clr7;
+        }
+
+
+        .order-status {
+            //   height: 48px;
+            border-radius: 10px;
+            padding: 10px 27px;
+            font-size: 16px;
+            font-family: airbnb-medium;
+        }
+    }
+}
+
+.summary-header{
+gap: 30px;
+
+div{
+    width: 70%;
+}
+img{
+    height: 90px;
+    width: 90px;
+}
+
+}

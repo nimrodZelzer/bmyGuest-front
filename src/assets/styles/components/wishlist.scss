@@ -1,0 +1,77 @@
+.wishlist-preview {
+
+    border-bottom:1px solid lightgray;
+    padding: 24px 0;
+    cursor: pointer;
+    p{
+        &:last-child{
+            color: #717171;
+        }
+    }
+
+    img {
+        height: 210px;
+        min-width: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+   
+    h5{
+        color: #717171;
+        margin-bottom: 5px;
+    }
+
+    .bottm-txt{
+        display: flex;
+        justify-content: space-between;
+        p{
+            margin: 0;
+            // &:last-child{
+            //     text-decoration: underline;
+            //     color: #717171;
+            // }
+        }
+        .price{
+            font-family: airbnb-bold;
+            color: $clr2;
+        }
+    }
+    .wish-review{
+        align-self: flex-end;
+        font-family: airbnb-bold;
+    }
+    .gray{
+        color: #717171;
+        font-family: airbnb-regular;
+    }
+
+    h3 {
+        margin: 0;
+        font-family: airbnb-medium;
+    }
+  
+    .left-container{
+
+        padding-left: 20px;
+        justify-content: space-between;
+        width: -webkit-fill-available;
+        h2{
+            color: #717171;
+        }
+     
+    }
+
+
+}
+
+.wishlist-container{
+    margin: auto;
+    h1{
+        margin-top: 40px;
+        padding: 16px 0;
+        border-bottom: 1px solid #717171 ;
+        margin: 0;
+        font-family: airbnb-medium;
+    }
+}

@@ -1,0 +1,159 @@
+[
+	{
+	"_id": "62dfab59d687d9bed9fdf777",
+	"name": "Westin Kaanapali KORVN 2BR",
+	"description": "Westin Kaanapali Ocean Resort Villas North timeshare - Pay resort: $14-20/day, stays under 7 night $38/res - Inquire about availability, I review then offer/approve if available :) -== for cleaning/etc AND brief explanation about timeshare reservations - Want guaranteed view for additional cost? Must be weekly rental, other restrictions - Wheelchair accessible / ADA, call resort directly to ensure U receive. If U need ADA U MUST inform us BEFORE booking.",
+	"interaction": "There are activities programs and concierge activities booking services at this resort.",
+	"houseRules": "No smoking; No Pets; This resort's rules apply. Please call the resort directly to verify details.",
+	"propertyType": "Serviced apartment",
+	"roomType": "Entire home/apt",
+	"bedType": "Real Bed",
+	"cancellationPolicy": "strict_14_with_grace_period",
+	"wished": false,
+	"capacity": {
+	"guests": 8,
+	"beds": 2,
+	"bedrooms": 1,
+	"bathrooms": 1
+	},
+	"numOfReviews": 9,
+	"host": {
+	"fullname": "Shunit bar tal",
+	"location": "Eureka, California, United States",
+	"about": "Adventurous couple loves to travel :)",
+	"responseTime": "within an hour",
+	"thumbnailUrl": "https://a0.muscache.com/im/pictures/542dba0c-eb1b-4ab3-85f3-94d3cc8f87a4.jpg?aki_policy=profile_small",
+	"pictureUrl": "1002.jpg",
+	"isSuperhost": true,
+	"id": "62e0e9b1dd13b00af4e80283",
+	"reservaition": []
+	},
+	"loc": {
+	"street": "Lahaina, HI, United States",
+	"country": "United States",
+	"location": {
+	"lat": -156.6917,
+	"lan": 20.93792
+	},
+	"countryCode": "US",
+	"city": "Maui"
+	},
+	"id": "12223067",
+	"price": 595,
+	"securityDeposit": 500,
+	"cleaningFee": null,
+	"extraPeople": 0,
+	"reviewScores": {
+	"accuracy": 10,
+	"cleanliness": 10,
+	"checkin": 10,
+	"communication": 10,
+	"location": 10,
+	"value": 10,
+	"rating": 98
+	},
+	"reviews": [
+	{
+	"at": "2016-06-12T04:00:00.000Z",
+	"by": {
+	"fullname": "Kiesha",
+	"imgUrl": "1001.jpg",
+	"id": "10711825"
+	},
+	"txt": "I had a great experience working with Patty and Peter. Both were very attentive in sorting out the booking details and following up directly when I had questions. I rented a 2 bedroom unit at the Westin Villas in Maui and both the unit and property was absolutely amazing. I think we had the best unit on the resort complete with 2 outdoor patios with direct access to the beach. I would HIGHLY recommend renting with Patty and Peter."
+	},
+	{
+	"at": "2016-07-28T04:00:00.000Z",
+	"by": {
+	"fullname": "Chris",
+	"imgUrl": "1003.jpg",
+	"id": "70072865"
+	},
+	"txt": "Peter quickly responded to any questions I had before, and during the trip. Will use again, highly recommend. "
+	},
+	{
+	"at": "2016-09-11T04:00:00.000Z",
+	"by": {
+	"fullname": "Kim",
+	"imgUrl": "1004.jpg",
+	"id": "71179725"
+	},
+	"txt": "We had the perfect location for a room, first floor right in front of the pool. The resort is beautiful, and the staff is so friendly! I enjoyed it so much, we talked about buying a timeshare ourselves."
+	},
+	{
+	"at": "2017-01-07T05:00:00.000Z",
+	"by": {
+	"fullname": "Tracy",
+	"imgUrl": "1005.jpg",
+	"id": "65593239"
+	},
+	"txt": "Beautiful location. Patty & Peter were super helpful and easy to work with!"
+	},
+	{
+	"at": "2017-04-07T04:00:00.000Z",
+	"by": {
+	"fullname": "Duyen",
+	"imgUrl": "1006.jpg",
+	"id": "26215688"
+	},
+	"txt": "Great spot for the kids and family and close to beach and everything at the resort. We will definitely be back."
+	},
+	{
+	"at": "2017-05-09T04:00:00.000Z",
+	"by": {
+	"fullname": "Binh",
+	"imgUrl": "1008.jpg",
+	"id": "117390236"
+	},
+	"txt": "The unit and the Westin offer variety of amenities you can possibly ask for. Sofa beds are very comfortable to sleep in. But there is charge for ocean view upgrade. Overall, I highly recommend to book with Patty and Peter. "
+	},
+	{
+	"at": "2018-02-24T05:00:00.000Z",
+	"by": {
+	"fullname": "Samy",
+	"imgUrl": "1007.jpg",
+	"id": "15143517"
+	},
+	"txt": "We spent a great week at Patty and Peter's place. The place was exactly as shown in the pictures, very comfortable, nice view, with all amenities. The resort is great with several pools, a long beach, many restaurants, and of course a lot of great activities all around."
+	},
+	{
+	"at": "2018-06-16T04:00:00.000Z",
+	"by": {
+	"fullname": "Breanne",
+	"imgUrl": "1009.jpg",
+	"id": "78173091"
+	},
+	"txt": "This place was perfect for my family. We had plenty of room to spread out and the service could not have been any better"
+	},
+	{
+	"at": "2018-06-29T04:00:00.000Z",
+	"by": {
+	"fullname": "Kimberly",
+	"imgUrl": "1010.jpg",
+	"id": "100535039"
+	},
+	"txt": "We love Westin Kaanapalli"
+	}
+	],
+	"imgUrls": [
+	"090.jpeg",
+	"010.jpeg",
+	"153.jpeg",
+	"093.jpeg",
+	"094.jpeg"
+	],
+	"amenities": [
+	"TV",
+	"Sea view",
+	"Kitchen",
+	"Wifi",
+	"Dedicated workspace",
+	"Parking",
+	"Shared hot tub",
+	"Washing machine",
+	"Patio or balcony",
+	"Essentials"
+	]
+	}
+
+	]

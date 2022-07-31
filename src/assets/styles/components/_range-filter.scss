@@ -1,0 +1,218 @@
+.price-filter-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // max-height: 700px;
+    max-width: 780px;
+    width: 100%;
+    // height: 100%;
+    z-index: 10;
+    // display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    border: 0.5px solid rgba(118, 118, 118, 0.28);
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
+    padding: 20px;
+    border-radius: 12px;
+    text-size-adjust: 100%;
+
+
+    .filter-headline {
+        font-size: 22px;
+        color: rgb(34, 34, 34);
+        // font-family: airbnb-regular;
+        font-weight: 600;
+        margin: 0;
+        // padding-top: 33px;
+        padding: 0 0 24px;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+
+    }
+
+    .top-of-filter {
+        color: black;
+        opacity: 0.8; // display: flex;
+        border-bottom: 1px solid $clr8;
+        margin: 0 0 1rem;
+        // padding: 0 24px;
+        // min-height: 64px;
+
+        svg {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: inherit;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        div {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 800;
+            // line-height: 20px;
+            background-color: inherit;
+            font-family: airbnb-bold;
+        }
+
+
+    }
+
+    .avg {
+        text-align: start;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: rgb(34, 34, 34);
+        color: $clr6;
+        // padding-bottom: 25px;
+        // padding-top: 8px;
+        padding: 0 0 40px;
+    }
+
+
+
+    .price-select-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgb(235, 235, 235) !important;
+
+        h3 {
+            margin: 8px;
+            color: #222222;
+            font-size: 16px;
+            font-weight: lighter;
+            line-height: 20px;
+        }
+
+        .price-select {
+            height: 56px;
+            width: 307px;
+            background: rgb(255, 255, 255) !important;
+            border: 0.5px solid #B0B0B0;
+            border-radius: 9px !important;
+
+
+
+            .label {
+                text-align: start;
+                margin-inline-start: 12px;
+                margin-top: 8px;
+                font-size: 11px;
+                line-height: 20px;
+                color: rgb(113, 113, 113);
+                font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            }
+
+            .price-change {
+                display: flex;
+                align-items: flex-end;
+                margin-inline-start: 12px;
+                font-size: 15px !important;
+            }
+
+            input {
+                border: none;
+                width: 50px;
+                font-size: 15px !important;
+
+                &:focus {
+                    outline: none !important;
+                }
+            }
+
+            &:focus-within {
+                border: 2px solid rgb(0, 0, 0)
+            }
+        }
+    }
+
+    .price-save {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0 0 0;
+        border-top: 1px solid rgb(235, 235, 235);
+
+        .clear {
+            cursor: pointer;
+            border: none;
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            color: #222222;
+            text-decoration: underline;
+        }
+
+        .save {
+            cursor: pointer;
+            margin: 0px;
+            text-align: center;
+            text-decoration: none;
+            width: auto;
+            font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            outline: none;
+            padding: 14px 24px;
+            border: none;
+            background: rgb(34, 34, 34);
+            color: rgb(255, 255, 255);
+        }
+    }
+
+}
+
+
+.vue-histogram-slider-wrapper {
+    width: 700px !important;
+    --holder-color: #ddd !important;
+    --handle-color: #ffffff !important;
+    --grid-text-color: silver;
+    --line-height: 6px;
+    --font-family: Arial, sans-serif;
+    --font-size: 12;
+    --hist-slider-gap: -30px;
+    --handle-size: 26px;
+}
+
+// #vue-histogram-b72e46cd-ee7d-4ad0-a51e-d28564e0e51f {
+//     margin: 24px 2px 6px;
+// }
+
+
+
+.irs-handle {
+    top: 22px !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    background-color: $clr2;
+    opacity: 0.6;
+}
+
+.fixed-body {
+    body {
+        overflow: hidden;
+        position: fixed;
+    }
+}
+
+.body-modal {
+    padding: 32px 0
+}

@@ -1,0 +1,166 @@
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background-color: #fff;
+    border-bottom: 1px solid $clr10;
+    height: 81px;
+}
+
+// .close-header {
+// }
+
+// .header-container {
+//     width: 100%;
+//     padding: 0;
+// }
+
+
+.open-header {
+    position: relative;
+    top: 0;
+    z-index: 30;
+    box-shadow: inset 0px -0.5px 0px rgb(0, 0, 0, 0.3);
+    background-color: white;
+    padding: 0;
+
+    width: 100%;
+    padding-block-end: 16px;
+
+    .checkin,
+    .checkout {
+
+        white-space: nowrap;
+
+
+        .checkout:hover {
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px 0px;
+            background-color: #fff;
+            border-radius: 50px;
+            border: none;
+        }
+
+        cursor: pointer;
+        z-index: 40;
+    }
+
+    label {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.top-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    width: 100%;
+    color: $clr2;
+    background-color: white;
+    border-bottom: 1px solid $clr8;
+
+    .logo {
+        cursor: pointer;
+        height: 19px;
+        color: $clr7;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        font-family: airbnb-bold;
+        padding-top: 14px;
+
+        .fa-airbnb {
+            font-size: 2rem;
+            ;
+        }
+    }
+
+}
+
+.mini-search {
+    margin-left: 150px;
+    display: flex;
+    padding-left: 8px;
+    height: 48px;
+    line-height: 30px;
+    border: 1px solid $clr10;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+    border-radius: 40px;
+    align-items: center;
+    width: 352px;
+    justify-content: space-between;
+    animation: shrink 0.5s;
+    cursor: pointer;
+
+
+    label {
+        border-right: 1px solid $clr10;
+        padding-inline-end: 16px;
+        padding-inline-start: 16px;
+        white-space: nowrap;
+        font-size: 14px;
+        line-height: 18px;
+        font-family: airbnb-medium;
+        color: $clr2;
+        cursor: pointer;
+    }
+
+    >:nth-child(3) {
+        border: none;
+        color: $clr9;
+        font-family: airbnb-regular;
+    }
+
+    span {
+        border: none;
+        // margin-inline-start: 4px;
+    }
+
+    &:hover {
+        box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+        transition: box-shadow 0.2s ease 0s;
+    }
+
+    span:before {
+        content: '\f002';
+        font-size: 12px;
+        font-family: FontAwesome;
+        font-weight: 300;
+        color: #fff;
+        background-color: $clr7;
+        border-radius: 50%;
+        height: 26px;
+        padding: 10px;
+        margin: 7px 7px 7px 0;
+    }
+
+}
+
+.stay-details {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    .mini-search {
+        content: ' Start your search'
+    }
+}
+
+
+
+@keyframes shrink {
+    from {
+        transform: scale(150%);
+        // transform: translateY(0%);
+    }
+
+    to {
+        transform: scale(100%);
+        // transform: translateY(0%);
+
+    }
+}

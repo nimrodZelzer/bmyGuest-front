@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: airbnb-regular;
+    line-height: 1.8;
+}
+
+.btn {
+    background: inherit;
+    cursor: pointer;
+    border: none;
+    font-family: airbnb-regular;
+    list-style: circle;
+}
+
+.btn-airbnb {
+    --mouse-x: 50;
+    --mouse-y: 50;
+    background-size: 200% 200%;
+    background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) !important;
+    cursor: pointer;
+    border: none;
+    font-family: airbnb-bold;
+}
+
+.overlay {
+    filter: brightness(70%);
+    background-color: rgb(189, 187, 187);
+}
+
+
+body {
+    margin: 0;
+
+
+    @include for-normal-layout {
+        &.sidebar-open {
+            overflow: hidden;
+        }
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    margin: 0 0 1rem;
+    line-height: lh(40px, 29px);
+}
+
+.red {
+    fill: red;
+    // color: red;
+}
+
+.black {
+    fill: $clr2;
+    // color: $clr2;
+    opacity: 0.6;
+}
+
+.white {
+    fill: white;
+    stroke: white;
+}
+.filter{
+    filter: contrast(0.295455);
+    opacity: 0.9;
+}
+
+.dot {
+    text-align: center;
+    background-color: black;
+    width: 2px;
+    height: 2px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-bottom: 2.5px;
+}
+
+.loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height:355px;
+}

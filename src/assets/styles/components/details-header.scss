@@ -1,0 +1,71 @@
+.details-header {
+    max-width: 1120px;
+    margin: 0 auto 4px auto;
+    justify-content: space-between;
+
+    h2 {
+        margin: 0;
+        font-size: rem(26px);
+        padding-top: rem(24px);
+        font-weight: 600;
+        line-height: 30px;
+    }
+
+    .detail-header-actions {
+        justify-content: space-between;
+        align-items: flex-end;
+        font-size: rem(14px);
+        font-family: airbnb-medium;
+        padding-top: rem(10px);
+        // font-weight: 600;
+        line-height: 20px;
+
+        .details-header-txt {
+            gap: 8px;
+
+            i {
+                padding: 0;
+                padding-right: 4px;
+            }
+        }
+
+        .details-header-bottom {
+            svg {
+                // position: absolute;
+                // top: 143px;
+                // right: 179px;
+                margin-top: 2px;
+                align-self: flex-end;
+            }
+
+
+        }
+
+        span,
+        a  {
+            text-decoration: underline;
+            color: $clr2;
+        }
+        
+        a:first-child{
+            text-decoration: none;
+        }
+        >:last-child {
+            padding-right: 0;
+        }
+
+    }
+
+    a {
+        padding: rem(8px);
+    }
+
+    i {
+        text-decoration: none;
+        padding-left: rem(8px);
+        fill: white;
+        z-index: 2000;
+    }
+
+
+}

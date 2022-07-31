@@ -1,0 +1,208 @@
+.date-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: airbnb-regular;
+  // max-width: 225px;
+  width: 100%;
+  position: relative;
+  letter-spacing: 0.5px;
+  height: 66px;
+  margin: auto;
+  grid-template-columns: 1fr 1fr;
+
+  .checkin {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+    line-height: 20px;
+    justify-content: center;
+    white-space: nowrap;
+    gap: 1px;
+    // border-right: 1px solid #D2D2D2;
+    // border-left: 1px solid #D2D2D2;
+    grid-area: 1/1/2/2;
+
+
+    &:hover {
+      background-color: #DDDDDD;
+      border-radius: 40px;
+    }
+
+    // &:active {
+    //   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px 0px;
+    //   background-color: #fff;
+    // }
+
+  }
+
+  .checkout {
+    // position: absolute;
+    right: 20px;
+    height: 100%;
+    display: flex;
+    border-right: 1px solid #D2D2D2;
+    border-left: 1px solid #D2D2D2;
+    flex-direction: column;
+    padding: 0 24px;
+    justify-content: center;
+    line-height: 20px;
+    grid-area: 1/2/-1/-1;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #DDDDDD;
+      border-radius: 40px;
+    }
+
+    &:active {
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px 0px;
+      background-color: #fff;
+    }
+  }
+
+
+
+  .top {
+    font-size: 12px;
+    font-weight: 800;
+
+  }
+
+  .bottom {
+    font-size: 14px;
+    opacity: 0.6;
+  }
+
+  .el-date-editor.el-input__wrapper {
+    // border: none;
+    // width: 260px;
+    // background-color: inherit;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    // grid-template-rows: 1/2;
+    // grid-area: 1/1/2/3;
+  }
+}
+
+.custom-date-picker {
+  .el-picker-panel__body-wrapper {
+    .el-picker-panel__body {
+      border-radius: 50px;
+      box-shadow: rgba(0, 0, 0, 0.04) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 16px 0px 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:focus {
+        background-color: black;
+        color: #ece8e8;
+      }
+    }
+  }
+}
+
+
+
+
+
+// .el-date-table td .el-date-table-cell .el-date-table-cell__text {
+//   color: #ece8e8;
+
+//   &:visited {
+//     border-color: black;
+
+//   }
+
+// }
+
+.el-date-table td .el-date-table-cell .el-date-table-cell__text {
+  color: black;
+  // background-color: black;
+
+  &:active {
+    color: black;
+    background-color: black;
+  }
+
+
+
+  &:hover {
+    color: black;
+    background-color: white;
+    border: 1px dotted $clr7 ;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 16px 0px 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+}
+
+.el-popper {
+  border-radius: 32px;
+  // max-width: 796px;
+  width: 100%;
+
+
+
+  // .el-date-range-picker {
+  //   border-radius: 32px;
+  //   width: 100%;
+  //   height: 100%;
+  //   font-weight: 600;
+  //   // height: 465px;
+  //   overflow-x: hidden;
+  //   overflow-y: auto;
+  //   font-size: 1rem;
+
+  //   .el-picker-panel__body{
+  //     width: 65%;
+  //   }
+  // }
+
+  .el-date-range-picker__header div {
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  }
+
+}
+
+
+
+// #el-popper-container-1494>div {
+//   top: 150px;
+// }
+
+.el-picker-panel__body-wrapper {
+  // left: 10%;
+  position: absolute;
+  width: 100%;
+
+
+  .el-picker-panel__body {
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 16px 0px 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+    font-size: 1rem;
+    position: absolute;
+    top: 91px;
+    // left: 13px;
+
+    .el-date-range-picker__header [class*=arrow-right]:first-child {
+      visibility: hidden;
+
+    }
+
+    .el-date-range-picker__header [class*=arrow-left]:first-child {
+      visibility: hidden;
+    }
+
+  }
+}
+
+.el-date-editor {
+  svg {
+    display: none
+  }
+}

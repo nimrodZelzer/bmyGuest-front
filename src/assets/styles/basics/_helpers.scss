@@ -1,0 +1,154 @@
+// Flex 
+.flex {
+    display: flex;
+}
+
+.now-rap {
+    white-space: nowrap;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.inline-flex {
+    display: inline-flex;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 20px;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+
+
+.align-center {
+    align-items: center;
+}
+
+.end {
+    justify-self: flex-end;
+}
+
+.start {
+    justify-self: flex;
+}
+
+
+// List 
+.clean-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+// Text 
+.vertical-text {
+    writing-mode: tb-rl;
+    transform: rotate(-180deg);
+}
+
+.gap {
+    gap: rem(5px);
+}
+
+.bold {
+    color: #222222;
+    font-weight: 600;
+}
+
+.tag-text {
+    color: $clr1;
+    text-transform: uppercase;
+    @include type(boldCondensed);
+}
+
+.tool-tip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    cursor: pointer;
+}
+
+.tool-tip:hover .tool-tip-text {
+    visibility: visible;
+}
+
+.tool-tip .tool-tip-text {
+    visibility: hidden;
+    position: absolute;
+    bottom: 95%;
+    background-color: $clr5;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: -1;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.sticky {
+    position: sticky
+}
+
+.active {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px 0px;
+    background-color: #fff;
+    border-radius: 35px;
+}
+
+// Aspect ratios
+
+.ratio-16-9 {
+    @include aspect-ratio(100, 56);
+}
+
+.ratio-square {
+    @include aspect-ratio(100, 100);
+}
+
+.ratio-card {
+    @include aspect-ratio(100, 80);
+}
+
+.ratio-poster {
+    @include aspect-ratio(100, 150);
+}
