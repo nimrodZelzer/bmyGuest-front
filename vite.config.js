@@ -12,7 +12,10 @@ export default defineConfig({
     },
     build: {
       outDir: "../backend/public", // this line place index.html in the public folder
-      assetsDir: true 
+      assetsDir: "./dist",
+      emptyOutDir: true,
+      chunkSizeWarningLimit: 1500
+
     },
 
   }
