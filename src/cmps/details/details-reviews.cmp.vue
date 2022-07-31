@@ -29,7 +29,7 @@
 </template>
 <script>
 import detailsRatingBars from './details-rating-bars.cmp.vue';
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 
 // CommonJS
 // const Swal = require('sweetalert2')
@@ -49,19 +49,19 @@ export default {
         this.reviews = this.stay.reviews
     },
     methods: {
-        showMore(review) {
-            Swal.fire({
-                heightAuto: true,
-                background:'rgba(255, 49, 91, 0.9)',
-                color: 'white',
-                title: `Review By ${review.by.fullname}`,
-                text: review.txt,
-                customClass: {                      // <------ customClass is an object!
-                    container: 'border-radius: 10px'
-                },
+        // showMore(review) {
+        //     Swal.fire({
+        //         heightAuto: true,
+        //         background:'rgba(255, 49, 91, 0.9)',
+        //         color: 'white',
+        //         title: `Review By ${review.by.fullname}`,
+        //         text: review.txt,
+        //         customClass: {                      // <------ customClass is an object!
+        //             container: 'border-radius: 10px'
+        //         },
 
-            })
-        }
+        //     })
+        // }
     },
     computed: {},
     unmounted() { },
