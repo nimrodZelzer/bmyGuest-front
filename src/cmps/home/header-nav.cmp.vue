@@ -20,7 +20,7 @@
 
         <div class="user-nav-container" v-if="showMenu"  @click="showMenu = false">
             <div class="user-nav flex column">
-                <!-- <button @click="login">login</button> -->
+                <button @click="login">login</button>
                 <!-- <router-link to="#">Log in</router-link> -->
                 <router-link to="#">Notifications</router-link>
                 <!-- <router-link v-if="user" @click="goToBackOffice">Orders</router-link> -->
@@ -83,6 +83,7 @@ export default {
                 console.log("userStore: Error in login", err)
                 throw err
             }
+            console.log(this.$store.getters.loggedinUser)
         }
     },
 
