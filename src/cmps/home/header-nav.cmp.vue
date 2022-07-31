@@ -1,8 +1,9 @@
-<template   >
-    <div class="main-nav" >
-        <nav >
+<template >
+
+    <div class="main-nav">
+        <nav>
             <router-link to="/explore">Explore</router-link>
-            <router-link to="/order" :user="user">Become a Host</router-link>
+            <router-link v-if="shunitAdmin" to="/order" :user="user">Become a Host</router-link>
             <button class="user-menu-btns clickable" @click="showMenu = !showMenu">
                 <!-- <i class="fa-solid fa-bars"></i> -->
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
@@ -18,23 +19,20 @@
             </button>
         </nav>
 
-        <div class="user-nav-container" v-if="showMenu"  @click="showMenu = false">
+        <div class="user-nav-container" v-if="showMenu" @click="showMenu = false">
             <div class="user-nav flex column">
-                <!-- <button @click="login">login</button> -->
-                <!-- <router-link to="#">Log in</router-link> -->
+                <button v-if="!user" @click="login">login</button>
+                <router-link to="#">Log in</router-link>
                 <router-link to="#">Notifications</router-link>
                 <!-- <router-link v-if="user" @click="goToBackOffice">Orders</router-link> -->
                 <router-link v-if="user" to="/orders">Orders</router-link>
                 <router-link :stays="stays" to="/wishlist">Wishlist</router-link>
-                {{ loginSignup }}
+                <!-- {{ loginSignup }} -->
             </div>
         </div>
-
     </div>
 </template>
 <script>
-
-
 export default {
     data() {
         return {
@@ -51,22 +49,14 @@ export default {
             isShowDropdownMenu: false,
             dates: [],
             user: null,
-            stays:null,
+            stays: null,
+            admin: null
         };
     },
-    // async created() {
-    //     this.stays = this.$store.getters.stays
-    //     this.$store.dispatch({ type: "setUser" });
-    //     try {
-    //         const loggedinUser = await this.$store.getters.loggedinUser
-    //         this.user = loggedinUser
-    //         console.log(this.user)
-    //     } catch (err) {
-    //         console.log("userStore: Error in login", err)
-    //         throw err
-    //     }
     created() {
+
     },
+
 
     methods: {
         closeDropdownMenu() {
@@ -83,10 +73,16 @@ export default {
                 console.log("userStore: Error in login", err)
                 throw err
             }
-        }
+        },
     },
 
-    computed: {},
+    computed: {
+        shunitAdmin() {
+            const adminForDemo = this.$store.getters.getAdmin
+            this.admin = adminForDemo
+            return adminForDemo
+        },
+    },
     unmounted() { },
     components: {
 

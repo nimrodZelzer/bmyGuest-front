@@ -38,7 +38,7 @@ export const stayService = {
 async function query(filterBy = {}) {
   // console.log(filterBy)
   return await httpService.get(ENDPOINT, filterBy)
-  return _saveLocalStay(stays)
+  // _saveLocalStay(stays)
   // if (!filterBy) return utilService.loadFromStorage(STAY_KEY)
   // gStays = utilService.loadFromStorage(STAY_KEY)
   // const { txt } = filterBy
@@ -49,8 +49,8 @@ async function query(filterBy = {}) {
 }
 
 async function getById(stayId) {
-  let stay=await httpService.get(`${ENDPOINT}/${stayId}`)
- console.log(stay)
+  let stay = await httpService.get(`${ENDPOINT}/${stayId}`)
+  console.log(stay)
   return stay
   // const stay = query().find((stay) => stay._id === stayId)
   // console.log(stay)
@@ -84,11 +84,9 @@ async function remove(stayId) {
   // utilService.saveToStorage(STAY_KEY, stays)
 }
 
-
 function getEmptyStay() {
   return Promise.resolve({})
 }
-
 
 function _saveLocalStay(stays) {
   sessionStorage.setItem(STAYS_KEY, JSON.stringify(stays))

@@ -53,8 +53,8 @@ export default {
       state.orders.splice(idx, 1)
     },
     setOrderByHost(state, { orders }) {
-      orders.forEach((order) => {
-        state.totalPriceArry.push(order.totalPrice)
+      orders.forEach((orders) => {
+        state.totalPriceArry.push(orders.totalPrice)
       })
       state.currOrders = orders
     },
@@ -91,7 +91,7 @@ export default {
         // })
 
         commit({ type: "saveOrder", order: orderToSave })
-        return orderService
+        return orderToSave
       } catch (err) {
         console.log("Error: cannot save order", err)
         throw err
@@ -109,6 +109,7 @@ export default {
     },
 
     async loadHostOrders({ commit }, { id }) {
+      console.log(id)
       try {
         const orderByHost = await orderService.saveOrderByHostId(id)
         console.log(orderByHost)

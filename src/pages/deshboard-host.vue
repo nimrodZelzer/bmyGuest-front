@@ -124,12 +124,7 @@ export default {
 
     },
     computed: {
-        // user() {
-        //     return this.$store.getters.loggedinUser
-        // },
-        // host() {
-        //     return this.$store.getters.loggedinUser[0]
-        // },
+
     },
 }
 </script>
