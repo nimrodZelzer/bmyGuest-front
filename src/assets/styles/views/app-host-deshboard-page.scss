@@ -1,24 +1,67 @@
+.dash-board-header{
+    h1{
+        font-size: 32px;
+        font-family: airbnb-medium;
+        margin-bottom: 5px;
+    }
+}
+
+
+
 .dash-board-details {
 
+   font-family: airbnb-regular;
     justify-content: space-between;
 
     .dash-board-summary {
-        width: 35%;
-        margin-top: 14px;
+        width: 30%;
+        margin-top: 15.8px;
         border-radius: 10px;
         border: 1px solid $clr10;
         padding: 12px 8px;
         justify-content: space-between;
+        height: 560px;
+        position: sticky;
+        top: 83px;
+        padding-top: 15px;
+        background-color: rgb(255, 237, 237);
+        span{
+            color: $clr9;
+        }
+        .green{
+            color: rgb(47, 231, 47);
 
-       
+        }
 
+    
+        h2 , h3 {
+            font-family: airbnb-medium;
+        }
 
+        .bottom-pic{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            
+        }
+        :first-child{
+            padding-top: 0;
+        }
+        >*{
+            padding: 20px 10px;
+            border-bottom: 1px solid $clr10;
+        }
+        :last-child{
+            border: none;
+        }
     }
+
+  
 }
 
 .order-list {
     padding: 0;
-    width: 60%;
+    width: 65%;
 
     .order-card {
         justify-content: space-between;
@@ -29,7 +72,21 @@
         padding: 10px;
         border-radius: 10px;
         border: 1px solid $clr10;
+        position: relative;
+        background-color: rgb(255, 237, 237);
 
+        .pending-svg{
+            height: 150px;
+            width: 100px;
+            position: absolute;
+            right: 200px;
+        }
+        .accepted-svg{
+            height: 140px;
+            width: 100px;
+            position: absolute;
+            right: 220px;
+        }
         .order-right-card {
             gap: 25px;
         }
@@ -38,9 +95,14 @@
             color: $clr7;
         }
 
+        span{
+            color: $clr9;
+        }
+
 
         .order-status {
             //   height: 48px;
+            align-self: flex-start;
             border-radius: 10px;
             padding: 10px 27px;
             font-size: 16px;

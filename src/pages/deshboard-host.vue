@@ -1,17 +1,40 @@
 
 <template>
     <section class="dashboard-host-page main-layout">
-        <div class="charts flex">
-            <div class="chart">
-                {{ this.datasets }}
-                <totalPriceChart v-if="this.prices" :datasets="this.datasets" />
-            </div>
-            <div class="chart ">
-                <orderByMonths />
-            </div>
+        <div class="dash-board-header">
+            <h1>Incoming Reservation</h1>
+            <span>{{ this.orders.length }} items</span>
         </div>
-        <h2>Your Orders</h2>
-
+        <div class="dash-board-details flex ">
+            <order-list @changeStatus='changeStatus' :orders="orders" />
+            <div class="dash-board-summary">
+                <div class="summary-header flex align-center">
+                    <div>
+                        <h2>Hosting Summary</h2>
+                        <h3>Fantastic job!</h3>
+                        <p>guests love what your doing keep up the good work</p>
+                        <span>view details</span>
+                    </div>
+                    <img src="https://icons-for-free.com/download-icon-complete+done+green+success+valid+icon-1320183462969251652_256.ico" alt="">
+                    <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
+                </div>
+                <div class="earnings-container ">
+                    <div class="flex  justify-between"><span>August earnings</span><span  class="green">2650$</span></div>
+                    <div class="flex  justify-between"><span>30 day reviews</span><span class="green">870</span></div>
+                </div>
+                <div class="overall-container">
+                    <div class="flex justify-between"><span>Overall ratings</span><span  class="green">4.9 <i class="fa fa-star"></i></span></div>
+                    <div class="flex justify-between"><span>Total reviews</span><span  class="green">40</span></div>
+                </div>
+                <div class="flex justify-between">
+                    <img class="bottom-pic" src="https://freesvg.org/img/Gerald_G_House_sitting_on_a_pile_of_money.png" alt="">
+                </div>
+            </div>
+            <!-- <div class="chart ">
+                <orderByMonths />
+            </div> -->
+        </div>
+        <!-- <h2>Your Orders</h2>
         <div class="order-table">
             <div class="order-filter flex">
                 <orderFilter />
@@ -26,7 +49,7 @@
             </div>
 
             <order-list :orders="orders" />
-        </div>
+        </div> -->
         <div class="hostStayList">
             <h2>Your Stay List</h2>
             <stay-list :stays="this.stays" />
@@ -41,7 +64,7 @@ import orderByMonths from "../cmps/host/order-by-months.cmp.vue"
 import stayList from "../cmps/home/stay-list.cmp.vue"
 import selectStays from "../cmps/host/select-stays.cmp.vue"
 import orderFilter from "../cmps/host/order-filter.cmp.vue"
-import { socketService } from "../services/socket.service.js"
+
 export default {
     name: 'deshboard-host',
     props: {
@@ -49,7 +72,7 @@ export default {
     },
     data() {
         return {
-            orderByMonth: null,
+            orderByMonth:null,
             orders: null,
             stays: null,
             prices: null,
@@ -62,11 +85,8 @@ export default {
         }
     },
     async created() {
-
         try {
-            const orders = await this.$store.dispatch({ type: 'getOrderByHost', id: '62e0e9b1dd13b00af4e80283' })
-            this.orders = orders
-            socketService.on('order-added', this.addOrder)
+            this.orders = await this.$store.dispatch({ type: 'getOrderByHost', id: '62e0e9b1dd13b00af4e80283' })
         } catch (err) {
             console.log(" Error in read orders", err)
             throw err
@@ -78,13 +98,8 @@ export default {
             console.log(" Error in read orders", err)
             throw err
         }
-
         try {
-            this.prices = await this.$store.getters.getTotalPrices
-            this.datasets[0].data.push(prices)
             this.datasets[0].data = await this.$store.getters.getTotalPrices
-
-
         } catch (err) {
             console.log(" Error in read orders by price", err)
             throw err
@@ -101,15 +116,6 @@ export default {
 
     },
     methods: {
-        dataset() {
-            return [
-                {
-                    data: this.prices,
-                    backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
-                },
-            ]
-
-        }
 
     },
 
@@ -128,6 +134,3 @@ export default {
     },
 }
 </script>
-
-
-

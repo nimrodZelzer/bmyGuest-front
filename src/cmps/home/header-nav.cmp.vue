@@ -21,8 +21,8 @@
 
         <div class="user-nav-container" v-if="showMenu" @click="showMenu = false">
             <div class="user-nav flex column">
-                <button v-if="!user" @click="login">login</button>
-                <router-link to="#">Log in</router-link>
+                <button @click="login">login</button>
+                <!-- <router-link to="#">Log in</router-link> -->
                 <router-link to="#">Notifications</router-link>
                 <!-- <router-link v-if="user" @click="goToBackOffice">Orders</router-link> -->
                 <router-link v-if="user" to="/orders">Orders</router-link>
