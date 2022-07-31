@@ -9,7 +9,8 @@ export default {
     loggedinUser: {},
     users: [],
     watchedUser: null,
-    userOrders: []
+    userOrders: [],
+    admin: userService.adminLog(),
   },
   getters: {
     users({ users }) {
@@ -21,13 +22,17 @@ export default {
     watchedUser({ watchedUser }) {
       return watchedUser
     },
+    getAdmin(state) {
+      return state.admin
+    },
   },
   mutations: {
-    setUser(state, { user }) {
-      state.loggedinUser = user
-    },
     setLoggedinUser(state, { user }) {
+<<<<<<< HEAD
       state.loggedinUser = [0]
+=======
+      state.loggedinUser = user
+>>>>>>> 7a84bcbb22ca53c344a28032070361a43dd444bb
     },
     setWatchedUser(state, { user }) {
       state.watchedUser = user
@@ -37,10 +42,14 @@ export default {
     },
   },
   actions: {
-    setUser({ commit }) {
-      const user = userService.getLoggedinUser()
-      console.log(user, "userrrrrrrrrrrrrrrrrrrrrrrr")
-      commit({ type: "setUser", user })
+    async setLoggedinUser1({ commit }, { num }) {
+      try {
+        const user = await userService.getUsers(num)
+        console.log(user)
+        commit({ type: "setLoggedinUser", user })
+      } catch (err) {
+        console.log("userStore: Error in loadloggedinuser", err)
+      }
     },
     async login({ commit }, { userCred }) {
       try {

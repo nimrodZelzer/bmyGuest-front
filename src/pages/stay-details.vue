@@ -1,5 +1,4 @@
 <template >
-
   <div v-if="stay" id="photos" class="stay-details main-layout">
     <deatils-sticky-header @scrollTo="scrollTo" :bottom="bottom" :priceSummary="priceSummary" v-if="windowTop > 660" />
     <details-header v-if="stay" :stay="stay" />
@@ -9,12 +8,10 @@
       <reservation-details class="res" :stay="stay" />
     </div>
     <details-reviews :stay="stay" />
-    <!-- <details-map class="deatils-map" :stay="stay" /> -->
-    <!-- <details-reviews :stay="stay" /> -->
     <details-map class="deatils-map" :stay="stay" />
   </div>
   <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
-    <app-footer />
+    <app-footer v-if="stay" />
 </template>
 <script>
 import detailsMap from '../cmps/details-map.cmp.vue';
@@ -42,6 +39,7 @@ export default {
   },
   async created() {
     const { stayId } = this.$route.params;
+    console.log(stayId)
     try {
       await this.$store.dispatch({ type: 'loadById', id: stayId })
       

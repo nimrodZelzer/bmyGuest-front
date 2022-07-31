@@ -29,9 +29,7 @@ async function addNewOrder(order) {
 async function saveOrderByHostId(hostId, filter = null) {
   try {
     const orders = await httpService.get(ENDPOINT)
-    const orderByHost = orders.filter((order) =>
-      order.host.hostId === hostId ? hostId : "62e0e9b1dd13b00af4e80283"
-    )
+    const orderByHost = orders.filter((order) => order.host.hostId === hostId)
     console.log(orderByHost, "orderbyhosttttttttttttttttttttt")
     if (!filter) return orderByHost
     let orderByStatus = orderByHost.filter((order) => order.status === filter)

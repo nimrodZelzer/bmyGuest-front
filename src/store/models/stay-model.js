@@ -78,13 +78,14 @@ export default {
         throw err
       }
     },
-
     loadLabels({ commit }) {
       let labels = stayService.getLabels()
       // console.log(labels)
       commit({ type: "setLabels", labels })
     },
+
     async loadById({ commit }, { id }) {
+      console.log(id)
       try {
         const stay = await stayService.getById(id)
         commit({ type: "setStayById", stay })

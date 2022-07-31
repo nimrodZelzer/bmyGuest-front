@@ -1,5 +1,5 @@
 <template >
-  <div class="modal-overlay fixed-body" v-if="openModal"></div>
+  <div class="modal-overlay fixed-body" v-if="!openModal"></div>
   <section class="range-filter" style="z-index:50" v-if="!openModal">
     <div class="price-filter-container">
       <div class="top-of-filter">

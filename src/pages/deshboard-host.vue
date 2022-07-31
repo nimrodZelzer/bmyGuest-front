@@ -2,7 +2,7 @@
 <template>
     <section class="dashboard-host-page main-layout">
         <div class="dash-board-header">
-            <h2>pending/accepted</h2>
+            <h1>Incoming Reservation</h1>
             <span>{{ this.orders.length }} items</span>
         </div>
         <div class="dash-board-details flex ">
@@ -18,12 +18,23 @@
                     <img src="https://icons-for-free.com/download-icon-complete+done+green+success+valid+icon-1320183462969251652_256.ico" alt="">
                     <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
                 </div>
+                <div class="earnings-container ">
+                    <div class="flex  justify-between"><span>August earnings</span><span  class="green">2650$</span></div>
+                    <div class="flex  justify-between"><span>30 day reviews</span><span class="green">870</span></div>
+                </div>
+                <div class="overall-container">
+                    <div class="flex justify-between"><span>Overall ratings</span><span  class="green">4.9 <i class="fa fa-star"></i></span></div>
+                    <div class="flex justify-between"><span>Total reviews</span><span  class="green">40</span></div>
+                </div>
+                <div class="flex justify-between">
+                    <img class="bottom-pic" src="https://freesvg.org/img/Gerald_G_House_sitting_on_a_pile_of_money.png" alt="">
+                </div>
             </div>
-            <div class="chart ">
+            <!-- <div class="chart ">
                 <orderByMonths />
-            </div>
+            </div> -->
         </div>
-        <h2>Your Orders</h2>
+        <!-- <h2>Your Orders</h2>
         <div class="order-table">
             <div class="order-filter flex">
                 <orderFilter />
@@ -38,7 +49,7 @@
             </div>
 
             <order-list :orders="orders" />
-        </div>
+        </div> -->
         <div class="hostStayList">
             <h2>Your Stay List</h2>
             <stay-list :stays="this.stays" />

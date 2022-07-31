@@ -31,10 +31,11 @@
                 <span>{{ stay.capacity.beds }} beds</span>
                 <!-- <span v-if="stay.host.isSuperhost">Professional Host</span> -->
                 <!-- <span v-else>Individual Host</span> -->
-
             </div>
 
             <span class="price flex gap"><span class="bold">${{ stay.price }}</span>night</span>
+                        <!-- <router-link :to="'stay/'+stay._id">Become a Host</router-link> -->
+
         </div>
 
     </div>
@@ -64,9 +65,9 @@ export default {
         // console.log(this.stay.wished, "staysssssssss")
     },
     methods: {
-      goToDetail() {
-        debugger
+        goToDetail() {
             this.$router.push(`/stay/${this.stay._id}`)
+            // this.$store.dispatch({ type: 'loadById', id: this.stay._id })
         },
         addToWishList() {
             // this.wished ? showSuccessMsg("added to wishlist") : showSuccessMsg('removed from wishlist')
