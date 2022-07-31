@@ -28,7 +28,11 @@ export default {
   },
   mutations: {
     setLoggedinUser(state, { user }) {
+<<<<<<< HEAD
+      state.loggedinUser = [0]
+=======
       state.loggedinUser = user
+>>>>>>> 7a84bcbb22ca53c344a28032070361a43dd444bb
     },
     setWatchedUser(state, { user }) {
       state.watchedUser = user
