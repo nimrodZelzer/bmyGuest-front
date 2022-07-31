@@ -13,10 +13,12 @@
       </div>
       <div class="body-modal">
         <h2 class="filter-headline">Price range</h2>
-        <h3 class="avg">The average nightly price is {{ getPricesAvg }}</h3>
+        <h3 class="avg">
+          The average nightly price is {{ getPricesAvg }}
+        </h3>
         <div class="price-filter">
-          <HistogramSlider :bar-height="100" :data="pricesToShow" :barWidth="9.95312" :hideFromTo="true"
-            :keyboard="true" :min="10" :max="1500" :grid="false" :barGap="5" :lineHeight="2" :clip="false"
+          <HistogramSlider :bar-height="100" :data="pricesToShow" :barWidth="11" :hideFromTo="true" :keyboard="true"
+            :min="10" :max="1500" :grid="false" :barGap="3" :lineHeight="2" :clip="false"
             :primaryColor="histogramMainColor" :holderColor="histogramSecondaryColor" @finish="sliderChanged" />
         </div>
         <div class="price-select-container">
@@ -76,7 +78,6 @@ export default {
     }
   },
   created() {
-    this.filterBy = this.$store.getters.filterBy;
   },
   computed: {
     pricesToShow() {
@@ -95,10 +96,14 @@ export default {
   },
   methods: {
     loadStays() {
+
       this.filterBy.min = this.filterBy.price.min
       this.filterBy.max = this.filterBy.price.max
       this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
       this.openModal = true
+
+
+
     },
     sliderChanged(values) {
       console.log(values)
@@ -122,4 +127,3 @@ export default {
 
 }
 </script>
-
