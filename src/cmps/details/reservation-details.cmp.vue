@@ -16,7 +16,7 @@
         <div class="option-container flex">
             <div @submit.stop class="date-container">
                 <div class="checkin clickable">
-                    <span class="top" >CHECKIN</span>
+                    <span class="top">CHECKIN</span>
                     <span v-if="!date.length" class="bottom">Add dates</span>
                     <span v-else class="bottom">{{
                             date[0].getDate()
@@ -66,7 +66,27 @@
                 <span>Total</span><span>${{ totalPrice + 300 }}</span>
             </p>
         </div>
-        <!-- <airbnb-btn /> -->
+    </div>
+    <div v-if="this.openReservModal" class="reserv-modal flex column justify-center justify-between">
+        <div class="modal-haeder flex justify-between">
+            <h2>reservation success!</h2>
+            <svg class="clickable" @click="openReservModal=false" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" role="presentation" focusable="false"
+                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
+                <path d="m6 6 20 20"></path>
+                <path d="m26 6-20 20"></path>
+            </svg>
+        </div>
+
+        <h3>your trip:{{ this.stay.name }}</h3>
+        <span class="bold checkin">check-in</span>{{ this.checkIn }}
+        <span class="bold checkout">check-out{{ this.chackOut }}</span>
+        <span class="bold adult">adult:{{ this.adultAmount }}</span>
+        <span class="bold price">total price:{{ this.totalPrice }}</span>
+        <span class="bold night">total night:{{ this.nights }}</span>
+
+        <button class="reserve-btn">Look for more places to stay </button>
+
 
     </div>
 </template>
@@ -92,15 +112,16 @@ export default {
             date: [],
             totalPrice: 0,
             nights: null,
-            loggedinUser:{},
-            
+            loggedinUser: {},
+            openReservModal: false,
+            // checkIn: new Date(this.date[0]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" }),
+            // chackOut: new Date(this.date[1]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" }),
+
         };
     },
     created() {
         this.loggedinUser = this.$store.getters.loggedinUser
-        console.log(this.loggedinUser)
         this.date = this.$store.getters.getCurrDate
-        console.log(this.date)
         if (this.date.length) this.changeDate()
         this.hover
 
@@ -125,21 +146,17 @@ export default {
         },
         reservationValue() {
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-            // Discard the time and time-zone information.
             const utc1 = Date.UTC(this.date[0].getFullYear(), this.date[0].getMonth(), this.date[0].getDate());
             const utc2 = Date.UTC(this.date[1].getFullYear(), this.date[1].getMonth(), this.date[1].getDate());
-            console.log(Math.floor((utc2 - utc1) / _MS_PER_DAY))
             this.nights = (Math.floor((utc2 - utc1) / _MS_PER_DAY))
-            console.log('here before');
-            console.log(this.date)
         },
         async reserveOrder() {
             if (!this.date.length) {
                 showSuccessMsg(`please choose date!`)
                 return
             }
+            this.openReservModal = true
             const orderDet = {
-
                 checkin: this.date[0],
                 checkout: this.date[1],
                 guests: this.adultAmount,
@@ -158,19 +175,17 @@ export default {
                 stay: {
                     name: this.stay.name
                 },
-                status:'pending',
-                createAt:this.getCreateAt(),
-
-
-
-                
+                status: 'pending',
+                createAt: this.getCreateAt(),
             }
-            showSuccessMsg(`reserved ${this.nights} nights succsesfully `)
-            this.$router.push('/')
-            await this.$store.dispatch({
-                type: 'saveOrder',
-                order: orderDet
-            })
+
+
+            // showSuccessMsg(`reserved ${this.nights} nights succsesfully `)
+            // this.$router.push('/')
+            // await this.$store.dispatch({
+            //     type: 'saveOrder',
+            //     order: orderDet
+            // })
 
         },
         getTotalPrice() {

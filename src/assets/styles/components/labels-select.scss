@@ -11,6 +11,8 @@
     padding-top: 22px;
     padding-bottom: 3px;
     padding-left: 97px;
+    font-size: 12px;
+    font-weight: 100;
   
     .filter-btn{
         position: absolute;
@@ -62,9 +64,6 @@
 
 
     .labels-wrapper {
-        :focus {
-            box-shadow: inset 0 -3px 0 0 rgb(5, 5, 5); 
-        }
         font-size: rem(12px);
         // margin-inline-end: rem(40px); 
         font-weight: 600;

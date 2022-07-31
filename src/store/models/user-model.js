@@ -27,7 +27,7 @@ export default {
       state.loggedinUser = user
     },
     setLoggedinUser(state, { user }) {
-      state.loggedinUser = user[4]
+      state.loggedinUser = [0]
     },
     setWatchedUser(state, { user }) {
       state.watchedUser = user

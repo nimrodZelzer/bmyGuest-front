@@ -95,7 +95,7 @@ export default {
         // })
 
         commit({ type: "saveOrder", order: orderToSave })
-        return orderService
+        return orderToSave
       } catch (err) {
         console.log("Error: cannot save order", err)
         throw err

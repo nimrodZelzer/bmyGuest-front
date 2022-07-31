@@ -30,11 +30,7 @@ const router = createRouter({
       name: "stay-details",
       component: stayDetails,
     },
-    {
-      path: "/host",
-      name: "host-page",
-      component: hostPage,
-    },
+
     {
       path: "/orders",
       name: "orders-page",
