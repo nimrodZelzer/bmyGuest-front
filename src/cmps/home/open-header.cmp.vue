@@ -92,9 +92,7 @@ export default {
             searchClick: false
         };
     },
-    created() { 
-        this.filterBy = this.$store.getters.filterBy;
-    },
+    created() { },
     methods: {
         async goExplore() {
             console.log('filterBy.txt: ', this.filterBy.txt)
@@ -111,7 +109,7 @@ export default {
                 this.$emit('openHeader', false)
             }
         },
-        closeHeader(value){
+        closeHeader(value) {
             this.$emit('openHeader', value)
             console.log("here")
         },

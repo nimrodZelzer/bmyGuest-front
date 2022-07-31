@@ -19,6 +19,30 @@
                     <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
                 </div>
             </div>
+            <div class="chart ">
+                <orderByMonths />
+            </div>
+        </div>
+        <h2>Your Orders</h2>
+
+        <div class="order-table">
+            <div class="order-filter flex">
+                <orderFilter />
+            </div>
+            <div class="order-table-header">
+                <span class="title">Date Of Order</span>
+                <span class="check-in">Check In</span>
+                <span class="check-out">Check Out</span>
+                <span class="guest-name">Name</span>
+                <span class="price">Price</span>
+                <span class="status">Status</span>
+            </div>
+
+            <order-list :orders="orders" />
+        </div>
+        <div class="hostStayList">
+            <h2>Your Stay List</h2>
+            <stay-list :stays="this.stays" />
         </div>
     </section>
 </template>
@@ -71,6 +95,7 @@ export default {
         try {
             this.prices = await this.$store.getters.getTotalPrices
             this.datasets[0].data.push(prices)
+            this.datasets[0].data = await this.$store.getters.getTotalPrices
 
 
         } catch (err) {
@@ -96,21 +121,12 @@ export default {
                     backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
                 },
             ]
-        },
-        addOrder(order) {
-            this.orders.push(order)
-        },
-        changeStatus(order) {
-            this.$store.dispatch({
-                type: 'saveOrder',
-                order
-            })
-            console.log(order)
-            // this.$store.dispatch({
-            //     type: 'getOrderByHost', hostId: "62e0e9b1dd13b00af4e80283"
-            // })
-        },
+
+        }
+
     },
+
+
     components: {
         orderList,
         totalPriceChart,
@@ -118,13 +134,18 @@ export default {
         stayList,
         selectStays,
         orderFilter,
-    }
+
+    },
+    computed: {
+        // user() {
+        //     return this.$store.getters.loggedinUser
+        // },
+        // host() {
+        //     return this.$store.getters.loggedinUser[0]
+        // },
+    },
 }
-
-
-
 </script>
-
 
 
 

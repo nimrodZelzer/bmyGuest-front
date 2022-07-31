@@ -3,12 +3,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    // max-height: 700px;
     max-width: 780px;
     width: 100%;
-    // height: 100%;
     z-index: 10;
-    // display: flex;
     flex-direction: column;
     justify-content: center;
     background: rgb(255, 255, 255);
@@ -34,16 +31,17 @@
 
     .top-of-filter {
         color: black;
-        opacity: 0.8; // display: flex;
+        // display: flex;
+        letter-spacing: 0.5px;
         border-bottom: 1px solid $clr8;
-        margin: 0 0 1rem;
+        // margin: 0 0 1rem;
         // padding: 0 24px;
-        // min-height: 64px;
+        min-height: 64px;
 
         svg {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 25px;
+            // left: 20px;
             background: inherit;
 
             &:hover {
@@ -97,8 +95,6 @@
             background: rgb(255, 255, 255) !important;
             border: 0.5px solid #B0B0B0;
             border-radius: 9px !important;
-
-
 
             .label {
                 text-align: start;
@@ -174,15 +170,18 @@
 
 
 .vue-histogram-slider-wrapper {
-    width: 700px !important;
-    --holder-color: #ddd !important;
-    --handle-color: #ffffff !important;
-    --grid-text-color: silver;
-    --line-height: 6px;
-    --font-family: Arial, sans-serif;
-    --font-size: 12;
-    --hist-slider-gap: -30px;
-    --handle-size: 26px;
+    position: relative;
+    // padding-left: 10px;
+    width: 90% !important;
+    left: 10px;
+    // --holder-color: #ddd !important;
+    // --handle-color: #ffffff !important;
+    // --grid-text-color: silver;
+    // --line-height: 6px;
+    // --font-family: Arial, sans-serif;
+    // --font-size: 12;
+    // --hist-slider-gap: -30px;
+    // --handle-size: 26px;
 }
 
 // #vue-histogram-b72e46cd-ee7d-4ad0-a51e-d28564e0e51f {
@@ -191,9 +190,9 @@
 
 
 
-.irs-handle {
-    top: 22px !important;
-}
+// .irs-handle {
+//     top: 22px !important;
+// }
 
 .modal-overlay {
     position: fixed;
