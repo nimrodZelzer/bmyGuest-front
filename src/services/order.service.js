@@ -56,8 +56,6 @@ async function getFilterOrders(filter) {
 }
 
 async function save(order) {
-  console.log(order, "in save")
-  console.log(order._id, "in save")
   const savedOrder = order._id
     ? await httpService.put("order", order)
     : await httpService.post("order", order)

@@ -1,23 +1,34 @@
 
 <template>
     <section class="dashboard-host-page main-layout">
-        <div class="dash-board-header">
-            <h2>pending/accepted</h2>
-            <span>{{ this.orders.length }} items</span>
-        </div>
-        <div class="dash-board-details flex ">
-            <order-list @changeStatus='changeStatus' :orders="orders" />
-            <div class="dash-board-summary">
-                <div class="summary-header flex align-center">
-                    <div>
-                        <h2>Hosting Summary</h2>
-                        <h3>Fantastic job!</h3>
-                        <p>guests love what your doing keep up the good work</p>
-                        <span>view details</span>
-                    </div>
-                    <img src="src\assets\images\success-svgrepo-com.svg" alt="">
-                </div>
+
+        <div class="charts flex">
+            <div class="chart">
+                <totalPriceChart v-if="this.prices" :datasets="this.datasets" />
             </div>
+            <div class="chart ">
+                <orderByMonths />
+            </div>
+        </div>
+        <h2>Your Orders</h2>
+        <div class="order-table">
+            <div class="order-filter flex">
+                <orderFilter />
+            </div>
+            <div class="order-table-header">
+                <span class="title">Date Of Order</span>
+                <span class="check-in">Check In</span>
+                <span class="check-out">Check Out</span>
+                <span class="guest-name">Name</span>
+                <span class="price">Price</span>
+                <span class="status">Status</span>
+            </div>
+
+            <order-list :orders="orders" />
+        </div>
+        <div class="hostStayList">
+            <h2>Your Stay List</h2>
+            <stay-list :stays="this.stays" />
         </div>
     </section>
 </template>
@@ -29,7 +40,7 @@ import orderByMonths from "../cmps/host/order-by-months.cmp.vue"
 import stayList from "../cmps/home/stay-list.cmp.vue"
 import selectStays from "../cmps/host/select-stays.cmp.vue"
 import orderFilter from "../cmps/host/order-filter.cmp.vue"
-import { socketService } from "../services/socket.service.js"
+
 export default {
     name: 'deshboard-host',
     props: {
@@ -37,7 +48,7 @@ export default {
     },
     data() {
         return {
-            orderByMonth: null,
+            orderByMonth:null,
             orders: null,
             stays: null,
             prices: null,
@@ -50,11 +61,8 @@ export default {
         }
     },
     async created() {
-
         try {
-            const orders = await this.$store.dispatch({ type: 'getOrderByHost', id: '62e0e9b1dd13b00af4e80283' })
-            this.orders = orders
-            socketService.on('order-added', this.addOrder)
+            this.orders = await this.$store.dispatch({ type: 'getOrderByHost', id: '62e0e9b1dd13b00af4e80283' })
         } catch (err) {
             console.log(" Error in read orders", err)
             throw err
@@ -66,12 +74,8 @@ export default {
             console.log(" Error in read orders", err)
             throw err
         }
-
         try {
-            this.prices = await this.$store.getters.getTotalPrices
-            this.datasets[0].data.push(prices)
-
-
+            this.datasets[0].data = await this.$store.getters.getTotalPrices
         } catch (err) {
             console.log(" Error in read orders by price", err)
             throw err
@@ -88,28 +92,11 @@ export default {
 
     },
     methods: {
-        dataset() {
-            return [
-                {
-                    data: this.prices,
-                    backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
-                },
-            ]
-        },
-        addOrder(order) {
-            this.orders.push(order)
-        },
-        changeStatus(order) {
-            this.$store.dispatch({
-                type: 'saveOrder',
-                order
-            })
-            console.log(order)
-            // this.$store.dispatch({
-            //     type: 'getOrderByHost', hostId: "62e0e9b1dd13b00af4e80283"
-            // })
-        },
+
+
     },
+
+
     components: {
         orderList,
         totalPriceChart,
@@ -117,13 +104,10 @@ export default {
         stayList,
         selectStays,
         orderFilter,
-    }
+
+    },
+    computed: {
+
+    },
 }
-
-
-
 </script>
-
-
-
-

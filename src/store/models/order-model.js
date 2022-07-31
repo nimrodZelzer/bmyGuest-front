@@ -24,13 +24,11 @@ export default {
     },
     getOrderPerMonth(state) {
       let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      state.orderByHost.forEach((order) => {
-        let orderDate = order.checkin.getMonth()
-        console.log(orderDate)
-        month[orderDate] += order.totalPrice
-        return
-      })
-      return month
+      console.log(state.orderByHost)
+      // state.orderByHost.forEach((order) => 
+      //       console.log(order.checkin.getMonth())
+      // )
+      return state.orderByHost
     },
     getOrders(state) {
       return state.orders
@@ -63,12 +61,18 @@ export default {
       const idx = state.orders.findIndex(
         (currOrder) => currOrder._id === order._id
       )
+
       if (idx !== -1) {
         state.orders.splice(idx, 1, order)
       } else {
         state.orders.push(order)
       }
     },
+    updateOrder(state,newOrder){
+      const idx = state.orders.findIndex((currOrder) => currOrder._id === newOrder._id)
+      state.orders.splice(idx, 1, newOrder)
+     
+    }
   },
   actions: {
     async loadOrders({ commit }, { id }) {
@@ -137,10 +141,10 @@ export default {
       }
     },
     async changeOrderStatus({ commit }, { order }) {
-      console.log(order)
       try {
-        await orderService.save(order)
-        console.log("saved to server")
+        let newOrder = await orderService.save(order)
+        console.log(newOrder,'saveeeeeeeeeee')
+        commit({ type: "updateOrder", newOrder })
       } catch (err) {
         console.log("Error in query stays (store)", err)
         throw err

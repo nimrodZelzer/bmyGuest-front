@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <select class="order-status" v-model="currStatus"  @change="changeStatus">
+    <select class="order-status" :v-bind="currStatus"  @change="changeStatus">
       <option v-for="(status, idx) in this.statusArry" :key="idx">
         {{ status }}
       </option>
@@ -56,12 +56,18 @@ export default {
     // console.log(this.currOrder)
   },
   methods: {
-    changeStatus(){
-      let newOrder = {...this.order}
-      newOrder.status = this.currStatus
-      console.log(newOrder,"new order")
-      this.$emit('changeStatus',newOrder)
-    }
+    // changeStatus(){
+    //   let newOrder = {...this.order}
+    //   newOrder.status = this.currStatus
+    //   console.log(newOrder,"new order")
+    //   this.$emit('changeStatus',newOrder)
+    // }
+        changeStatus() {
+      this.$store.dispatch({
+        type: 'changeOrderStatus',
+        order: this.order
+      })
+    },
 
 
 
