@@ -72,11 +72,12 @@
         align-items: center;
         font-size: 1rem;
         font-family: airbnb-bold;
-        padding-top: 14px;
-
+        // padding-top: 14px;
+        display: flex;
+        align-items: center;
         .fa-airbnb {
             font-size: 2rem;
-            ;
+            padding-top: 10px;
         }
     }
 

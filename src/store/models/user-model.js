@@ -30,10 +30,6 @@ export default {
   mutations: {
     setLoggedinUser(state, { user }) {
       state.loggedinUser = user
-<<<<<<< HEAD
-
-=======
->>>>>>> b11b97a3acf9e5520c9bf20db245776710ffb32a
     },
     setWatchedUser(state, { user }) {
       state.watchedUser = user
@@ -84,7 +80,7 @@ export default {
     async loadUsers({ commit }, { num }) {
       try {
         const user = await userService.getUsers(num)
-        console.log(user,'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
+        console.log(user, 'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
         commit({ type: "setLoggedinUser", user })
       } catch (err) {
         console.log("userStore: Error in loadUsers", err)

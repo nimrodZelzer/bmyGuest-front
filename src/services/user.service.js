@@ -28,11 +28,6 @@ export const userService = {
 async function getUsers(num) {
   try {
     const users = await httpService.get(`user`)
-<<<<<<< HEAD
-=======
-    if (!num) return users
-
->>>>>>> b11b97a3acf9e5520c9bf20db245776710ffb32a
     _saveLocalUser(users[num])
     // socketService.emit("set-user-socket", users[num]._id)
     return users[num]
