@@ -1,8 +1,9 @@
 <template>
-    <section class="home-page ">
+    <section class="home-page" v-if="stays">
         <div class="header-explore">
         </div>
-        <labels-select @filterLabels="filterLabels" v-if="getLebels" :labels="getLebels" :stays="stays" />
+        <labels-select @filterLabels="filterLabels" @filterPrice="filterPrice" v-if="getLebels" :labels="getLebels"
+            :stays="stays" />
         <stay-list @addToWishList="addToWishList" v-if="stays" :stays="stays" />
         <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
 
@@ -22,17 +23,22 @@ export default {
 
     },
     methods: {
-        addToWishList(stay) {
+        async addToWishList(stay) {
             let newStay = { ...stay };
             newStay.wished = !newStay.wished
-            this.$store.dispatch({ type: 'saveStay', stay: newStay })
-            this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
+            await this.$store.dispatch({ type: 'saveStay', stay: newStay })
+            await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
         },
-        async filterLabels(label){
-            this.filterBy = {...this.$store.getters.filterBy}
+        async filterLabels(label) {
+            this.filterBy = { ...this.$store.getters.filterBy }
             this.filterBy.label = label
             this.stays = await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-            
+
+        },
+        async filterPrice(price) {
+            this.filterBy = { ...this.$store.getters.filterBy }
+            this.filterBy.price = { ...price }
+            this.stays = await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
         }
     },
     computed: {
@@ -45,9 +51,9 @@ export default {
     },
     async created() {
         this.filterBy = this.$store.getters.filterBy
-        await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-        this.stays = this.$store.getters.stays
-        this.getLebels
+        this.stays = await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
+
+
         const page = "homePage";
         this.$store.commit({ type: "setCurrPage", page });
         // this.$store.dispatch({ type: 'loadHostOrders' })

@@ -13,7 +13,7 @@
             </svg><span>Filters</span>
         </button>
     </section>
-    <headerFilter v-if="openFilter" :stays="stays" />
+    <headerFilter v-if="openFilter" :stays="stays" @filterPrice="filterPrice" />
 
     <div v-if="openFilter" class="overlay"></div>
 </template>
@@ -48,8 +48,8 @@ export default {
 
     },
     methods: {
-        filterLabels(newLabel){
-        this.$emit('filterLabels',newLabel)
+        filterLabels(newLabel) {
+            this.$emit('filterLabels', newLabel)
 
         },
         getPos() {
@@ -58,6 +58,9 @@ export default {
         stickingLabels() {
             // console.log((this.windowPos > 120))
             return (this.windowPos > 100)
+        },
+        filterPrice(filterBy) {
+            this.$emit('filterPrice', filterBy)
         }
 
     },
