@@ -78,7 +78,11 @@
             </svg>
         </div>
 
+<<<<<<< HEAD
         <h3 class="bold pink">{{ this.stay.name }}</h3>
+=======
+        <h3>{{ this.stay.name }}</h3>
+>>>>>>> d1eda8d4cfacd05f43f8205f5b8c9e884e21f5f0
         <div class="flex justify-between"><span class="bold checkin">Check-In</span>{{
                 date[0].getDate()
         }}/{{ date[0].getMonth() + 1 }}/{{ date[0].getYear() - 100 }}</div>
@@ -88,12 +92,25 @@
         date[1].getYear() -
         100
 }}</div>
+<<<<<<< HEAD
         <div class="flex justify-between"><span class="bold  adult">Adults:</span>{{ this.adultAmount }}</div>
         <div class="flex justify-between"><span class="bold  price">Total price:</span>{{ this.totalPrice }}</div>
         <div class="flex justify-between"><span class="bold  night">Total nights:</span>{{ this.nights }}</div>
         <button class="reserve-btn" @click="goToStays">Look for more places to stay </button>
     </div>
     <div v-if="this.openReservModal" class="modal-overlay"></div>
+=======
+        <div class="flex justify-between"><span class="bold adult">Adults:</span>{{ this.adultAmount }}</div>
+        <div class="flex justify-between"><span class="bold price">Total price:</span>{{ this.totalPrice }}</div>
+        <div class="flex justify-between"><span class="bold night">Total nights:</span>{{ this.nights }}</div>
+
+
+
+        <button class="reserve-btn" @click="goToStays">Look for more places to stay </button>
+
+
+    </div>
+>>>>>>> d1eda8d4cfacd05f43f8205f5b8c9e884e21f5f0
 
 </template>
 

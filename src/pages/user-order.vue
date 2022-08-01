@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 <template >
+=======
+<template>
+>>>>>>> d1eda8d4cfacd05f43f8205f5b8c9e884e21f5f0
     <section v-if="user" class="orser-page main-layout">
         <div class="dash-board-header">
             <h1>Your Reservation</h1>

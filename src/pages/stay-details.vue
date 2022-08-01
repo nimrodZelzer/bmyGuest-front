@@ -7,11 +7,12 @@
       <details-description :stay="stay" />
       <reservation-details class="res" :stay="stay" />
     </div>
-    <details-reviews :stay="stay" />
-    <details-map class="deatils-map" :stay="stay" />
+      <details-map class="details-map" :stay="stay" />
+    <!-- <details-reviews :stay="stay" /> -->
   </div>
-  <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
-    <app-footer v-if="stay" />
+      <details-reviews :stay="stay" />
+  <!-- <details-map class="details-map" :stay="stay" /> -->
+  <app-footer v-if="stay" />
 </template>
 <script>
 import detailsMap from '../cmps/details-map.cmp.vue';
@@ -42,7 +43,7 @@ export default {
     console.log(stayId)
     try {
       await this.$store.dispatch({ type: 'loadById', id: stayId })
-      
+
       if (!stayId) return this.$router.push('/stay');
       this.stay = this.$store.getters.getCurrStay
       this.priceSummary.price = this.stay.price
@@ -54,7 +55,7 @@ export default {
       console.log("Error in getById stays (store)", err)
       throw err
     }
-    console.log('det:',this.stay)
+    console.log('det:', this.stay)
   },
   methods: {
     onScroll(e) {
