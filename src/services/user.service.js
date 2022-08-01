@@ -25,14 +25,34 @@ export const userService = {
 //   }
 // }
 
-async function getUsers(num) {
+// async function getLoggedinUser() {
+//   try {
+//     const user = JSON.parse(
+//       sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || "null"
+//     )
+//     if (!user) {
+//       const users = await httpService.get(`user`)
+//       _saveLocalUser(users)
+//       return users
+//     } else {
+//       return user
+//     }
+
+//     // socketService.emit("set-user-socket", users[num]._id)
+//     // return users[num]
+//   } catch (err) {
+//     console.log("Cannot Get users from service", err)
+//     throw err
+//   }
+// }
+
+async function getUsers() {
   try {
     const users = await httpService.get(`user`)
-    if (!num) return users
+    return users
 
-    _saveLocalUser(users[num])
+    // _saveLocalUser(users)
     // socketService.emit("set-user-socket", users[num]._id)
-    return users[num]
   } catch (err) {
     console.log("Cannot Get users from service", err)
     throw err

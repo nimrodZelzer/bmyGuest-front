@@ -21,13 +21,13 @@
 
         <div class="user-nav-container" v-if="showMenu" @click="showMenu = false">
             <div class="user-nav flex column">
-                <button v-if="!user" @click="login">login</button>
+                <!-- <button v-if="!user" @click="login">login</button> -->
                 <!-- <router-link to="#">Log in</router-link> -->
                 <router-link to="#">Notifications</router-link>
                 <!-- <router-link v-if="user" @click="goToBackOffice">Orders</router-link> -->
                 <router-link v-if="user" to="/orders">Orders</router-link>
                 <router-link :stays="stays" to="/wishlist">Wishlist</router-link>
-                <!-- {{ loginSignup }} -->
+
             </div>
         </div>
     </div>
@@ -68,11 +68,14 @@ export default {
             try {
                 this.$store.dispatch({ type: 'loadUsers', num: number })
                 const loggedinUser = await this.$store.getters.loggedinUser
+                console.log(loggedinUser)
                 this.user = loggedinUser
+                this.$store.dispatch({ type: 'setLoggedinUser', user: this.user })
             } catch (err) {
                 console.log("userStore: Error in login", err)
                 throw err
             }
+
         },
     },
 
