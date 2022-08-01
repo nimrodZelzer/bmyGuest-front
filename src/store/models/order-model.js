@@ -26,7 +26,7 @@ export default {
     getOrderPerMonth(state) {
       let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       console.log(state.orderByHost)
-      // state.orderByHost.forEach((order) => 
+      // state.orderByHost.forEach((order) =>
       //       console.log(order.checkin.getMonth())
       // )
       return state.orderByHost
@@ -34,9 +34,9 @@ export default {
     getOrders(state) {
       return state.orders
     },
-    getOrdersUser(state){
+    getOrdersUser(state) {
       return state.orderByUser
-    }
+    },
   },
   mutations: {
     setOrders(state, { orders }) {
@@ -69,14 +69,15 @@ export default {
         state.orders.push(order)
       }
     },
-    updateOrder(state,newOrder){
-      const idx = state.orders.findIndex((currOrder) => currOrder._id === newOrder._id)
+    updateOrder(state, newOrder) {
+      const idx = state.orders.findIndex(
+        (currOrder) => currOrder._id === newOrder._id
+      )
       state.orders.splice(idx, 1, newOrder)
-     
     },
-    setOrdersUser(state, {orders}){
-      state.orderByUser=orders
-    }
+    setOrdersUser(state, { orders }) {
+      state.orderByUser = orders
+    },
   },
   actions: {
     async loadOrders({ commit }) {
@@ -99,6 +100,7 @@ export default {
         // })
 
         commit({ type: "saveOrder", order: orderToSave })
+        console.log(orderToSave, "ordertosaveeeee")
         return orderToSave
       } catch (err) {
         console.log("Error: cannot save order", err)
@@ -159,9 +161,9 @@ export default {
       try {
         console.log(id)
         const orders = await orderService.saveOrderByUserId(id)
-        console.log(orders,'from service')
-        commit({ type: "setOrdersUsers", orders })   
-        return orders 
+        console.log(orders, "from service")
+        commit({ type: "setOrdersUsers", orders })
+        return orders
       } catch (err) {
         console.log("Error in read orders", err)
         throw err
