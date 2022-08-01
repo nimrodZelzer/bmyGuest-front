@@ -87,8 +87,12 @@
 .bold {
     color: #222222;
     font-weight: 600;
+    margin-right: 20px;
+   
 }
-
+.pink{
+    color: $clr7
+}
 .tag-text {
     color: $clr1;
     text-transform: uppercase;

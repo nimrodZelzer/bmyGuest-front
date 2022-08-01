@@ -18,11 +18,11 @@
         </h3>
         <div class="price-filter">
           <HistogramSlider :bar-height="100" :data="pricesToShow" :barWidth="11" :hideFromTo="true" :keyboard="true"
-            :min="10" :max="1500" :grid="false" :barGap="3" :lineHeight="2" :clip="false"
-            :primaryColor="histogramMainColor" :holderColor="histogramSecondaryColor" @finish="sliderChanged" />
+            :min="10" :max="4000" :grid="false" :lineHeight="2" :clip="false" :primaryColor="histogramMainColor"
+            :holderColor="histogramSecondaryColor" @finish="sliderChanged" />
         </div>
         <div class="price-select-container">
-          <div class="price-select" @click="shouldShow = true">
+          <div class="price-select">
             <div class="label">min price</div>
             <div class="price-change">
               <div class="dollar">$</div>
@@ -31,7 +31,7 @@
             </div>
           </div>
           <h3>–</h3>
-          <div class="price-select" @click="shouldShow = false">
+          <div class="price-select">
             <div class="label">max price</div>
             <div class="price-change">
               <div class="dollar">$</div>
@@ -64,7 +64,7 @@ export default {
       filterBy: {
         price: {
           min: 10,
-          max: 1500,
+          max: 4700 + "+",
         },
       },
       histogramMainColor: "#b0b0b0",
@@ -114,7 +114,7 @@ export default {
     },
     clearPriceRange() {
       this.filterBy.price.min = 0;
-      this.filterBy.price.max = 1500;
+      this.filterBy.price.max = 3000;
     },
     closeModal() {
       this.openModal = true

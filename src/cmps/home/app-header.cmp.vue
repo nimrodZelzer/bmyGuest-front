@@ -3,7 +3,7 @@
         'header-container': !miniSearch,
         'close-header': miniSearch,
     }">
-        <section :class="{ 'stay-details': stayDetails, 'explore-page': explorePage, 'home-page': homePage, }">
+        <section :class="{ 'stay-details': isStayDetails, 'explore-page': explorePage}">
             <section class="top-header main-layout flex">
                 <div class="logo">
                     <h1 @click.stop="goHome">
@@ -51,6 +51,7 @@ export default {
             children: 0,
             shouldShow: false,
             dates: [],
+            isStayDetails: false
         }
     },
     created() {
@@ -85,11 +86,6 @@ export default {
 
     },
     computed: {
-        stayDetails() {
-            const res = this.currPage === 'stayDetails' ? true : false
-            console.log(this.currPage)
-            return res
-        },
         explorePage() {
             const res = this.currPage === 'explorePage' ? true : false
             console.log(this.currPage)
@@ -126,6 +122,14 @@ export default {
             immediate: true,
             deep: true,
         },
+        "$route.name": {
+            handler(name) {
+                console.log('!!!!!!!!!', name);
+                this.isStayDetails = name === 'stay-details'
+            },
+            immediate: true,
+            deep: true,
+        }
     },
 }
 </script>

@@ -66,7 +66,7 @@ export default {
       this.windowTop = window.top.scrollY
     },
     windowPlace() {
-      this.bottom = document.querySelector('.res').getBoundingClientRect().bottom
+      // this.bottom = document.querySelector('.res').getBoundingClientRect().bottom
     },
     scrollTo(refName) {
       console.log(this.$refs)
