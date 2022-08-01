@@ -248,7 +248,8 @@ export default {
                     hostName: this.stay.host.fullname,
                 },
                 stay: {
-                    name: this.stay.name
+                    name: this.stay.name,
+                    imgUrl:this.imgUrls[0]
                 },
                 status: 'pending',
                 createAt: this.getCreateAt(),

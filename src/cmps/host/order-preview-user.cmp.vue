@@ -5,32 +5,29 @@
     <div class="flex align-center order-right-card">
       <div class="left flex column">
         <div class="guest-details-container flex">
-          <img :src="(order.guestsDetails?.imgUrl)?  order.guestsDetails.imgUrl : 'src/assets/images/avatar.png'" alt="">
           <div class="content flex column">
-            <span class="username">{{order.guestsDetails.guestName}}</span>
-            <span>{{(order.guestsDetails?.phone)?  order.guestsDetails.phone : "054-553386323"}}</span>
-            <span>{{(order.guestsDetails?.email)?  order.guestsDetails.email : "snfjcw@gmail.com"}}</span>
+            <span class="username">Host Name:{{ order.host.hostName }}</span>
+            <span>{{ order.stay.name }}</span>
+            <span>{{ order.totalNight }}</span>
           </div>
         </div>
         <div class="dates">
-          <span>Dates: <span style="font-family: airbnb-medium">{{ order.checkin.substring(0, 10) }} - {{ order.checkout.substring(0, 10) }}</span></span>
+          <span>Dates: <span style="font-family: airbnb-medium">{{ order.checkin.substring(0, 10) }} - {{
+              order.checkout.substring(0, 10)
+          }}</span></span>
         </div>
       </div>
     </div>
-      <div class=" right flex column" > 
-        <select class="order-status" v-model="newOrder.status" @change="changeStatus" :class="newOrder.status">
-          <option v-for="(status, idx) in this.statusArry" :key="idx" :class="status">
-            {{ status }}
-          </option>
-        </select>  
-        <span>Total price: <span style="font-family: airbnb-medium">${{ order.totalPrice }}</span></span>
+    <div class="right flex column">
+      <div class="order-status" :class="newOrder.status" style="border-color: $clr7">
+        {{ order.status }}
       </div>
+
+      <span>Total price: <span style="font-family: airbnb-medium">${{ order.totalPrice }}</span></span>
+    </div>
   </div>
 </template>
-
 <script>
-
-
 export default {
   props: {
     order: {
@@ -50,8 +47,8 @@ export default {
     }
   },
   created() {
-   this.newOrder={...this.order}
-   console.log('orderr', this.newOrder);
+    this.newOrder = { ...this.order }
+    console.log('orderr', this.newOrder);
   },
   methods: {
     // changeStatus(){
