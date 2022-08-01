@@ -15,8 +15,7 @@
     </section>
     <headerFilter v-if="openFilter" :stays="stays" />
 
-    <div v-if="openFilter" 
-        class="overlay"></div>
+    <div v-if="openFilter" class="overlay"></div>
 </template>
 
 <script>
@@ -31,7 +30,7 @@ export default {
         },
         stays: {
             type: Array,
-            required: true,
+            // required: true,
         }
     },
     data() {
@@ -40,7 +39,9 @@ export default {
             openFilter: false
         }
     },
-    created() { },
+    created() {
+
+    },
     mounted() {
         window.addEventListener("scroll", this.stickingLabels)
     },

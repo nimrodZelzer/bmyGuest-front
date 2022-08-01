@@ -6,7 +6,8 @@
         <ul class="clean-list">
             <li class="flex" v-for="amenity in amenities" :key="amenity">
                 <!-- src\assets\images\amenities-svg\{{amenitiePics[amenity]}} -->
-                <img :src="'src/assets/images/amenities-svg/' + amenitiePics[amenity]" alt="">
+                <!-- <img :src="'src/assets/images/amenities-svg/' + amenitiePics[amenity]" alt=""> -->
+                <img :src="getAmenitieSrc(amenitiePics[amenity])">
                 {{ amenity }}
             </li>
         </ul>
@@ -27,23 +28,27 @@ export default {
             isActive: false,
             amenitiePics:
             {
-                "TV": "tv.svg",
-                "Sea view": "sea-view.svg",
-                "Kitchen": "kitchen.svg",
-                "Wifi": "wifi.svg",
-                "Dedicated workspace": "dw.svg",
-                "Parking": "parking.svg",
-                "Shared hot tub": "hot-tub.svg",
-                "Washing machine": "washing-machine.svg",
-                "Patio or balcony": "balcony.svg",
-                "Essentials": "essentials.svg",
-                "amenity": "amenity.svg"
+                "TV": "tv",
+                "Sea view": "sea-view",
+                "Kitchen": "kitchen",
+                "Wifi": "wifi",
+                "Dedicated workspace": "dw",
+                "Parking": "parking",
+                "Shared hot tub": "hot-tub",
+                "Washing machine": "washing-machine",
+                "Patio or balcony": "balcony",
+                "Essentials": "essentials",
+                "amenity": "amenity"
             }
 
         };
     },
     created() { },
-    methods: {},
+    methods: {
+        getAmenitieSrc(amenitieName) {
+            return new URL(`../../assets/images/amenities-svg/${amenitieName}.svg`, import.meta.url).href;
+        }
+    },
     computed: {},
     unmounted() { },
 

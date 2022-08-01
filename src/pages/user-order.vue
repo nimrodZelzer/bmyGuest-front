@@ -1,6 +1,7 @@
 
-<template>
-    <section v-if="user" class="orser-page main-layout">
+
+<template >
+    <section v-if="user" class="order-page main-layout">
         <div class="dash-board-header">
             <h1>Your Reservation</h1>
             <span>{{ this.orders.length }} items</span>
@@ -22,9 +23,9 @@ export default {
     },
     data() {
         return {
-            user:null,
+            user: null,
             orders: null,
-    
+
         }
     },
     async created() {
@@ -36,10 +37,10 @@ export default {
             throw err
         }
         try {
-          
-             
-             this.orders=await this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id})
-             console.log(this.orders)
+
+
+            this.orders = await this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id })
+            console.log(this.orders)
         } catch (err) {
             console.log(" Error in read orders", err)
             throw err

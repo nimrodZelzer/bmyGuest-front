@@ -32,7 +32,7 @@
     }
 
     .total-last {
-        border-bottom: 1px solid $clr10;
+        border-bottom: 1px solid #afafaf;
     }
 
     div {
@@ -110,7 +110,7 @@
     margin-left: 8.33%;
     flex-direction: column;
     height: 100%;
-    border: 1px solid #d7d4d4;
+    border: 1px solid #afafaf;
     gap: 24px;
     border-radius: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
@@ -118,8 +118,9 @@
     .dot {
         height: 3px;
         width: 3px;
-        margin-inline-end: 2px;
-    }
+        background-color: $clr9;        
+        margin-inline-end: 10px;
+        }
 
     h5,
     h2 {
@@ -174,47 +175,46 @@
 
 
 
-#el-popper-container-9152>div:nth-child(2)>div>div {
-    position: fixed;
-}
+// #el-popper-container-9152>div:nth-child(2)>div>div {
+//     position: fixed;
+// }
 
-#el-popper-container-1719>div:nth-child(2) {
-    // z-index: 10000;
-    position: absolute;
-    // top: 1104.6px;
-    // right: 197px;
-    margin: 0px;
-}
+// #el-popper-container-1719>div:nth-child(2) {
+//     // z-index: 10000;
+//     position: absolute;
+//     // top: 1104.6px;
+//     // right: 197px;
+//     margin: 0px;
+// }
 
-.el-popper {
-    // z-index: 8003;
-    margin: 0px;
-}
+// .el-popper {
+//     // z-index: 8003;
+//     margin: 0px;
+// }
 
 
 
 .el-date-range-picker .el-picker-panel__body {
     // min-width: 513px;
-    width: 50%;
     position: absolute;
     z-index: 1000;
     background: white;
     /* left: 117px; */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -25%);
+    right: 20px;
+    width: 450px;
+    border-top: none;
 }
 
 input {
     border: none;
-    font-family: Airbnb-reg;
+    font-family: airbnb-reg;
     font-size: 16px;
 }
 
 
 .option-container {
     flex-direction: column;
-    border: 1px solid $clr9;
+    border: 1px solid $clr12;
     border-radius: 10px;
 
     .date-container {
@@ -231,7 +231,7 @@ input {
             }
 
             border: none;
-            border-left: 1px solid $clr9;
+            border-left: 1px solid $clr12;
         }
     }
 
@@ -260,7 +260,7 @@ input {
         cursor: pointer;
         width: 100%;
         text-align: start;
-        border-top: 1px solid $clr9;
+        border-top: 1px solid #afafaf;
         background-color: white;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
@@ -279,12 +279,28 @@ input {
     }
 
     .dropdown-content {
-        // flex-direction: column;
-        z-index: 10;
-        padding: 16px;
-        justify-content: space-between;
-        border-bottom: 1px solid black;
-        background-color: white;
+         // flex-direction: column;
+         z-index: 80;
+         background-color: white;
+         position: absolute;
+         // min-width: 280px;
+         padding: 16px;
+         border-radius: 4px;
+         width: 102%;
+         left: -2px;
+         text-align: left;
+         &:last-child{
+             border: none;
+         }
+
+         box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px,
+         rgb(0 0 0 / 7%) 0px 0px 0px 1px;
+         >* {
+             padding: 20px 6px;
+             border-bottom: 1px solid $clr10;
+      
+         font-family: airbnb-medium;
+         }
 
         button {
             border-radius: 50%;
@@ -297,6 +313,7 @@ input {
             &:hover {
                 color: black;
                 border-color: black;
+                cursor: pointer;
             }
         }
 

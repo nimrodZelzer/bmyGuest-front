@@ -19,16 +19,16 @@
                     <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
                 </div>
                 <div class="earnings-container ">
-                    <div class="flex  justify-between"><span>August earnings</span><span  class="green">2650$</span></div>
+                    <div class="flex  justify-between"><span>August earnings</span><span  class="green">$2650</span></div>
                     <div class="flex  justify-between"><span>30 day reviews</span><span class="green">870</span></div>
                 </div>
                 <div class="overall-container">
-                    <div class="flex justify-between"><span>Overall ratings</span><span  class="green">4.9 <i class="fa fa-star"></i></span></div>
+                    <div class="flex justify-between"><span>Overall ratings</span><span  class="green"><i class="fa fa-star"></i> 4.9</span></div>
                     <div class="flex justify-between"><span>Total reviews</span><span  class="green">40</span></div>
                 </div>
-                <div class="flex justify-between">
+                <!-- <div class="flex justify-between">
                     <img class="bottom-pic" src="https://freesvg.org/img/Gerald_G_House_sitting_on_a_pile_of_money.png" alt="">
-                </div>
+                </div> -->
             </div>
             <!-- <div class="chart ">
                 <orderByMonths />

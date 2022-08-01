@@ -7,6 +7,18 @@
     font-size: rem(15px);
     padding-top: 20px;
 
+    .superhost-btn{
+        position: absolute;
+        top: 16px;
+        left: 13px;
+        padding: 3px 6px;
+        background-color: white;
+        border-radius: 5px;
+        border: none;
+        font-family: "airbnb-medium";
+    }
+
+    
     // @include for-mobile-layout {
     //     // 375px
     //     .stay-list {

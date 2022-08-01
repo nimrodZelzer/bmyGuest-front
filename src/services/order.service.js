@@ -40,7 +40,6 @@ async function saveOrderByHostId(hostId) {
   }
 }
 async function saveOrderByUserId(Id) {
-  debugger
   try {
     const orders = await httpService.get(ENDPOINT)
     const orderByUser =  orders.filter((order)=>order.guestsDetails.guestId===Id)

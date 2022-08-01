@@ -1,5 +1,5 @@
 <template>
-<div class="main-layout" id="mapTop">
+<div  id="mapTop">
     <h2>Where you'll be</h2>
       <GMapMap
       :options="options"
