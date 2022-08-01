@@ -1,0 +1,22 @@
+.reserv-modal {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    width: 30%;
+    height: 50%;
+    z-index: 40;
+    transform: translate(-50%, -50%);
+    background-color: white;
+padding: 30px;
+div{
+    width: 80%;
+}
+}

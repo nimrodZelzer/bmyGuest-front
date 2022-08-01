@@ -28,14 +28,8 @@ export default {
 
   },
   methods: {
-      changeStatus(order){
-      this.$emit('changeStatus',order)
+  
     }
-
-  },
-  created() {
-
-  }
-
 }
+
 </script>
