@@ -10,28 +10,37 @@
 
 
 .dash-board-details {
-
-   font-family: airbnb-regular;
+    font-family: airbnb-regular;
     justify-content: space-between;
-
+    // align-items: flex-start; 
+    flex-direction: column;
+    gap: 20px;
+    
+    @include for-narrow-layout {
+        gap: 40px;
+    }
+    
+    @include for-wide-layout {
+        gap: 80px;
+        flex-direction: row;
+        align-items: flex-start;
+    }
     .dash-board-summary {
-        width: 30%;
+        flex-grow: 2;
         margin-top: 15.8px;
         border-radius: 10px;
         border: 1px solid $clr10;
-        padding: 12px 8px;
+        padding: 15px;
         justify-content: space-between;
-        height: 560px;
-        position: sticky;
-        top: 83px;
-        padding-top: 15px;
-        // background-color: rgb(255, 237, 237);
         span{
             color: $clr9;
         }
-        .green{
-            color: rgb(47, 231, 47);
 
+        img {
+            align-self: flex-start;
+        }
+        .green{
+            color: #75c670;
         }
 
     
@@ -62,15 +71,15 @@
 
 .order-list {
     padding: 0;
-    width: 65%;
-
+    // width: 65%;
+    flex-grow: 3;
     .order-card {
         justify-content: space-between;
         align-items: center;
         min-height: 150px;
         margin: 0;
         margin-bottom: 10px;
-        padding: 10px;
+        padding: 15px;
         border-radius: 10px;
         border: 1px solid $clr10;
         position: relative;
@@ -90,6 +99,42 @@
         }
         .order-right-card {
             gap: 25px;
+            height: 150px;
+            .left {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                .guest-details-container {
+                    gap: 20px;
+                    img {
+                        height: 80px;
+                        width: 80px;
+                        border-radius: 50%;
+                    }
+                    .content {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        >*{
+                            line-height: 20px;
+                            font-size: 18px;
+                        }
+                        .username {
+                            font-weight: 800;
+                            color: $clr2;
+                            font-family: airbnb-medium; 
+                        }
+                    }   
+
+                    
+                }
+                .dates {
+                    font-size: 20px;
+                    color: #222222;
+                    font-family: airbnb-medium;
+                }
+            }
         }
 
         h3 {
@@ -99,22 +144,31 @@
         span{
             color: $clr9;
         }
-
-
-        .order-status {
-            //   height: 48px;
-            align-self: flex-start;
-            border-radius: 10px;
-            padding: 10px 27px;
-            font-size: 16px;
-            font-family: airbnb-medium;
+        .right {
+            height: 150px;
+            justify-content: space-between;
+            align-items: flex-end;
+            span  {
+                font-size: 20px;
+                color: $clr2;
+            }
+            .order-status {
+                //   height: 48px;
+                align-self: flex-start;
+                border-radius: 10px;
+                padding: 10px 27px;
+                font-size: 16px;
+                font-family: airbnb-medium;
+                min-width: 300px;
+                text-align: center;
+            }
         }
     }
 }
 
 .summary-header{
 gap: 30px;
-
+justify-content: space-between;
 div{
     width: 70%;
 }
@@ -123,4 +177,14 @@ img{
     width: 90px;
 }
 
+}
+
+.Pending {
+    background-color: #e8e8e8;
+}
+.Confirm {
+    background-color: #75c670;
+}
+.Rejected {
+    background-color: #bd4141;
 }
