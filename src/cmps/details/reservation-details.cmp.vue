@@ -69,21 +69,23 @@
     </div>
     <div v-if="this.openReservModal" class="reserv-modal flex column justify-center justify-between">
         <div class="modal-haeder flex justify-between">
-            <h2>reservation success!</h2>
-            <svg class="clickable" @click="openReservModal=false" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" role="presentation" focusable="false"
+            <h2>Reservation success!</h2>
+            <svg class="clickable" @click="openReservModal = false" viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                 style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
                 <path d="m6 6 20 20"></path>
                 <path d="m26 6-20 20"></path>
             </svg>
         </div>
 
-        <h3>your trip:{{ this.stay.name }}</h3>
-        <span class="bold checkin">check-in</span>{{ this.checkIn }}
-        <span class="bold checkout">check-out{{ this.chackOut }}</span>
-        <span class="bold adult">adult:{{ this.adultAmount }}</span>
-        <span class="bold price">total price:{{ this.totalPrice }}</span>
-        <span class="bold night">total night:{{ this.nights }}</span>
+        <h3>Your trip:{{ this.stay.name }}</h3>
+        <div class="flex justify-between"><span class="bold checkin">Check-In</span>{{ this.checkIn }}</div>
+        <div class="flex justify-between"><span class="bold checkout">Check-Out</span>{{ this.chackOut }}</div>
+        <div class="flex justify-between"><span class="bold adult">Adults:</span>{{ this.adultAmount }}</div>
+        <div class="flex justify-between"><span class="bold price">Total price:</span>{{ this.totalPrice }}</div>
+        <div class="flex justify-between"><span class="bold night">Total nights:</span>{{ this.nights }}</div>
+
+
 
         <button class="reserve-btn">Look for more places to stay </button>
 
@@ -119,11 +121,22 @@ export default {
 
         };
     },
-    created() {
-        this.loggedinUser = this.$store.getters.loggedinUser
-        this.date = this.$store.getters.getCurrDate
-        if (this.date.length) this.changeDate()
-        this.hover
+    async created() {
+        try {
+            this.loggedinUser = await this.$store.getters.loggedinUser
+            console.log(this.loggedinUser, 'kkkkkkkkkkkkkkkuuuuuuuuuuuuuuuuuuuuufffffffffffffffffffffff')
+            this.date = this.$store.getters.getCurrDate
+            if (this.date.length) this.changeDate()
+            this.hover
+        } catch (err) {
+            console.log(" Error in loggedin", err)
+            throw err
+        }
+
+
+
+
+
 
     },
     methods: {
@@ -182,10 +195,10 @@ export default {
 
             // showSuccessMsg(`reserved ${this.nights} nights succsesfully `)
             // this.$router.push('/')
-            // await this.$store.dispatch({
-            //     type: 'saveOrder',
-            //     order: orderDet
-            // })
+            await this.$store.dispatch({
+                type: 'saveOrder',
+                order: orderDet
+            })
 
         },
         getTotalPrice() {

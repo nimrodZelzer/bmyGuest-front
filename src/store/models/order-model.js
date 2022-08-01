@@ -11,7 +11,7 @@ import {
 export default {
   state: {
     orders: [],
-    currOrder: "",
+    currOrder: [],
     orderByHost: [],
     totalPriceArry: [],
   },
@@ -51,9 +51,6 @@ export default {
       state.orders.splice(idx, 1)
     },
     setOrderByHost(state, { orders }) {
-      orders.forEach((orders) => {
-        state.totalPriceArry.push(orders.totalPrice)
-      })
       state.currOrders = orders
     },
 
@@ -143,11 +140,11 @@ export default {
     },
     async changeOrderStatus({ commit }, { order }) {
       try {
-        let newOrder = await orderService.save(order)
-        console.log(newOrder,'saveeeeeeeeeee')
-        commit({ type: "updateOrder", newOrder })
+        let orders = await orderService.save(order)
+        console.log(orders)
+        commit({ type: "setOrderByHost", orders })
       } catch (err) {
-        console.log("Error in query stays (store)", err)
+        console.log("Error in save orders", err)
         throw err
       }
     },

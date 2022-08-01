@@ -17,6 +17,7 @@ export default {
       return users
     },
     loggedinUser({ loggedinUser }) {
+      console.log('gettershhhhhhhhhhhhhhhhhhhhhh:,', loggedinUser)
       return loggedinUser
     },
     watchedUser({ watchedUser }) {
@@ -28,11 +29,8 @@ export default {
   },
   mutations: {
     setLoggedinUser(state, { user }) {
-<<<<<<< HEAD
-      state.loggedinUser = [0]
-=======
       state.loggedinUser = user
->>>>>>> 7a84bcbb22ca53c344a28032070361a43dd444bb
+
     },
     setWatchedUser(state, { user }) {
       state.watchedUser = user
@@ -82,9 +80,9 @@ export default {
     },
     async loadUsers({ commit }, { num }) {
       try {
-        const users = await userService.getUsers(num)
-        console.log(users)
-        commit({ type: "setUsers", users })
+        const user = await userService.getUsers(num)
+        console.log(user,'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
+        commit({ type: "setLoggedinUser", user })
       } catch (err) {
         console.log("userStore: Error in loadUsers", err)
         throw err
