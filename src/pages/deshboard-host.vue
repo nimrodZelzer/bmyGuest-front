@@ -52,7 +52,7 @@
         </div> -->
         <div class="hostStayList">
             <h2>Your Stay List</h2>
-            <stay-list :stays="this.stays" />
+            <stay-list style="padding:40px 0;" :stays="this.stays" />
         </div>
     </section>
 </template>
@@ -64,6 +64,7 @@ import orderByMonths from "../cmps/host/order-by-months.cmp.vue"
 import stayList from "../cmps/home/stay-list.cmp.vue"
 import selectStays from "../cmps/host/select-stays.cmp.vue"
 import orderFilter from "../cmps/host/order-filter.cmp.vue"
+// import userWishlistVue from "./user-wishlist.vue"
 
 export default {
     name: 'deshboard-host',
@@ -127,6 +128,7 @@ export default {
         stayList,
         selectStays,
         orderFilter,
+        // userWishlist
 
     },
     computed: {

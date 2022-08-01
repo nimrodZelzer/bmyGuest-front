@@ -12,15 +12,16 @@
 import stayList from '../cmps/home/stay-list.cmp.vue'
 export default {
   name: 'explore-page',
-  created() {
+  async created() {
     const { destination } = this.$route.params
+    this.filterBy = this.$store.getters.filterBy 
     this.filterBy.txt = destination
-    // this.$store.dispatch({ type: 'saveStay', stay: newStay })
-    this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
+    console.log(this.filterBy)
+    await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
+        console.log(this.filterBy)
     this.stays = this.$store.getters.stays
     const page = "explore-page";
     this.$store.commit({ type: "setCurrPage", page });
-
   },
   data() {
     return {

@@ -32,7 +32,7 @@
     }
 
     .total-last {
-        border-bottom: 1px solid $clr10;
+        border-bottom: 1px solid #afafaf;
     }
 
     div {
@@ -110,7 +110,7 @@
     margin-left: 8.33%;
     flex-direction: column;
     height: 100%;
-    border: 1px solid #d7d4d4;
+    border: 1px solid #afafaf;
     gap: 24px;
     border-radius: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
@@ -118,7 +118,8 @@
     .dot {
         height: 3px;
         width: 3px;
-        margin-inline-end: 2px;
+        background-color: $clr9;        
+        margin-inline-end: 10px;
     }
 
     h5,
@@ -214,7 +215,7 @@ input {
 
 .option-container {
     flex-direction: column;
-    border: 1px solid $clr9;
+    border: 1px solid $clr12;
     border-radius: 10px;
 
     .date-container {
@@ -231,7 +232,7 @@ input {
             }
 
             border: none;
-            border-left: 1px solid $clr9;
+            border-left: 1px solid $clr12;
         }
     }
 
@@ -253,6 +254,7 @@ input {
     display: inline-block;
 
 
+
     .dropbtn {
         padding: 12px;
         font-size: 14px;
@@ -260,7 +262,7 @@ input {
         cursor: pointer;
         width: 100%;
         text-align: start;
-        border-top: 1px solid $clr9;
+        border-top: 1px solid #afafaf;
         background-color: white;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
@@ -280,16 +282,32 @@ input {
 
     .dropdown-content {
         // flex-direction: column;
-        z-index: 10;
-        padding: 16px;
-        justify-content: space-between;
-        border-bottom: 1px solid black;
+        z-index: 80;
         background-color: white;
+        position: absolute;
+        // min-width: 280px;
+        padding: 16px;
+        border-radius: 4px;
+        width: 102%;
+        left: -2px;
+        text-align: left;
+        &:last-child{
+            border: none;
+        }
+    
+
+        box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px,
+        rgb(0 0 0 / 7%) 0px 0px 0px 1px;
+        >* {
+            padding: 20px 6px;
+            border-bottom: 1px solid $clr10;
+     
+        font-family: airbnb-medium;
 
         button {
             border-radius: 50%;
-            font-size: rem(16px);
-            width: 26px;
+            font-size: rem(20px);
+            width: 30px;
             color: rgb(188, 188, 188);
             background-color: white;
             border: 1px solid rgb(188, 188, 188);
@@ -297,6 +315,7 @@ input {
             &:hover {
                 color: black;
                 border-color: black;
+                cursor: pointer;
             }
         }
 
@@ -304,4 +323,5 @@ input {
             padding: 0 12px;
         }
     }
+}
 }

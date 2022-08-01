@@ -5,7 +5,7 @@
     <div class="flex align-center order-right-card">
       <!-- <img class="avatar " src="../../assets/images/avatar.png" alt=""> -->
       <div class="flex column">
-        <h3>Requseted by: {{order.guestsDetails.guestName }}</h3>
+        <h3>Requseted by: Nimrod Zelzer</h3>
         <span>Sent at:<span style="font-family: airbnb-medium">{{ order.createAt }}</span></span>
         <div class="flex column">
           <span>checkin: <span style="font-family: airbnb-medium">{{order.checkin.substring(0,10)}}</span></span>

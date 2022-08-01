@@ -52,7 +52,7 @@ _createStays()
 //   // let filteredStays = stays.filter((c) => regExp.test(c))
 // }
 
-async function query(filterBy = {}) {
+async function query(filterBy) {
   return await httpService.get(ENDPOINT, filterBy)
   // if (!filterBy) return utilService.loadFromStorage(STAY_KEY)
   // gStays = utilService.loadFromStorage(STAY_KEY)
@@ -69,17 +69,17 @@ function getById(stayId) {
   return stay
 }
 
-function getHostStays(id){
-  try{
-    const stays=await httpService.get(ENDPOINT)   
-    const stayByHost=stays.filter((stays)=>stays.host.id===id)
+function getHostStays(id) {
+  try {
+    const stays = await httpService.get(ENDPOINT)
+    const stayByHost = stays.filter((stays) => stays.host.id === id)
     console.log(orderByHost)
     utilService.saveToStorage(STAY_HOST_KEY, stayByHost)
-     return orderByHost
-    } catch (err) {
-      console.log("Cannot load orders from store", err)
-      throw err
-    }
+    return orderByHost
+  } catch (err) {
+    console.log("Cannot load orders from store", err)
+    throw err
+  }
 
 }
 

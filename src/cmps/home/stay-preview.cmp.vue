@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-img" @click="goToDetail">
             <carusel :stay="stay" />
-            
+                <button v-if="stay.host.isSuperhost" class="superhost-btn">Superhost</button>
                 <svg class="like" @click.stop="addToWishList" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true" role="presentation" focusable="false"
                     style="stroke: currentColor; stroke-width: 2; overflow: visible;">
