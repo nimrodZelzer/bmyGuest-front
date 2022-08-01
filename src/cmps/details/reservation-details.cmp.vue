@@ -13,6 +13,7 @@
                 </span>
             </div>
         </div>
+        {{ loggedinUser }}
         <div class="option-container flex">
             <div @submit.stop class="date-container">
                 <div class="checkin clickable">
@@ -69,7 +70,11 @@
     </div>
     <div v-if="this.openReservModal" class="reserv-modal flex column justify-center justify-between">
         <div class="modal-haeder flex justify-between">
+<<<<<<< HEAD
             <h2>Reservation success!</h2>
+=======
+            <h2>reservation success!</h2>
+>>>>>>> b11b97a3acf9e5520c9bf20db245776710ffb32a
             <svg class="clickable" @click="openReservModal = false" viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                 style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
@@ -194,7 +199,11 @@ export default {
 
 
             // showSuccessMsg(`reserved ${this.nights} nights succsesfully `)
+<<<<<<< HEAD
             // this.$router.push('/')
+=======
+            this.$router.push('/')
+>>>>>>> b11b97a3acf9e5520c9bf20db245776710ffb32a
             await this.$store.dispatch({
                 type: 'saveOrder',
                 order: orderDet

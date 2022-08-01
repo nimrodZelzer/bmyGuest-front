@@ -30,7 +30,10 @@ export default {
   mutations: {
     setLoggedinUser(state, { user }) {
       state.loggedinUser = user
+<<<<<<< HEAD
 
+=======
+>>>>>>> b11b97a3acf9e5520c9bf20db245776710ffb32a
     },
     setWatchedUser(state, { user }) {
       state.watchedUser = user
@@ -40,7 +43,7 @@ export default {
     },
   },
   actions: {
-    async setLoggedinUser1({ commit }, { num }) {
+    async setLoggedinUser({ commit }, { num }) {
       try {
         const user = await userService.getUsers(num)
         console.log(user)
