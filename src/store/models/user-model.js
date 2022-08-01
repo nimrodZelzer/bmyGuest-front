@@ -82,7 +82,7 @@ export default {
     async loadUsers({ commit }, { num }) {
       try {
         const user = await userService.getUsers(num)
-        console.log(user, "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+        // console.log(user, 'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
         commit({ type: "setLoggedinUser", user })
       } catch (err) {
         console.log("userStore: Error in loadUsers", err)

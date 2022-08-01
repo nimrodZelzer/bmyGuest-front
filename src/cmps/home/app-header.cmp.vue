@@ -6,14 +6,12 @@
         <section :class="{ 'stay-details': stayDetails, 'explore-page': explorePage, 'home-page': homePage, }">
             <section class="top-header main-layout flex">
                 <div class="logo">
-                    <h1 @click.stop="goHome">
-                        <span>
-                            <i class="fa-brands fa-airbnb logo-icon"></i>
-                        </span>
+                    <div @click.stop="goHome">
+                        <i class="fa-brands fa-airbnb logo-icon" ></i>
                         <span class="logo-txt">
                             BmyGuest
                         </span>
-                    </h1>
+                    </div>
                 </div>
                 <div @click="openSearchBar">
                     <div v-if="miniSearch" class="mini-search clickable">

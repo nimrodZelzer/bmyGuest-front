@@ -13,7 +13,7 @@
             </svg><span>Filters</span>
         </button>
     </section>
-    <headerFilter v-if="openFilter" :stays="stays" @filterPrice="filterPrice" />
+    <headerFilter v-if="openFilter" :stays="stays" />
 
     <div v-if="openFilter" class="overlay"></div>
 </template>

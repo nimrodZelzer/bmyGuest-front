@@ -100,7 +100,7 @@ export default {
       this.filterToSend = this.$store.getters.filterBy
       this.filterToSend.min = this.filterBy.price.min
       this.filterToSend.max = this.filterBy.price.max
-      this, $emit('filterPrice', this.filterToSend)
+      // this, $emit('filterPrice', this.filterToSend)
       // this.$store.dispatch({ type: 'loadStays', filterBy: this.filterToSend })
       this.openModal = true
 

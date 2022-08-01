@@ -2,8 +2,7 @@
     <section class="home-page" v-if="stays">
         <div class="header-explore">
         </div>
-        <labels-select @filterLabels="filterLabels" @filterPrice="filterPrice" v-if="getLebels" :labels="getLebels"
-            :stays="stays" />
+        <labels-select @filterLabels="filterLabels" v-if="getLebels" :labels="getLebels" :stays="stays" />
         <stay-list @addToWishList="addToWishList" v-if="stays" :stays="stays" />
         <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
 
