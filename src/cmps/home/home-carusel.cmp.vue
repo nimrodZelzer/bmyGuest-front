@@ -1,5 +1,5 @@
 <template>
-  <carousel style="width: 75vw;"   :items-to-show="12">
+  <carousel style="width: 75vw;" :items-to-show="12">
     <slide v-for="slide in labels.length - 1" :key="slide" class="slide-el flex column">
       <div class="labels-wrapper">
         <img v-bind:src="'/img/lebels/' + labels[slide] + '.jpg'" class="labels-img" />
