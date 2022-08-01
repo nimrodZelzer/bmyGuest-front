@@ -6,7 +6,7 @@
       <!-- <img class="avatar " src="../../assets/images/avatar.png" alt=""> -->
       <div class="left flex column">
         <div class="guest-details-container flex">
-          <img :src="(order.guest?.imgUrl)?  order.guest.imgUrl : 'src/assets/images/avatar.png'" alt="">
+          <img :src="(order.guest?.imgUrl)?  order.guest.imgUrl : setupImgUrl()" alt="">
           <div class="content flex column">
             <span class="username">{{order.guestsDetails.guestName}}</span>
             <span>{{(order.guest?.phone)?  order.guest.phone : "054-553386323"}}</span>
@@ -69,11 +69,12 @@ export default {
         order: this.newOrder
       })
     },
-
-
-
-
+    setupImgUrl() {
+      return new URL(`../../assets/images/avatar.png`, import.meta.url).href;
+    },
   },
+  computed: {
+  }
 }
 
 </script>
