@@ -171,7 +171,10 @@ export default {
                 guests: this.adultAmount,
                 guestsDetails: {
                     guestId: this.loggedinUser._id,
-                    guestName: this.loggedinUser.fullname
+                    guestName: this.loggedinUser.fullname,
+                    imgUrl: this.loggedinUser.imgUrl,
+                    phone: this.loggedinUser.phone,
+                    email: this.loggedinUser.email
                 },
                 price: this.stay.price,
                 totalPrice: this.totalPrice,
