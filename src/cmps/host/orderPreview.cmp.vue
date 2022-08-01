@@ -6,26 +6,28 @@
       <!-- <img class="avatar " src="../../assets/images/avatar.png" alt=""> -->
       <div class="left flex column">
         <div class="guest-details-container flex">
-          <img :src="(order.guest?.imgUrl)?  order.guest.imgUrl : 'src/assets/images/avatar.png'" alt="">
+          <!-- <img :src="(order.guestsDetails.imgUrl) ? order.guestsDetails.imgUrl : 'src/assets/images/avatar.png'" alt=""> -->
           <div class="content flex column">
-            <span class="username">{{order.guestsDetails.guestName}}</span>
-            <span>{{(order.guest?.phone)?  order.guest.phone : "054-553386323"}}</span>
-            <span>{{(order.guest?.email)?  order.guest.email : "snfjcw@gmail.com"}}</span>
+            <span class="username">{{ order.guestsDetails.guestName }}</span>
+            <span>{{ (order.guestsDetails?.phone) ? order.guestsDetails.phone : "054-55338323" }}</span>
+            <span>{{ (order.guestsDetails?.email) ? order.guestsDetails.email : "snfjcw@gmail.com" }}</span>
           </div>
         </div>
         <div class="dates">
-          <span>Dates: <span style="font-family: airbnb-medium">{{ order.checkin.substring(0, 10) }} - {{ order.checkout.substring(0, 10) }}</span></span>
+          <span>Dates: <span style="font-family: airbnb-medium">{{ order.checkin.substring(0, 10) }} - {{
+              order.checkout.substring(0, 10)
+          }}</span></span>
         </div>
       </div>
     </div>
-      <div class="right flex column"> 
-        <select class="order-status" v-model="newOrder.status" @change="changeStatus" :class="newOrder.status">
-          <option v-for="(status, idx) in this.statusArry" :key="idx" :class="status">
-            {{ status }}
-          </option>
-        </select>  
-        <span>Total price: <span style="font-family: airbnb-medium">${{ order.totalPrice }}</span></span>
-      </div>
+    <div class="right flex column">
+      <select class="order-status" v-model="newOrder.status" @change="changeStatus" :class="newOrder.status">
+        <option v-for="(status, idx) in this.statusArry" :key="idx" :class="status">
+          {{ status }}
+        </option>
+      </select>
+      <span>Total price: <span style="font-family: airbnb-medium">${{ order.totalPrice }}</span></span>
+    </div>
   </div>
 </template>
 
@@ -50,9 +52,11 @@ export default {
       newOrder: null
     }
   },
-  created() {
-   this.newOrder={...this.order}
-   console.log('orderr', this.newOrder);
+  async created() {
+    this.newOrder = {
+      ...this.order
+    }
+    console.log('orderr', this.newOrder);
   },
   methods: {
     // changeStatus(){

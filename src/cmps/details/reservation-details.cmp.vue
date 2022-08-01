@@ -79,7 +79,9 @@
                             <button v-if="infants < 9" @click="incInfants(1)">+</button>
                         </div>
                     </div>
-                    <span @click="active = false"  style="border-bottom: none; cursor: pointer; font-family: airbnb-bold; align-self: flex-end; text-decoration: underline;"> close </span>
+                    <span @click="active = false"
+                        style="border-bottom: none; cursor: pointer; font-family: airbnb-bold; align-self: flex-end; text-decoration: underline;">
+                        close </span>
                 </div>
             </div>
         </div>
@@ -103,8 +105,8 @@
         <div class="modal-main flex column">
             <div class="flex justify-between">
                 <h2 class="bold">Reservation success!</h2>
-                <svg class="clickable" @click="this.openReservModal=false " viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" role="presentation" focusable="false"
+                <svg class="clickable" @click="this.openReservModal = false" viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                     style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
                     <path d="m6 6 20 20"></path>
                     <path d="m26 6-20 20"></path>
@@ -166,7 +168,7 @@ export default {
         return {
             active: false,
             adultAmount: 1,
-             children: 0,
+            children: 0,
             infants: 0,
             date: [],
             totalPrice: 0,
@@ -182,6 +184,7 @@ export default {
     async created() {
         try {
             this.loggedinUser = await this.$store.getters.loggedinUser
+            console.log(this.loggedinUser)
             this.date = this.$store.getters.getCurrDate
             if (this.date.length) this.changeDate()
             this.hover
@@ -239,6 +242,13 @@ export default {
                     phone: this.loggedinUser.phone,
                     email: this.loggedinUser.email
                 },
+                // guestsDetails: {
+                //     guestId: this.order._id,
+                //     guestName: this.order.guestName,
+                //     imgUrl: this.order.imgUrl,
+                //     phone: this.order.phone,
+                //     email: this.order.email
+                // },
                 price: this.stay.price,
                 totalPrice: this.totalPrice,
                 stayId: this.stay._id,
