@@ -17,6 +17,22 @@
     text-size-adjust: 100%;
 
 
+    .price-filter {
+        svg {
+            width: 95%;
+
+            g {
+                rect {
+                    width: 12px;
+                    margin-right: 1px;
+                    // color: #D1D1D1;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+
+
     .filter-headline {
         font-size: 22px;
         color: rgb(34, 34, 34);
@@ -68,12 +84,8 @@
         font-weight: 400;
         color: rgb(34, 34, 34);
         color: $clr6;
-        // padding-bottom: 25px;
-        // padding-top: 8px;
         padding: 0 0 40px;
     }
-
-
 
     .price-select-container {
         display: flex;
@@ -99,7 +111,7 @@
             .label {
                 text-align: start;
                 margin-inline-start: 12px;
-                margin-top: 8px;
+                // margin-top: 8px;
                 font-size: 11px;
                 line-height: 20px;
                 color: rgb(113, 113, 113);
@@ -108,7 +120,8 @@
 
             .price-change {
                 display: flex;
-                align-items: flex-end;
+                align-items: center;
+                gap: 4px;
                 margin-inline-start: 12px;
                 font-size: 15px !important;
             }
@@ -127,7 +140,9 @@
                 border: 2px solid rgb(0, 0, 0)
             }
         }
+
     }
+
 
     .price-save {
         display: flex;
@@ -173,26 +188,17 @@
     position: relative;
     // padding-left: 10px;
     width: 90% !important;
-    left: 10px;
+
     // --holder-color: #ddd !important;
     // --handle-color: #ffffff !important;
     // --grid-text-color: silver;
     // --line-height: 6px;
     // --font-family: Arial, sans-serif;
     // --font-size: 12;
-    // --hist-slider-gap: -30px;
+    --hist-slider-gap: -30px;
     // --handle-size: 26px;
 }
 
-// #vue-histogram-b72e46cd-ee7d-4ad0-a51e-d28564e0e51f {
-//     margin: 24px 2px 6px;
-// }
-
-
-
-// .irs-handle {
-//     top: 22px !important;
-// }
 
 .modal-overlay {
     position: fixed;
