@@ -13,48 +13,14 @@ export const userService = {
   adminLog,
 }
 
-// async function getUsers(num) {
-//   try {
-//     const users = await httpService.get(`user`)
-//     _saveLocalUser(users[num])
-//     socketService.emit("set-user-socket", users[num]._id)
-//     return users
-//   } catch (err) {
-//     console.log("Cannot load orders from store", err)
-//     throw err
-//   }
-// }
-
-// async function getLoggedinUser() {
-//   try {
-//     const user = JSON.parse(
-//       sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || "null"
-//     )
-//     if (!user) {
-//       const users = await httpService.get(`user`)
-//       _saveLocalUser(users)
-//       return users
-//     } else {
-//       return user
-//     }
-
-//     // socketService.emit("set-user-socket", users[num]._id)
-//     // return users[num]
-//   } catch (err) {
-//     console.log("Cannot Get users from service", err)
-//     throw err
-//   }
-// }
-
-async function getUsers() {
+async function getUsers(num) {
   try {
     const users = await httpService.get(`user`)
-    return users
-
-    // _saveLocalUser(users)
+    _saveLocalUser(users[num])
     // socketService.emit("set-user-socket", users[num]._id)
+    return users
   } catch (err) {
-    console.log("Cannot Get users from service", err)
+    console.log("Cannot load orders from store", err)
     throw err
   }
 }

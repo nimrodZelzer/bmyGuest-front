@@ -1,7 +1,7 @@
 <template>
   <carousel style="width: 75vw;"   :items-to-show="12">
     <slide v-for="slide in labels.length - 1" :key="slide" class="slide-el flex column">
-      <div class="labels-wrapper">
+      <div @click="getLabel(labels[slide])" class="labels-wrapper">
         <img v-bind:src="'/img/lebels/' + labels[slide] + '.jpg'" class="labels-img" />
         <span class="now-rap">{{ labels[slide] }}</span>
       </div>
@@ -25,11 +25,17 @@ export default {
   data() {
     return {
       labels: [],
+      filterBy: {},
     }
   },
   created() {
     this.labels = this.labelsArry
     // console.log(this.labels)
+  },
+  methods: {
+    async getLabel(newlabel){
+      this.$emit('filterLabels',newlabel)
+    }
   },
   components: {
     Carousel,

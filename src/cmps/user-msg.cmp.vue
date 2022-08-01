@@ -29,7 +29,5 @@ export default {
 }
 </script>
 <style >
-button {
-    background-color: aquamarine;
-}
+
 </style>

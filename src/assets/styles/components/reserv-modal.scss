@@ -8,12 +8,15 @@
     -moz-background-clip: padding-box;
     background-clip: padding-box;
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
-    width: 50%;
+    width: 30%;
     height: 50%;
     z-index: 40;
     transform: translate(-50%, -50%);
     background-color: white;
 padding: 30px;
+div{
+    width: 80%;
+}
 }

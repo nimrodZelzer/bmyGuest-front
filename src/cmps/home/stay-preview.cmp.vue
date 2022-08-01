@@ -34,7 +34,7 @@
             </div>
 
             <span class="price flex gap"><span class="bold">${{ stay.price }}</span>night</span>
-                        <!-- <router-link :to="'stay/'+stay._id">Become a Host</router-link> -->
+            <!-- <router-link :to="'stay/'+stay._id">Become a Host</router-link> -->
 
         </div>
 

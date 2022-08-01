@@ -27,8 +27,9 @@ export default {
   },
   name: 'app',
   created() {
-    // this.$store.dispatch({ type: 'loadStays' })
+    this.$store.dispatch({ type: 'loadStays',filterBy:null })
     this.$store.dispatch({ type: 'loadLabels' })
+  
 
 
 

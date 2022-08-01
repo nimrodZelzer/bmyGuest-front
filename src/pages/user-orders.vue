@@ -4,14 +4,14 @@
         <!-- <div v-for="order in orders">
             <order-preview :order="order" />
         </div> -->
-        <header-country class="header-country" />
+        <!-- <header-country class="header-country" /> -->
     </div>
 </template>
 <script>
-import headerCountry from '../cmps/header-map-search.cmp.vue';
-import orderPreview from '../cmps/order-preview.cmp.vue';
+// import headerCountry from '../cmps/header-map-search.cmp.vue';
+// import orderPreview from '../cmps/order-preview.cmp.vue';
 export default {
-    name:"orders-page",
+    name: "orders-page",
     data() {
         return {
             orders: this.$store.getters.getOrders,
@@ -19,18 +19,17 @@ export default {
     },
     created() { },
     methods: {
-        order(){
+        order() {
             console.log(orders)
         }
     },
     computed: {},
     unmounted() { },
-    components:{
-        orderPreview,
-        headerCountry
+    components: {
+        // orderPreview,
+        // headerCountry
     }
 };
 </script>
 <style >
-
 </style>

@@ -1,6 +1,7 @@
 import { httpService } from "./http.service.js"
 import { socketService, SOCKET_EVENT_ORDER_ADDED } from "./socket.service.js"
 const STORAGE_KEY_ORDER_HOST = "loggedinUser"
+const STORAGE_KEY_ORDER = "order"
 
 const ENDPOINT = "order"
 
@@ -26,15 +27,12 @@ async function addNewOrder(order) {
   return addedOrder
 }
 
-async function saveOrderByHostId(hostId, filter = null) {
+async function saveOrderByHostId(hostId) {
   try {
     const orders = await httpService.get(ENDPOINT)
     const orderByHost = orders.filter((order) => order.host.hostId === hostId)
-    console.log(orderByHost, "orderbyhosttttttttttttttttttttt")
-    if (!filter) return orderByHost
-    let orderByStatus = orderByHost.filter((order) => order.status === filter)
-    _saveLocalOrder(orderByStatus)
-    return orderByStatus
+    _saveLocalOrder(orderByHost)  
+    return orderByHost
   } catch (err) {
     console.log("Cannot load orders from store", err)
     throw err
@@ -57,7 +55,12 @@ async function save(order) {
   const savedOrder = order._id
     ? await httpService.put("order", order)
     : await httpService.post("order", order)
-  return savedOrder
+  const orders = getOrdersHost()
+  const idx = orders.findIndex((reserv) => reserv._id === order._id)
+  orders.splice(idx, 1, savedOrder)
+  console.log(orders)
+  _saveLocalOrder(orders)
+  return orders
 }
 
 async function remove(id) {
@@ -65,10 +68,10 @@ async function remove(id) {
 }
 
 function getOrdersHost() {
-  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_ORDER_HOST) || "null")
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_ORDER) || "null")
 }
 
 function _saveLocalOrder(orders) {
-  sessionStorage.setItem(STORAGE_KEY_ORDER_HOST, JSON.stringify(orders))
+  sessionStorage.setItem(STORAGE_KEY_ORDER, JSON.stringify(orders))
   return orders
 }
