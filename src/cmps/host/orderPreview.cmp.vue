@@ -5,11 +5,7 @@
     <div class="flex align-center order-right-card">
       <div class="left flex column">
         <div class="guest-details-container flex">
-<<<<<<< HEAD
-          <img :src="(order.guestsDetails?.imgUrl)?  order.guestsDetails.imgUrl : 'src/assets/images/avatar.png'" alt="">
-=======
           <img :src="(order.guest?.imgUrl)?  order.guest.imgUrl : setupImgUrl()" alt="">
->>>>>>> 0af1ca51fda31ca98fcfa2da3cd58acbf4f4b89d
           <div class="content flex column">
             <span class="username">{{order.guestsDetails.guestName}}</span>
             <span>{{(order.guestsDetails?.phone)?  order.guestsDetails.phone : "054-553386323"}}</span>
@@ -72,12 +68,9 @@ export default {
         order: this.newOrder
       })
     },
-<<<<<<< HEAD
-=======
     setupImgUrl() {
       return new URL(`../../assets/images/avatar.png`, import.meta.url).href;
     },
->>>>>>> 0af1ca51fda31ca98fcfa2da3cd58acbf4f4b89d
   },
   computed: {
   }
