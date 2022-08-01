@@ -63,54 +63,67 @@
                 <span>service fee</span><span>$300</span>
             </div>
             <p>
-                <span>Total</span><span>${{ totalPrice + 300 }}</span>
+                <span>Total:</span><span>${{ totalPrice + 300 }}</span>
             </p>
         </div>
     </div>
-    <div v-if="this.openReservModal" class="reserv-modal flex column justify-center justify-between">
-        <div class="modal-haeder flex justify-between">
-            <h2>Reservation success!</h2>
-            <svg class="clickable" @click="openReservModal = false" viewBox="0 0 32 32"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
-                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
-                <path d="m6 6 20 20"></path>
-                <path d="m26 6-20 20"></path>
-            </svg>
+    <div v-if="this.openReservModal" class="modal-reserv-overlay">
+    </div>
+    <div v-if="this.openReservModal" class="reserv-modal flex justify-center justify-between">
+        <div class="modal-main flex column">
+            <div class="flex justify-between">
+                <h2 class="bold">Reservation success!</h2>
+                <svg class="clickable" @click="this.openReservModal=false " viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" role="presentation" focusable="false"
+                    style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
+                    <path d="m6 6 20 20"></path>
+                    <path d="m26 6-20 20"></path>
+                </svg>
+            </div>
+
+
+            <div class="trip-det flex column">
+                <h3 class="pink bold">Your trip:</h3>
+
+
+                <div class="flex justify-between"><span class="bold checkin">Check-In</span>{{
+                        date[0].getDate()
+                }}/{{ date[0].getMonth() + 1 }}/{{ date[0].getYear() - 100 }}</div>
+                <div class="flex justify-between"><span class="bold checkout">Check-Out</span>{{ date[1].getDate()
+                }}/{{
+        date[1].getMonth() + 1
+}}/{{ date[1].getYear() - 100 }}</div>
+                <div class="flex justify-between"><span class="bold  night">Host name:</span>{{
+                        this.stay.host.fullname
+                }}</div>
+            </div>
+            <div class="flex column">
+                <stayPreview :stay="this.stay" />
+                <div class="price-det">
+                    <h3 class="pink bold">Price details</h3>
+                    <div class="flex justify-between"><span class="bold  adult">Adults:</span>{{ this.adultAmount }}
+                    </div>
+                    <div class="flex justify-between"><span class="bold  price">Total price:</span>${{
+                            this.totalPrice
+                    }}
+                    </div>
+                    <div class="flex justify-between"><span class="bold  night">Total nights:</span>{{ this.nights
+                    }}
+                    </div>
+                </div>
+            </div>
+            <button class="reserve-btn" @click="goToStays">Look for more places to stay </button>
+
         </div>
-
-<<<<<<< HEAD
-        <h3 class="bold pink">{{ this.stay.name }}</h3>
-=======
-        <h3>{{ this.stay.name }}</h3>
->>>>>>> d1eda8d4cfacd05f43f8205f5b8c9e884e21f5f0
-        <div class="flex justify-between"><span class="bold checkin">Check-In</span>{{
-                date[0].getDate()
-        }}/{{ date[0].getMonth() + 1 }}/{{ date[0].getYear() - 100 }}</div>
-        <div class="flex justify-between"><span class="bold checkout">Check-Out</span>{{ date[1].getDate() }}/{{
-                date[1].getMonth() + 1
-        }}/{{
-        date[1].getYear() -
-        100
-}}</div>
-<<<<<<< HEAD
-        <div class="flex justify-between"><span class="bold  adult">Adults:</span>{{ this.adultAmount }}</div>
-        <div class="flex justify-between"><span class="bold  price">Total price:</span>{{ this.totalPrice }}</div>
-        <div class="flex justify-between"><span class="bold  night">Total nights:</span>{{ this.nights }}</div>
-        <button class="reserve-btn" @click="goToStays">Look for more places to stay </button>
     </div>
-    <div v-if="this.openReservModal" class="modal-overlay"></div>
-=======
-        <div class="flex justify-between"><span class="bold adult">Adults:</span>{{ this.adultAmount }}</div>
-        <div class="flex justify-between"><span class="bold price">Total price:</span>{{ this.totalPrice }}</div>
-        <div class="flex justify-between"><span class="bold night">Total nights:</span>{{ this.nights }}</div>
 
 
 
-        <button class="reserve-btn" @click="goToStays">Look for more places to stay </button>
 
 
-    </div>
->>>>>>> d1eda8d4cfacd05f43f8205f5b8c9e884e21f5f0
+
+
+
 
 </template>
 
@@ -118,6 +131,7 @@
 import reservationDropdown from '../details/reservation-dropdown.cmp.vue'
 import datePicker from '../home/date-picker.cmp.vue'
 import { showSuccessMsg } from '../../services/event-bus.service.js'
+import stayPreview from '../stay-reserv-preview.cmp.vue'
 import { socketService } from '../../services/socket.service'
 
 
@@ -234,6 +248,7 @@ export default {
     components: {
         reservationDropdown,
         datePicker,
+        stayPreview,
         // airbnbBtn
     }
 };
