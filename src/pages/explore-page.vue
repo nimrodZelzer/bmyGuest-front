@@ -18,8 +18,8 @@ export default {
     // this.$store.dispatch({ type: 'saveStay', stay: newStay })
     this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
     this.stays = this.$store.getters.stays
-    const page = "explore-page";
-    this.$store.commit({ type: "setCurrPage", page });
+    // const page = "explore-page";
+    // this.$store.commit({ type: "setCurrPage", page });
 
   },
   data() {

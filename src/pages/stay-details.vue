@@ -7,11 +7,11 @@
       <details-description :stay="stay" />
       <reservation-details class="res" :stay="stay" />
     </div>
-      <details-map class="details-map" :stay="stay" />
-    <!-- <details-reviews :stay="stay" /> -->
+      <!-- <details-map class="details-map" :stay="stay" /> -->
+    <details-reviews :stay="stay" />
   </div>
-      <details-reviews :stay="stay" />
-  <!-- <details-map class="details-map" :stay="stay" /> -->
+      <!-- <details-reviews :stay="stay" /> -->
+  <details-map class="details-map" :stay="stay" />
   <app-footer v-if="stay" />
 </template>
 <script>
@@ -62,7 +62,7 @@ export default {
       this.windowTop = window.top.scrollY
     },
     windowPlace() {
-      this.bottom = document.querySelector('.res').getBoundingClientRect().bottom
+      // this.bottom = document.querySelector('.res').getBoundingClientRect().bottom
     },
     scrollTo(refName) {
       console.log(this.$refs)
