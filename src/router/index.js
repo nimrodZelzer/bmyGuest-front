@@ -3,9 +3,8 @@ import deshboardHost from "../pages/deshboard-host.vue"
 import explorePage from "../pages/explore-page.vue"
 import homePage from "../pages/home-page.vue"
 import stayDetails from "../pages/stay-details.vue"
-import hostPage from "../pages/host.vue"
 import userWishlist from '../pages/user-wishList.vue'
-import userOrder from '../pages/user-orders.vue'
+import userOrder from '../pages/user-order.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),

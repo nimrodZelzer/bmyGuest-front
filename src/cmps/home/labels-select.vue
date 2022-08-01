@@ -2,7 +2,7 @@
     <!-- :class="{'sticky' : stickingLabels}" -->
     <section class="labels-select main-layout ">
         <div class="labels-list">
-            <homeCaruselCmp @filterLabels="filterLabels" v-if="labels" :labelsArry="labels" />
+            <homeCaruselCmp v-if="labels" :labelsArry="labels" />
         </div>
         <button @click="openFilter = !openFilter" class="filter-btn clickable"><svg viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
@@ -15,7 +15,8 @@
     </section>
     <headerFilter v-if="openFilter" :stays="stays" />
 
-    <div v-if="openFilter" class="overlay"></div>
+    <div v-if="openFilter" 
+        class="overlay"></div>
 </template>
 
 <script>
@@ -48,19 +49,12 @@ export default {
 
     },
     methods: {
-        filterLabels(newLabel) {
-            this.$emit('filterLabels', newLabel)
-
-        },
         getPos() {
             this.windowPos = window.top.scrollY
         },
         stickingLabels() {
             // console.log((this.windowPos > 120))
             return (this.windowPos > 100)
-        },
-        filterPrice(filterBy) {
-            this.$emit('filterPrice', filterBy)
         }
 
     },

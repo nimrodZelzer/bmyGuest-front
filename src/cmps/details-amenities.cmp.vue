@@ -1,6 +1,6 @@
-<template >
+ <!-- <template >
     <div class="amenities-container">
-        <header >
+        <header>
             <h2>What this place offers</h2>
         </header>
         <ul class="clean-list">
@@ -24,7 +24,7 @@ export default {
     },
     created() { },
     methods: {
-        
+
     },
     computed: {},
     unmounted() { },
@@ -32,4 +32,4 @@ export default {
 </script>
 <style lang="">
     
-</style>
+</style> --> -->

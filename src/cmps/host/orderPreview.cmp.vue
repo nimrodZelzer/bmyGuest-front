@@ -24,7 +24,7 @@
       <option v-for="(status, idx) in this.statusArry" :key="idx">
         {{ status }}
       </option>
-    </select>
+    </select>  
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
     }
   },
   created() {
-    this.newOrder = { ...this.order }
+   this.newOrder={...this.order}
 
   },
   methods: {

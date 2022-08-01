@@ -6,12 +6,14 @@
         <section :class="{ 'stay-details': stayDetails, 'explore-page': explorePage, 'home-page': homePage, }">
             <section class="top-header main-layout flex">
                 <div class="logo">
-                    <div @click.stop="goHome">
-                        <i class="fa-brands fa-airbnb logo-icon" ></i>
+                    <h1 @click.stop="goHome">
+                        <span>
+                            <i class="fa-brands fa-airbnb logo-icon"></i>
+                        </span>
                         <span class="logo-txt">
                             BmyGuest
                         </span>
-                    </div>
+                    </h1>
                 </div>
                 <div @click="openSearchBar">
                     <div v-if="miniSearch" class="mini-search clickable">
@@ -23,7 +25,7 @@
                 </div>
                 <header-nav />
             </section>
-            <open-header @openHeader="" v-if="!miniSearch" />
+            <open-header v-if="!miniSearch" />
         </section>
     </div>
 </template>
@@ -80,10 +82,6 @@ export default {
         openLoginModal() {
             // this.loginSignup = true
         },
-        closeHeader(value) {
-            this.miniSearch = true
-            this.$emit('openHeader', false)
-        }
 
     },
     computed: {

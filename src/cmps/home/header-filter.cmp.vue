@@ -67,7 +67,6 @@ export default {
           max: 1500,
         },
       },
-      filterToSend: null,
       histogramMainColor: "#b0b0b0",
       histogramSecondaryColor: "#dddddd",
       activeBtn: "",
@@ -97,11 +96,10 @@ export default {
   },
   methods: {
     loadStays() {
-      this.filterToSend = this.$store.getters.filterBy
-      this.filterToSend.min = this.filterBy.price.min
-      this.filterToSend.max = this.filterBy.price.max
-      // this, $emit('filterPrice', this.filterToSend)
-      // this.$store.dispatch({ type: 'loadStays', filterBy: this.filterToSend })
+
+      this.filterBy.min = this.filterBy.price.min
+      this.filterBy.max = this.filterBy.price.max
+      this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
       this.openModal = true
 
 
