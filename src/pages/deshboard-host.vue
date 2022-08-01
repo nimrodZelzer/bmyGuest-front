@@ -50,10 +50,10 @@
 
             <order-list :orders="orders" />
         </div> -->
-        <div class="hostStayList">
+        <!-- <div class="hostStayList">
             <h2>Your Stay List</h2>
             <stay-list :stays="this.stays" />
-        </div>
+        </div> -->
     </section>
 </template>
 
@@ -61,7 +61,7 @@
 import orderList from "../cmps/host/order-list.cmp.vue"
 import totalPriceChart from "../cmps/host/total-price-chart.cmp.vue"
 import orderByMonths from "../cmps/host/order-by-months.cmp.vue"
-import stayList from "../cmps/home/stay-list.cmp.vue"
+// import stayList from "../cmps/home/stay-list.cmp.vue"
 import selectStays from "../cmps/host/select-stays.cmp.vue"
 import orderFilter from "../cmps/host/order-filter.cmp.vue"
 
@@ -124,7 +124,7 @@ export default {
         orderList,
         totalPriceChart,
         orderByMonths,
-        stayList,
+        // stayList,
         selectStays,
         orderFilter,
 

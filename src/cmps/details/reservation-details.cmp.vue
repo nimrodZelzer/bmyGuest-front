@@ -13,7 +13,6 @@
                 </span>
             </div>
         </div>
-        {{ loggedinUser }}
         <div class="option-container flex">
             <div @submit.stop class="date-container">
                 <div class="checkin clickable">
@@ -70,11 +69,7 @@
     </div>
     <div v-if="this.openReservModal" class="reserv-modal flex column justify-center justify-between">
         <div class="modal-haeder flex justify-between">
-<<<<<<< HEAD
             <h2>Reservation success!</h2>
-=======
-            <h2>reservation success!</h2>
->>>>>>> b11b97a3acf9e5520c9bf20db245776710ffb32a
             <svg class="clickable" @click="openReservModal = false" viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                 style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
@@ -83,19 +78,23 @@
             </svg>
         </div>
 
-        <h3>Your trip:{{ this.stay.name }}</h3>
-        <div class="flex justify-between"><span class="bold checkin">Check-In</span>{{ this.checkIn }}</div>
-        <div class="flex justify-between"><span class="bold checkout">Check-Out</span>{{ this.chackOut }}</div>
-        <div class="flex justify-between"><span class="bold adult">Adults:</span>{{ this.adultAmount }}</div>
-        <div class="flex justify-between"><span class="bold price">Total price:</span>{{ this.totalPrice }}</div>
-        <div class="flex justify-between"><span class="bold night">Total nights:</span>{{ this.nights }}</div>
-
-
-
-        <button class="reserve-btn">Look for more places to stay </button>
-
-
+        <h3 class="bold pink">{{ this.stay.name }}</h3>
+        <div class="flex justify-between"><span class="bold checkin">Check-In</span>{{
+                date[0].getDate()
+        }}/{{ date[0].getMonth() + 1 }}/{{ date[0].getYear() - 100 }}</div>
+        <div class="flex justify-between"><span class="bold checkout">Check-Out</span>{{ date[1].getDate() }}/{{
+                date[1].getMonth() + 1
+        }}/{{
+        date[1].getYear() -
+        100
+}}</div>
+        <div class="flex justify-between"><span class="bold  adult">Adults:</span>{{ this.adultAmount }}</div>
+        <div class="flex justify-between"><span class="bold  price">Total price:</span>{{ this.totalPrice }}</div>
+        <div class="flex justify-between"><span class="bold  night">Total nights:</span>{{ this.nights }}</div>
+        <button class="reserve-btn" @click="goToStays">Look for more places to stay </button>
     </div>
+    <div v-if="this.openReservModal" class="modal-overlay"></div>
+
 </template>
 
 <script>
@@ -103,7 +102,7 @@ import reservationDropdown from '../details/reservation-dropdown.cmp.vue'
 import datePicker from '../home/date-picker.cmp.vue'
 import { showSuccessMsg } from '../../services/event-bus.service.js'
 import { socketService } from '../../services/socket.service'
-// import airbnbBtn from '../airbnb-btn.cmp.vue';
+
 
 export default {
     props: {
@@ -121,15 +120,14 @@ export default {
             nights: null,
             loggedinUser: {},
             openReservModal: false,
-            // checkIn: new Date(this.date[0]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" }),
-            // chackOut: new Date(this.date[1]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" }),
+            checkIn: null,
+            chackOut: null,
 
         };
     },
     async created() {
         try {
             this.loggedinUser = await this.$store.getters.loggedinUser
-            console.log(this.loggedinUser, 'kkkkkkkkkkkkkkkuuuuuuuuuuuuuuuuuuuuufffffffffffffffffffffff')
             this.date = this.$store.getters.getCurrDate
             if (this.date.length) this.changeDate()
             this.hover
@@ -137,12 +135,8 @@ export default {
             console.log(" Error in loggedin", err)
             throw err
         }
-
-
-
-
-
-
+        this.checkIn = new Date(this.date[0]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })
+        this.chackOut = new Date(this.date[1]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })
     },
     methods: {
         getCreateAt() {
@@ -152,9 +146,6 @@ export default {
             let munth = new Date().getMonth()
             let createAt = `${day}/${munth}  ${hours}:${min}`
             return createAt
-
-
-
         },
         toggle() {
             this.active = !this.active
@@ -199,15 +190,12 @@ export default {
 
 
             // showSuccessMsg(`reserved ${this.nights} nights succsesfully `)
-<<<<<<< HEAD
-            // this.$router.push('/')
-=======
-            this.$router.push('/')
->>>>>>> b11b97a3acf9e5520c9bf20db245776710ffb32a
+
             await this.$store.dispatch({
                 type: 'saveOrder',
                 order: orderDet
             })
+
 
         },
         getTotalPrice() {
@@ -217,6 +205,10 @@ export default {
             this.reservationValue()
             this.getTotalPrice()
         },
+        goToStays() {
+            this.$router.push('/')
+
+        }
     },
     computed: {
 

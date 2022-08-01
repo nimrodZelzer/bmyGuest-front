@@ -13,6 +13,7 @@ export const orderService = {
   remove,
   save,
   getFilterOrders,
+  saveOrderByUserId,
 }
 
 async function query(filterBy = {}) {
@@ -35,6 +36,17 @@ async function saveOrderByHostId(hostId) {
     return orderByHost
   } catch (err) {
     console.log("Cannot load orders from store", err)
+    throw err
+  }
+}
+async function saveOrderByUserId(Id) {
+  debugger
+  try {
+    const orders = await httpService.get(ENDPOINT)
+    const orderByUser =  orders.filter((order)=>order.guestsDetails.guestId===Id)
+    return orderByUser
+  } catch (err) {
+    console.log("Cannot load user orders from store", err)
     throw err
   }
 }
