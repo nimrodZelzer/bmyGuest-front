@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <header-map  @openHeader="closeHeader" v-if="!searchClick" class="header-country" />
+                <header-map @closeHeader="closeHeader" v-if="!searchClick" class="header-country" />
 
             </form>
         </div>
@@ -94,11 +94,12 @@ export default {
     },
     created() { },
     methods: {
-        goExplore() {
+        async goExplore() {
             console.log('filterBy.txt: ', this.filterBy.txt)
-            // this.miniSearch = true
+            this.miniSearch = true
             this.$emit('openHeader', false)
             this.$router.push(`/explore/${this.filterBy.txt}`)
+            this.filterBy.txt = ''
         },
         handleScroll() {
             console.log(window.scrollY)

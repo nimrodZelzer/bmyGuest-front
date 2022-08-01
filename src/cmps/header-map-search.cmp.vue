@@ -30,7 +30,6 @@
     </div>
 </template>
 <script>
-
 export default {
     data() {
         return {
@@ -42,32 +41,30 @@ export default {
          closeHeader(){
             this.$emit('openHeader', false)
             console.log("here")
-            window.scrollBy(100, 0);
-
         },
         filterTo(){ 
             this.$router.push('/explore')
-            this.closeHeader()
+            this.closeHeader
             },
         filterToItaly(){ 
             this.$router.push('/explore/Italy')
-            this.closeHeader()
+            this.closeHeader
             },
         filterToFrance(){ 
             this.$router.push('/explore/France')
-            this.closeHeader()
+            this.closeHeader
             },
         filterToIsrael(){ 
             this.$router.push('/explore/Israel')
-            this.closeHeader()
+            this.closeHeader
             },
         filterToSa(){ 
             this.$router.push('/explore/South America')
-            this.closeHeader()
+            this.closeHeader
             },
         filterToUs(){
              this.$router.push('/explore/United States')
-             this.closeHeader()
+             this.closeHeader
              }
     },
     computed: {},

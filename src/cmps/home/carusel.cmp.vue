@@ -1,6 +1,6 @@
 <template  >
   <Carousel :wrap-around="false">
-    <slide v-for="slide in 2" :key="slide">
+    <slide v-for="slide in this.imgArry.length" :key="slide">
       <div v-if="this.imgArry" class="carousel__item animate__backInRight" @mouseover="shouldShow = true" @mouseleave="shouldShow = false">
         <img v-bind:src="'/img/Images/' + imgArry[imgidx]" />
         <div class="image-btn-wraper" v-if="shouldShow">

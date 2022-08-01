@@ -25,7 +25,7 @@
                 </div>
                 <header-nav />
             </section>
-            <open-header @openHeader="" v-if="!miniSearch" />
+            <open-header v-if="!miniSearch" />
         </section>
     </div>
 </template>
@@ -82,10 +82,6 @@ export default {
         openLoginModal() {
             // this.loginSignup = true
         },
-        closeHeader(value) {
-            this.miniSearch = true
-            this.$emit('openHeader', false)
-        }
 
     },
     computed: {

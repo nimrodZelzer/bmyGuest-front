@@ -2,7 +2,7 @@
     <section class="home-page ">
         <div class="header-explore">
         </div>
-        <labels-select @filterLabels="filterLabels" v-if="getLebels" :labels="getLebels" :stays="stays" />
+        <labels-select v-if="getLebels" :labels="getLebels" :stays="stays" />
         <stay-list @addToWishList="addToWishList" v-if="stays" :stays="stays" />
         <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
 
@@ -16,41 +16,36 @@ export default {
     name: 'stay-app',
     data() {
         return {
-            filterBy: null,
-            stays: null
+
         }
 
     },
     methods: {
         addToWishList(stay) {
             let newStay = { ...stay };
+            console.log(newStay.wished, "newStay")
             newStay.wished = !newStay.wished
+            console.log(newStay.wished)
+
             this.$store.dispatch({ type: 'saveStay', stay: newStay })
-            this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-        },
-        async filterLabels(label){
-            this.filterBy = {...this.$store.getters.filterBy}
-            this.filterBy.label = label
-            this.stays = await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-            
+            this.$store.dispatch({ type: 'loadStays' })
+
         }
     },
     computed: {
+        stays() {
+            return this.$store.getters.stays
+        },
         getLebels() {
             return this.$store.getters.getLebels
         },
-        staysToDisplay() {
-            return this.stays
-        }
     },
-    async created() {
-        this.filterBy = this.$store.getters.filterBy
-        await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-        this.stays = this.$store.getters.stays
-        this.getLebels
+    created() {
+        this.$store.dispatch({ type: 'loadStays' })
+        this.$store.dispatch({ type: 'loadHostOrders' })
         const page = "homePage";
         this.$store.commit({ type: "setCurrPage", page });
-        // this.$store.dispatch({ type: 'loadHostOrders' })
+        // this.$store.dispatch({})
     },
 
     components: {

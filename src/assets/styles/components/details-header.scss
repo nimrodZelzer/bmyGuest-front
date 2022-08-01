@@ -30,8 +30,13 @@
         }
 
         .details-header-bottom {
-            display: flex;
-            align-items: center;
+            svg {
+                // position: absolute;
+                // top: 143px;
+                // right: 179px;
+                margin-top: 2px;
+                align-self: flex-end;
+            }
 
 
         }
@@ -46,13 +51,13 @@
             text-decoration: none;
         }
         >:last-child {
-            padding-right: 0 ;
+            padding-right: 0;
         }
 
     }
 
     a {
-        padding: 0 10px;
+        padding: rem(8px);
     }
 
     i {

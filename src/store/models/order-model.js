@@ -11,8 +11,9 @@ import {
 export default {
   state: {
     orders: [],
-    currOrder: "",
+    currOrder: [],
     orderByHost: [],
+    orderByUser: [],
     totalPriceArry: [],
   },
   getters: {
@@ -33,6 +34,9 @@ export default {
     getOrders(state) {
       return state.orders
     },
+    getOrdersUser(state){
+      return state.orderByUser
+    }
   },
   mutations: {
     setOrders(state, { orders }) {
@@ -51,9 +55,6 @@ export default {
       state.orders.splice(idx, 1)
     },
     setOrderByHost(state, { orders }) {
-      orders.forEach((orders) => {
-        state.totalPriceArry.push(orders.totalPrice)
-      })
       state.currOrders = orders
     },
 
@@ -72,13 +73,16 @@ export default {
       const idx = state.orders.findIndex((currOrder) => currOrder._id === newOrder._id)
       state.orders.splice(idx, 1, newOrder)
      
+    },
+    setOrdersUser(state, {orders}){
+      state.orderByUser=orders
     }
   },
   actions: {
-    async loadOrders({ commit }, { id }) {
-      console.log(id)
+    async loadOrders({ commit }) {
       try {
-        const orders = await orderService.query(id)
+        const orders = await orderService.query()
+        console.log(orders)
         commit({ type: "setOrders", orders })
       } catch (err) {
         console.log("Cannot load orders from store", err)
@@ -143,11 +147,23 @@ export default {
     },
     async changeOrderStatus({ commit }, { order }) {
       try {
-        let newOrder = await orderService.save(order)
-        console.log(newOrder,'saveeeeeeeeeee')
-        commit({ type: "updateOrder", newOrder })
+        let orders = await orderService.save(order)
+        console.log(orders)
+        commit({ type: "setOrderByHost", orders })
       } catch (err) {
-        console.log("Error in query stays (store)", err)
+        console.log("Error in save orders", err)
+        throw err
+      }
+    },
+    async getOrderByUser({ commit }, { id }) {
+      try {
+        console.log(id)
+        const orders = await orderService.saveOrderByUserId(id)
+        console.log(orders,'from service')
+        commit({ type: "setOrdersUsers", orders })   
+        return orders 
+      } catch (err) {
+        console.log("Error in read orders", err)
         throw err
       }
     },

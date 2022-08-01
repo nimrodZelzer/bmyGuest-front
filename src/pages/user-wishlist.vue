@@ -16,15 +16,14 @@ export default {
     data() {
         return {
             wishedStays: [],
-            stays: [],
-            filterBy:null
+            stays: []
         };
     },
-    async created() {
-        // this.filterBy = this.$store.getters.filterBy
-        await this.$store.dispatch({ type: 'loadStays', filterBy: {} })
+    created() {
+        this.$store.dispatch({ type: 'loadStays' })
         this.stays = this.$store.getters.stays
         console.log(this.stays)
+
         this.wishedStays = this.stays.filter((stay) => stay.wished)
         console.log(this.wishedStays)
     },
