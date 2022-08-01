@@ -7,14 +7,13 @@
             <span>{{ this.orders.length }} items</span>
         </div>
         <div class="dash-board-details flex ">
-            <order-list @changeStatus='changeStatus' :orders="orders" />
+            <order-list @changeStatus='changeStatus' :orders="orders"/>
         </div>
     </section>
 </template>
 
 <script>
-import orderList from "../cmps/host/order-list.cmp.vue"
-
+import orderList from "../cmps/host/order-list-user.cmp.vue"
 
 export default {
     name: 'deshboard-host',
@@ -25,7 +24,6 @@ export default {
         return {
             user: null,
             orders: null,
-
         }
     },
     async created() {
@@ -37,8 +35,6 @@ export default {
             throw err
         }
         try {
-
-
             this.orders = await this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id })
             console.log(this.orders)
         } catch (err) {

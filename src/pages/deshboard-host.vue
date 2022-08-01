@@ -15,11 +15,11 @@
                         <p>guests love what your doing keep up the good work</p>
                         <span>view details</span>
                     </div>
-                    <img src="https://icons-for-free.com/download-icon-complete+done+green+success+valid+icon-1320183462969251652_256.ico" alt="">
+                 
                     <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
                 </div>
                 <div class="earnings-container ">
-                    <div class="flex  justify-between"><span>August earnings</span><span  class="green">$2650</span></div>
+                    <div class="flex  justify-between"><span>Total earnings</span><span  class="green">$2650</span></div>
                     <div class="flex  justify-between"><span>30 day reviews</span><span class="green">870</span></div>
                 </div>
                 <div class="overall-container">
