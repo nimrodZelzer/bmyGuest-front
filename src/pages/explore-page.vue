@@ -17,9 +17,7 @@ export default {
     this.filterBy = this.$store.getters.filterBy 
     this.filterBy.txt = destination
     console.log(this.filterBy)
-    await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-        console.log(this.filterBy)
-    this.stays = this.$store.getters.stays
+    this.stays = await this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
     const page = "explore-page";
     this.$store.commit({ type: "setCurrPage", page });
   },
@@ -41,10 +39,6 @@ export default {
     }
   },
   computed: {
-    stays() {
-      // console.log(this.$store.getters.stays)
-      return this.$store.getters.stays
-    },
     countries() {
       return this.$store.getters.staysToShow
     }
