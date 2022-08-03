@@ -28,13 +28,15 @@ export default {
             console.log(newStay.wished)
 
             this.$store.dispatch({ type: 'saveStay', stay: newStay })
-            this.$store.dispatch({ type: 'loadStays' })
+  
 
         }
     },
     computed: {
         stays() {
-            return this.$store.getters.stays
+            let stay=this.$store.getters.stays
+            console.log(stay)
+            return stay
         },
         getLebels() {
             return this.$store.getters.getLebels

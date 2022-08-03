@@ -27,14 +27,9 @@ export default {
   },
   name: 'app',
   created() {
-    // this.$store.dispatch({ type: 'loadStays' })
-    
+    this.$store.dispatch({ type: 'loadStays' })
     this.$store.dispatch({ type: 'loadLabels' })
-    this.$store.dispatch({ type: 'loadOrders'})
-  
-
-
-
+    this.$store.dispatch({ type: 'loadOrders' })
     socketService.on('something-changed', this.alertSomethingChanged)
 
   },
@@ -45,7 +40,6 @@ export default {
     alertSomethingChanged() {
       console.log('Admin has updated the store...')
     },
-
   },
   computed: {},
   components: {

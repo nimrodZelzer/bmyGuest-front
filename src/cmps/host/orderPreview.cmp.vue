@@ -4,7 +4,7 @@
   <div class="order-card flex">
     <div class="flex align-center order-right-card">
       <div class="left flex column">
-        <div class="guest-details-container flex">
+        <div class="guest-details-container flex column">
           <img :src="(order.guest?.imgUrl)?  order.guest.imgUrl : setupImgUrl()" alt="">
           <div class="content flex column">
             <span class="username">{{ order.guestsDetails.guestName }}</span>
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <div class=" right flex column">
+      <div class=" right flex column justify-between flex-end">
         <select class="order-status" v-model="newOrder.status" @change="changeStatus" :class="newOrder.status">
           <option v-for="(status, idx) in this.statusArry" :key="idx" :class="status">
             {{ status }}
@@ -35,7 +35,7 @@
 
 <script>
 
-
+import { socketService } from '../../services/socket.service'
 export default {
   props: {
     order: {
@@ -74,6 +74,7 @@ export default {
         type: 'changeOrderStatus',
         order: this.newOrder
       })
+      socketService.emit('order-change',this.newOrder)
     },
     setupImgUrl() {
       return new URL(`../../assets/images/avatar.png`, import.meta.url).href;

@@ -35,6 +35,7 @@ export default {
       return state.currHostStay
     },
   },
+  
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
@@ -68,10 +69,12 @@ export default {
   },
   actions: {
     async loadStays({ commit }, { filterBy }) {
+    
       commit({ type: "setFilterBy", filterBy })
       console.log("yoyo", this.filterBy)
       try {
         const stays = await stayService.query(filterBy)
+        console.log(stays)
         commit({ type: "setStays", stays })
       } catch (err) {
         console.log("Error in query stays (store)", err)

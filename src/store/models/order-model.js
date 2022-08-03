@@ -23,13 +23,8 @@ export default {
     getTotalPrices(state) {
       return state.totalPriceArry
     },
-    getOrderPerMonth(state) {
-      let month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      console.log(state.orderByHost)
-      // state.orderByHost.forEach((order) =>
-      //       console.log(order.checkin.getMonth())
-      // )
-      return state.orderByHost
+    getOrderPerHost(state) {
+      return state.currOrders
     },
     getOrders(state) {
       return state.orders
@@ -91,6 +86,7 @@ export default {
       }
     },
     async saveOrder({ commit }, { order }) {
+      console.log('here',order)
       try {
         const orderToSave = await orderService.save(order)
         socketService.emit(SOCKET_EVENT_ORDER_ADDED, orderToSave)
@@ -109,6 +105,7 @@ export default {
     },
     async getOrderByHost({ commit }, { id }) {
       const orders = await orderService.saveOrderByHostId(id)
+      console.log(orders,'ggggggggggggggg')
       commit({ type: "setOrderByHost", orders })
       return orders
     },

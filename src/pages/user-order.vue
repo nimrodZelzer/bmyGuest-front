@@ -7,13 +7,14 @@
             <span>{{ this.orders.length }} items</span>
         </div>
         <div class="dash-board-details flex ">
-            <order-list @changeStatus='changeStatus' :orders="orders"/>
+            <order-list @changeStatus='changeStatus' :orders="orders" />
         </div>
     </section>
 </template>
 
 <script>
 import orderList from "../cmps/host/order-list-user.cmp.vue"
+import { socketService } from '../services/socket.service.js'
 
 export default {
     name: 'deshboard-host',
@@ -36,11 +37,15 @@ export default {
         }
         try {
             this.orders = await this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id })
-            console.log(this.orders)
         } catch (err) {
             console.log(" Error in read orders", err)
             throw err
         }
+        socketService.on("order-added", async (order) => {
+            console.log("order has added!", order)
+            // this.orders.push(order)
+            this.orders=this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id })
+        })
     },
     methods: {
 

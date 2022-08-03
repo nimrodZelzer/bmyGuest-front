@@ -6,7 +6,10 @@
             <span>{{ this.orders.length }} items</span>
         </div>
         <div class="dash-board-details flex ">
-            <order-list @changeStatus='changeStatus' :orders="orders" />
+            <div class="order-wrapper">
+                <order-list @changeStatus='changeStatus' :orders="this.newOrders" />
+                <order-list @changeStatus='changeStatus' :orders="this.orders" />
+            </div>
             <div class="dash-board-summary">
                 <div class="summary-header flex align-center">
                     <div>
@@ -15,16 +18,17 @@
                         <p>guests love what your doing keep up the good work</p>
                         <span>view details</span>
                     </div>
-                 
+
                     <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
                 </div>
                 <div class="earnings-container ">
-                    <div class="flex  justify-between"><span>Total earnings</span><span  class="green">$2650</span></div>
+                    <div class="flex  justify-between"><span>Total earnings</span><span class="green">$2650</span></div>
                     <div class="flex  justify-between"><span>30 day reviews</span><span class="green">870</span></div>
                 </div>
                 <div class="overall-container">
-                    <div class="flex justify-between"><span>Overall ratings</span><span  class="green"><i class="fa fa-star"></i> 4.9</span></div>
-                    <div class="flex justify-between"><span>Total reviews</span><span  class="green">40</span></div>
+                    <div class="flex justify-between"><span>Overall ratings</span><span class="green"><i
+                                class="fa fa-star"></i> 4.9</span></div>
+                    <div class="flex justify-between"><span>Total reviews</span><span class="green">40</span></div>
                 </div>
                 <!-- <div class="flex justify-between">
                     <img class="bottom-pic" src="https://freesvg.org/img/Gerald_G_House_sitting_on_a_pile_of_money.png" alt="">
@@ -64,6 +68,7 @@ import orderByMonths from "../cmps/host/order-by-months.cmp.vue"
 // import stayList from "../cmps/home/stay-list.cmp.vue"
 import selectStays from "../cmps/host/select-stays.cmp.vue"
 import orderFilter from "../cmps/host/order-filter.cmp.vue"
+import { socketService } from '../services/socket.service.js'
 
 export default {
     name: 'deshboard-host',
@@ -72,21 +77,21 @@ export default {
     },
     data() {
         return {
-            orderByMonth:null,
+            orderByMonth: null,
             orders: null,
+            newOrders: [],
             stays: null,
             prices: null,
-            datasets: [
-                {
-                    data: [],
-                    backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
-                },
-            ],
         }
     },
     async created() {
+        socketService.on("order-added", (order) => {
+            this.newOrders.push(order)
+            console.log(order)
+        })
         try {
-            this.orders = await this.$store.dispatch({ type: 'getOrderByHost', id: '62e0e9b1dd13b00af4e80283' })
+            const ordersByHost = await this.$store.dispatch({ type: 'getOrderByHost', id: '62e0e9b1dd13b00af4e80283' })
+            this.orders = ordersByHost
         } catch (err) {
             console.log(" Error in read orders", err)
             throw err
@@ -98,24 +103,12 @@ export default {
             console.log(" Error in read orders", err)
             throw err
         }
-        try {
-            this.datasets[0].data = await this.$store.getters.getTotalPrices
-        } catch (err) {
-            console.log(" Error in read orders by price", err)
-            throw err
-        }
-        try {
-            this.orderByMonth = await this.$store.getters.getOrderPerMonth
-            console.log(this.orderByMonth)
-        } catch (err) {
-            console.log(" Error in read orders by price", err)
-            throw err
-        }
-
-
 
     },
+
+
     methods: {
+
 
     },
 
