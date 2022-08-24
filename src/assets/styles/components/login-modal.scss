@@ -1,38 +1,56 @@
 .login-modal {
-    // align-items: center;
-    // filter: brightness(70%);
-    // background-color: rgba(72, 72, 72, 0.402);
-    // display: none;
-    // flex-direction: row;
-    // height: 100%;
-    // justify-content: center;
-    // position: fixed;
-    // width: 100%;
-    // z-index: 35;
-    display: none;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.10);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-box-shadow: inset 0px 0px 0px #000000;
-    box-shadow: inset 0px 0px 400px #000000;
-    z-index: 35;
+    top: 500%;
+    left: 50%;
+    gap: rem(40px);
+    z-index: 20;
+    transform: translate(-50%, -50%);
+    background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: rem(30px);
 
-    .login-cmp {
-        padding: rem(40px);
-        background-color: #fff;
-        height: rem(500px);
-        width: rem(400px);
-        border-radius: 12px;
-        // z-index:700;
-
+    h1 {
+        font-size: rem(28px);
+        font-weight: 600;
     }
+
+    .inputPsd {
+        background: var(--comboInputGroup_backgroundColor, none);
+        border-radius: 0px 0px 8px 8px;
+        inset: 0px 0px -1px;
+        font-size: 20px;
+        line-height: 1.43;
+        height: rem(50px);
+        width: rem(500px);
+    }
+    .inputUser {
+       
+        border-radius:  8px 8px 0px 0px;
+        font-family: airbnb-bold;
+        font-size: 20px;
+        line-height: 1.43;
+        height: rem(50px);
+        width: rem(500px);
+        border: 1px $clr2;
+    }
+
 
 }
 
-.open {
-    display: flex;
+.signup-card {
+    gap: rem(20px);
+}
 
+.google-login{
+    width: 100%;
+    margin-top: rem(20px);
 }

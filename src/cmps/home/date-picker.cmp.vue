@@ -23,10 +23,7 @@
       <el-date-picker id="my-date" name="my-date" class="clickable" @change="addDateToStore" v-model="date"
         start-placeholder="Add dates" end-placeholder="Add dates" type="daterange" style=">* border:none;[U+200F]"
         popper-class="custom-date-picker clickable" />
-
-      <!-- </div> -->
-
-    </form>
+   </form>
   </section>
 </template>
 

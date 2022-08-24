@@ -47,11 +47,8 @@
 
     .top-of-filter {
         color: black;
-        // display: flex;
         letter-spacing: 0.5px;
         border-bottom: 1px solid $clr8;
-        // margin: 0 0 1rem;
-        // padding: 0 24px;
         min-height: 64px;
 
         svg {
@@ -69,7 +66,6 @@
             text-align: center;
             font-size: 1rem;
             font-weight: 800;
-            // line-height: 20px;
             background-color: inherit;
             font-family: airbnb-bold;
         }

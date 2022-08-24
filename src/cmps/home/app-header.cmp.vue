@@ -32,10 +32,8 @@
 
 <script>
 import datePicker from "./date-picker.cmp.vue"
-// import LoginSignupCmp from "../login-signup.cmp.vue"
 import headerNav from "./header-nav.cmp.vue"
 import openHeader from "./open-header.cmp.vue"
-// import { eventBus } from "../services/eventBus.js"
 export default {
     data() {
         return {
@@ -58,7 +56,6 @@ export default {
         window.addEventListener("scroll", this.handleScroll)
         this.miniSearch = true
         this.$emit("minisearch", true)
-        // if(this.$store)
     },
     mounted() {
         this.miniSearch = true
@@ -81,7 +78,6 @@ export default {
             this.$emit('openHeader', true)
         },
         openLoginModal() {
-            // this.loginSignup = true
         },
 
     },
@@ -104,7 +100,6 @@ export default {
     },
     components: {
         datePicker,
-        // LoginSignupCmp,
         headerNav,
         openHeader,
     },
@@ -117,14 +112,12 @@ export default {
                 this.currPage = this.$store.getters.currPage
                 this.miniSearch = this.currPage !== "homePage" && this.currPage !== "explore"
                 if (this.currPage === "homePage") this.miniSearch = true
-                // this.hideFilter = this.currPage !== "homePage" && this.currPage !== "explore" && this.currPage !== "stayDetails"
             },
             immediate: true,
             deep: true,
         },
         "$route.name": {
             handler(name) {
-                console.log('!!!!!!!!!', name);
                 this.isStayDetails = name === 'stay-details'
             },
             immediate: true,

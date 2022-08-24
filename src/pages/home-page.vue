@@ -35,7 +35,6 @@ export default {
     computed: {
         stays() {
             let stay=this.$store.getters.stays
-            console.log(stay)
             return stay
         },
         getLebels() {

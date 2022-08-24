@@ -33,7 +33,6 @@
                 <el-date-picker v-model="date" @change="changeDate" start-placeholder="Check in "
                     end-placeholder="Check out " type="daterange" range-separator="|"
                     style=">* border: none; height: 65px;" />
-                <!-- </div> -->
             </div>
             <div class="dropdown">
                 <button @click="toggle" class="dropbtn">
@@ -280,7 +279,7 @@ export default {
         reservationDropdown,
         datePicker,
         stayPreview,
-        // airbnbBtn
+
     }
 };
 </script>

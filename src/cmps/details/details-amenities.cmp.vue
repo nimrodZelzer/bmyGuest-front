@@ -5,8 +5,6 @@
         </header>
         <ul class="clean-list">
             <li class="flex" v-for="amenity in amenities" :key="amenity">
-                <!-- src\assets\images\amenities-svg\{{amenitiePics[amenity]}} -->
-                <!-- <img :src="'src/assets/images/amenities-svg/' + amenitiePics[amenity]" alt=""> -->
                 <img :src="getAmenitieSrc(amenitiePics[amenity])">
                 {{ amenity }}
             </li>

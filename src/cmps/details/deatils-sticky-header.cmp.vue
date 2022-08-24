@@ -13,7 +13,6 @@
                     <span style="color: gray ; text-decoration: underline; padding-left: 3px;" >{{ priceSummary.reviewsLength }} reviews</span></span>
             </div>
             <btn @click="scrollMeTo('here')" class="reserve-btn" >Reserve</btn>
-            <!-- <button @click="log">bottom</button> -->
         </div>
     </div>
 </template>
@@ -38,14 +37,6 @@ export default {
             console.log(this.bottom)
         },
         scrollMeTo(refName) {
-
-            // this.$emit('scrollTo',refName)
-
-            // console.log(this.$refs)
-            // var element = this.$refs[refName];
-            // var top = element.offsetTop;
-            // // console.log(this.$refs)
-            // window.scrollTo(0, top);
             document.getElementById(refName).scrollIntoView({ behavior: 'smooth' });
 
         }

@@ -40,7 +40,6 @@
           </div>
         </div>
       </div>
-      <!-- {{ pricesToShow }} -->
       <div class="price-save">
         <button class="clear" @click="clearPriceRange">Clear all</button>
         <button class="save" @click="savePrices">Show {{ stays.length }} stays</button>
@@ -71,9 +70,7 @@ export default {
       histogramSecondaryColor: "#dddddd",
       activeBtn: "",
       openModal: false,
-      // isPriceShown: false,
       isPriceRange: false,
-
       priceRange: "",
     }
   },
@@ -96,14 +93,10 @@ export default {
   },
   methods: {
     loadStays() {
-
       this.filterBy.min = this.filterBy.price.min
       this.filterBy.max = this.filterBy.price.max
       this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
       this.openModal = true
-
-
-
     },
     sliderChanged(values) {
       console.log(values)
@@ -121,9 +114,7 @@ export default {
     },
     async savePrices() {
       this.loadStays()
-
     }
   },
-
 }
 </script>

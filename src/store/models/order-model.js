@@ -90,11 +90,6 @@ export default {
       try {
         const orderToSave = await orderService.save(order)
         socketService.emit(SOCKET_EVENT_ORDER_ADDED, orderToSave)
-        // socket.emit(SOCKET_EVENT_ORDER_ADDED,, (userId) => {
-        //   logger.debug(`Setting (${socket.id}) socket.userId = ${userId}`)
-        //   socket.userId = userId
-        // })
-
         commit({ type: "saveOrder", order: orderToSave })
         console.log(orderToSave, "ordertosaveeeee")
         return orderToSave
