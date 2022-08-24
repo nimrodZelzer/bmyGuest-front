@@ -61,11 +61,13 @@
         </section>
         <date-picker-mobile v-if="openDatePicker" />
     </form>
+    <!-- <guests-modal /> -->
 </template>
 
 <script>
 import headerMap from "../header-map-search.cmp.vue";
 import datePickerMobile from "../date-picker-mobile.cmp.vue";
+import guestsModal from "../guests-modal.cmp.vue";
 export default {
     data() {
         return {
@@ -97,12 +99,7 @@ export default {
     created() {
         console.log(this.isShow)
     },
-    components: { headerMap, datePickerMobile }
+    components: { headerMap, datePickerMobile, guestsModal }
 }
 </script>
 
-<style>
-.movearea {
-    transition: 0.3s background-color ease;
-}
-</style>

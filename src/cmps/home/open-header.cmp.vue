@@ -64,13 +64,14 @@
             </form>
         </div>
     </section>
+    <!-- <guests-modal /> -->
 </template>
 <script>
 import headerMap from "../header-map-search.cmp.vue";
 import datePicker from "./date-picker.cmp.vue"
+import guestsModal from "../guests-modal.cmp.vue";
 
 import { toRaw } from 'vue'
-import { eventBus } from "../../services/event-bus.service";
 export default {
     data() {
         return {
@@ -153,7 +154,6 @@ export default {
         updatedDates(data) {
             this.dates = data
         }
-
     },
     computed: {
     },
@@ -161,6 +161,7 @@ export default {
     components: {
         datePicker,
         headerMap,
+        guestsModal
     },
 };
 </script>
