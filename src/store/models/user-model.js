@@ -46,9 +46,10 @@ export default {
         console.log("userStore: Error in loadloggedinuser", err)
       }
     },
-    async login({ commit }, { userCred }) {
+    async login({ commit }, { cred }) {
       try {
-        const user = await userService.login(userCred)
+        console.log('here',cred);
+        const user = await userService.login(cred)
         commit({ type: "setLoggedinUser", user })
         return user
       } catch (err) {

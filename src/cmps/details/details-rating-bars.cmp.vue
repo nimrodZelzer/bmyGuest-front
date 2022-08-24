@@ -1,6 +1,4 @@
 <template  >
-
-
     <div class="bar-review-container">
         <div class="left-bar-container">
             <div class="rating-container ">
@@ -70,14 +68,6 @@ export default {
             required: true,
         },
     },
-    
-    // <!-- "reviewScores": {
-	// 		"accuracy": 10,
-	// 		"cleanliness": 10,
-	// 		"checkin": 10,
-	// 		"communication": 10,
-	// 		"location": 10,
-	// 		"value": 10, -->
     data() {
         return {
             precentages:{

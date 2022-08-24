@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     console() {
-      // console.log(this.images)
+      console.log(this.images)
     },
     onHide() {
       this.visibleRef = false

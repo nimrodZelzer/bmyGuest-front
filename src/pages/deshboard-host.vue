@@ -92,7 +92,6 @@ export default {
         orderList,
         totalPriceChart,
         orderByMonths,
-        // stayList,
         selectStays,
         orderFilter,
 

@@ -22,7 +22,7 @@
 <script>
 import homeCaruselCmp from './home-carusel.cmp.vue'
 import headerFilter from "./header-filter.cmp.vue"
-// import priceRange from '../price-range.cmp.vue'
+
 
 export default {
     props: {

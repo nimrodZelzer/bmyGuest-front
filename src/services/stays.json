@@ -1,6 +1,6 @@
 [
 	{
-	"_id": "62dfab59d687d9bed9fdf777",
+	"labels":"Desert",
 	"name": "Westin Kaanapali KORVN 2BR",
 	"description": "Westin Kaanapali Ocean Resort Villas North timeshare - Pay resort: $14-20/day, stays under 7 night $38/res - Inquire about availability, I review then offer/approve if available :) -== for cleaning/etc AND brief explanation about timeshare reservations - Want guaranteed view for additional cost? Must be weekly rental, other restrictions - Wheelchair accessible / ADA, call resort directly to ensure U receive. If U need ADA U MUST inform us BEFORE booking.",
 	"interaction": "There are activities programs and concierge activities booking services at this resort.",
@@ -136,11 +136,11 @@
 	}
 	],
 	"imgUrls": [
-	"090.jpeg",
-	"010.jpeg",
-	"153.jpeg",
-	"093.jpeg",
-	"094.jpeg"
+	"1.jpeg",
+	"2.jpeg",
+	"3.jpeg",
+	"4.jpeg",
+	"5.jpeg"
 	],
 	"amenities": [
 	"TV",

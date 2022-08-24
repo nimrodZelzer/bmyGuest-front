@@ -24,6 +24,7 @@
     "vue-slick-carousel": "^1.0.6",
     "vue-slider-component": "^4.1.0-beta.1",
     "vue3-carousel": "^0.1.40",
+    "vue3-google-login": "^2.0.12",
     "vue3-histogram-slider": "^0.4.16",
     "vuex": "^4.0.2"
   },
