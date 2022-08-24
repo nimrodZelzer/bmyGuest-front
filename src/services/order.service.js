@@ -17,7 +17,6 @@ export const orderService = {
 }
 
 async function query(filterBy = {}) {
-  console.log("here")
   return httpService.get(ENDPOINT, filterBy)
 }
 
@@ -69,7 +68,6 @@ async function save(order) {
   const orders = getOrdersHost()
   const idx = orders.findIndex((reserv) => reserv._id === order._id)
   orders.splice(idx, 1, savedOrder)
-  console.log(orders)
   _saveLocalOrder(orders)
   return orders
 }

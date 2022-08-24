@@ -30,7 +30,6 @@ export default {
     async created() {
         try {
             this.user = await this.$store.getters.loggedinUser
-            console.log(this.user)
         } catch (err) {
             console.log(" Error in read orders", err)
             throw err
@@ -42,9 +41,8 @@ export default {
             throw err
         }
         socketService.on("order-added", async (order) => {
-            console.log("order has added!", order)
             // this.orders.push(order)
-            this.orders=this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id })
+            this.orders = this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id })
         })
     },
     methods: {

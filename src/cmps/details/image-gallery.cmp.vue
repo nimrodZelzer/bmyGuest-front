@@ -22,8 +22,12 @@ export default {
   },
   created() {
     this.imagesForDisplay = this.images.map(image => { return `/img/Images/${image}` })
+    // console.log(this.imagesForDisplay)
   },
   methods: {
+    console() {
+      console.log(this.images)
+    },
     onHide() {
       this.visibleRef = false
     },

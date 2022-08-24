@@ -5,7 +5,7 @@
     <div class="flex align-center order-right-card">
       <div class="left flex column">
         <div class="guest-details-container flex column">
-          <img :src="(order.guest?.imgUrl)?  order.guest.imgUrl : setupImgUrl()" alt="">
+          <img :src="(order.guest?.imgUrl) ? order.guest.imgUrl : setupImgUrl()" alt="">
           <div class="content flex column">
             <span class="username">{{ order.guestsDetails.guestName }}</span>
             <span>{{ (order.guestsDetails?.phone) ? order.guestsDetails.phone : "054-55338323" }}</span>
@@ -54,19 +54,19 @@ export default {
       newOrder: null
     }
   },
-  async created() {
+  created() {
     this.newOrder = {
       ...this.order
     }
-    console.log('orderr', this.newOrder);
+    // console.log('orderr', this.newOrder);
   },
   methods: {
-    // changeStatus(){
-    //   let newOrder = {...this.order}
+    // changeStatus() {
+    //   let newOrder = { ...this.order }
     //   newOrder.status = this.currStatus
-    //   console.log(newOrder,"new order")
-    //   this.$emit('changeStatus',newOrder)
-    // }
+    //   console.log(newOrder, "new order")
+    //   this.$emit('changeStatus', newOrder)
+    // },
 
     changeStatus() {
       console.log(this.order.status)
@@ -74,7 +74,8 @@ export default {
         type: 'changeOrderStatus',
         order: this.newOrder
       })
-      socketService.emit('order-change',this.newOrder)
+      socketService.emit('order-change', this.newOrder)
+      this.$emit('changeStatus', this.newOrder)
     },
     setupImgUrl() {
       return new URL(`../../assets/images/avatar.png`, import.meta.url).href;

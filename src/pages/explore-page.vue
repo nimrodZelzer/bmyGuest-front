@@ -3,40 +3,35 @@
     <div class="header-explore">
     </div>
     <stay-list @addToWishList="addToWishList" v-if="stays" :stays="stays" />
-    <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
-
+    <div v-else>Loading...</div>
   </section>
 </template>
-<script>
 
+<script>
 import stayList from '../cmps/home/stay-list.cmp.vue'
+
 export default {
   name: 'explore-page',
   created() {
-    const { destination } = this.$route.params
-    this.filterBy.txt = destination
-    // this.$store.dispatch({ type: 'saveStay', stay: newStay })
-    this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-    this.stays = this.$store.getters.stays
-    // const page = "explore-page";
-    // this.$store.commit({ type: "setCurrPage", page });
-
+    this.$store.commit('setCurrPage', { page: 'explore-app' })
   },
   data() {
     return {
-      filterBy: { txt: null },
-      stays: null
+      // filterBy: { txt: null },
+      // stays: null
     }
   },
   methods: {
-    addToWishList(stay) {
-      let newStay = { ...stay };
-      console.log(newStay.wished, "newStay")
-      newStay.wished = !newStay.wished
-      console.log(newStay.wished)
+    async addToWishList(stay) {
+      try {
+        let newStay = { ...stay };
+        newStay.wished = !newStay.wished
+        this.$store.dispatch({ type: 'saveStay', stay: newStay })
+        await this.$store.dispatch({ type: 'loadStays' })
+      } catch (err) {
+        console.log(err)
+      }
 
-      this.$store.dispatch({ type: 'saveStay', stay: newStay })
-      this.$store.dispatch({ type: 'loadStays' })
     }
   },
   computed: {

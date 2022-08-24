@@ -1,0 +1,187 @@
+$dp__font_family: airbnb-regular; // Font size for the menu
+// General
+$dp__border_radius: 32px; // Border radius everywhere
+$dp__cell_border_radius: $dp__border_radius  !default; // Specific border radius for the calendar cell
+
+// Transitions
+$dp__transition_length: 22px !default; // Passed to the translateX in animation
+$dp__transition_duration: 0.1s !default; // Transition duration
+
+// Sizing
+$dp__button_height: 35px !default; // size for buttons in overlays
+$dp__month_year_row_height: 100px !default; // height of the month-year select row
+$dp__month_year_row_button_size: 100px !default; // Specific height for the next/previous buttons
+$dp__button_icon_height: 20px !default; // icon sizing in buttons
+$dp__cell_size: 46px !default; // width and height of calendar cell
+$dp__cell_padding: 5px !default; // padding in the cell
+$dp__common_padding: 16px 32px;
+$dp__menu_min_width: 260px !default; // Adjust the min width of the menu
+$dp__action_buttons_padding: 2px 5px !default; // Adjust padding for the action buttons in action row
+$dp__row_margin: 5px 0 !default; // Adjust the spacing between rows in the calendar
+$dp__calendar_header_cell_padding: 1rem !default; // Adjust padding in calendar header cells
+$dp__two_calendars_spacing: 27px !default; // Space between two calendars if using two calendars
+$dp__overlay_col_padding: 30px !default; // Padding in the overlay column
+$dp__time_inc_dec_button_size: 32px !default; // Sizing for arrow buttons in the time picker
+
+// Font sizes
+$dp__font_size: 1rem !default; // overall font-size
+$dp__preview_font_size: 0.8rem !default; // font size of the date preview in the action row
+$dp__time_font_size: 1rem !default; // font size in the time picker
+
+
+@import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
+
+.header-date-container {
+
+    .top {
+        font-size: 12px;
+        color: black;
+        font-family: airbnb-bold;
+        width: 100%;
+        letter-spacing: 0.04em;
+    }
+
+    .bottom {
+        font-family: airbnb-regular;
+        color: black;
+        opacity: 0.6;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .checkin,
+    .checkout {
+        padding: 14px 24px;
+    }
+
+}
+
+
+.date-picker-mobile {
+    z-index: 4;
+    position: fixed;
+    display: block;
+    padding: 24px;
+    font-size: 14px;
+    top: 50px;
+    background-color: #F7F7F7;
+    width: 100%;
+    height: 99vh;
+
+    .top {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 26px;
+    }
+
+    .btns-action {
+        padding: 3rem 24px;
+        border-top: 1px #EBEBEB;
+        margin-inline: -24px;
+        background-color: #F7F7F7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: sticky;
+        bottom: 0;
+
+        .skip {
+            cursor: pointer !important;
+            display: inline-block !important;
+            margin: 0px -10px !important;
+            position: relative !important;
+            text-align: center !important;
+            width: auto !important;
+            touch-action: manipulation !important;
+            font-family: 'Circular', -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 1rem;
+            line-height: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            outline: none !important;
+            padding: 10px !important;
+            transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+            -webkit-tap-highlight-color: transparent !important;
+            border: none !important;
+            background: transparent !important;
+            color: black;
+            text-decoration: underline !important;
+            contain: paint !important;
+
+            &:hover {
+                border: none;
+                opacity: 1;
+                background-color: #F7F7F7;
+                ;
+                color: black;
+            }
+
+            &:active {
+                transform: scale(0.96);
+                border: none;
+
+            }
+        }
+
+        .next {
+            cursor: pointer !important;
+            display: inline-block !important;
+            margin: 0px !important;
+            position: relative !important;
+            text-align: center !important;
+            text-decoration: none !important;
+            width: auto !important;
+            touch-action: manipulation !important;
+            font-family: 'Circular', -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 1rem;
+            line-height: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            outline: none !important;
+            padding: 14px 24px !important;
+            transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+            -webkit-tap-highlight-color: transparent !important;
+            border: none !important;
+            background: black;
+            opacity: 0.9;
+            color: white;
+            contain: paint !important;
+
+            &:hover {
+                border: none;
+                opacity: 1;
+                color: white;
+            }
+
+            &:active {
+                transform: scale(0.96);
+                border: none;
+
+            }
+        }
+    }
+}
+
+.dp-custom-input {
+    display: none;
+}
+
+.dp-custom-menu {
+    background-color: white;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 6px 20px rgb(0 0 0 / 20%);
+    max-width: $break-narrow;
+    width: 100%;
+}
+
+.dp-custom-calendar {
+    position: relative;
+    display: block;
+}
+
+.dp-custom-cell {
+    max-width: 3rem;
+    max-height: 4rem;
+    width: 100%;
+    height: 100%;
+}

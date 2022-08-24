@@ -34,7 +34,7 @@ export default {
     created() { },
     methods: {
         log() {
-            console.log(this.bottom)
+            // console.log(this.bottom)
         },
         scrollMeTo(refName) {
             document.getElementById(refName).scrollIntoView({ behavior: 'smooth' });

@@ -57,7 +57,7 @@ export default {
         };
     },
     created() {
-        console.log(this.stay)
+        // console.log(this.stay)
 
 
     },

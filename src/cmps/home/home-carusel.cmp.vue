@@ -5,13 +5,14 @@
         <img v-bind:src="'/img/lebels/' + labels[slide] + '.jpg'" class="labels-img" />
         <span class="now-rap">{{ labels[slide] }}</span>
       </div>
-    </slide>
+    </Slide>
     <template #addons>
-      <navigation />
-
+      <Navigation />
     </template>
-  </carousel>
+  </Carousel>
 </template>
+
+
  
 <script>
 import 'vue3-carousel/dist/carousel.css';

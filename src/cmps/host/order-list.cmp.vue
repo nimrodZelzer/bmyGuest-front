@@ -28,8 +28,10 @@ export default {
 
   },
   methods: {
-  
+    changeStatus() {
+      this.$emit('changeStatus', this.newOrder)
     }
+  }
 }
 
 </script>

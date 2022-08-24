@@ -1,7 +1,8 @@
 <template  >
   <Carousel :wrap-around="false">
     <slide v-for="slide in this.imgArry.length" :key="slide">
-      <div v-if="this.imgArry" class="carousel__item animate__backInRight" @mouseover="shouldShow = true" @mouseleave="shouldShow = false">
+      <div v-if="this.imgArry" class="carousel__item animate__backInRight" @mouseover="shouldShow = true"
+        @mouseleave="shouldShow = false">
         <img v-bind:src="'/img/Images/' + imgArry[imgidx]" />
         <div class="image-btn-wraper" v-if="shouldShow">
           <button class="image-btn start" v-bind:class="{ hide: imgidx === 0 }" @click.stop="inc(-1)">
@@ -51,8 +52,8 @@ export default defineComponent({
     inc(dif) {
       var idx = this.imgidx
       idx += dif
-      if (idx === this.imgArry.length){
-        idx=1
+      if (idx === this.imgArry.length) {
+        idx = 1
       }
       if (idx < 0) {
         idx = this.imgArry.length - 1

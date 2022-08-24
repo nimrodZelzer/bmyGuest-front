@@ -7,27 +7,30 @@ import "element-plus/dist/index.css"
 import VueEasyLightbox from "vue-easy-lightbox"
 import vue3GoogleLogin from 'vue3-google-login'
 
-import { clickOutsideDirective } from "./directives/index.js"
+// import { clickOutsideDirective } from "./directives/index.js"
 
 import HistogramSlider from "vue3-histogram-slider"
 import "vue3-histogram-slider/dist/histogram-slider.css"
 import "./assets/styles/styles.scss"
-import VueGoogleMaps from '@fawmi/vue-google-maps'
+import VueGoogleMaps from "@fawmi/vue-google-maps"
 
+import Datepicker from "@vuepic/vue-datepicker"
+// import "@vuepic/vue-datepicker/dist/main.css"
+// import "@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss"
 
 
 const app = createApp(App)
-app.directive("click-outside", clickOutsideDirective)
-// app.component('VueSlider', VueSlider)
+// app.directive("click-outside", clickOutsideDirective)
 app.component(HistogramSlider.name, HistogramSlider)
+app.component("Datepicker", Datepicker)
 app.use(store)
 app.use(router)
 app.use(ElementPlus)
 app.use(VueEasyLightbox)
 app.use(VueGoogleMaps, {
-    load: {
-        key: 'AIzaSyDfKxMv5OjVCUjDlsEf-Q9pwSSBqv-brDw',
-    },
+  load: {
+    key: "AIzaSyARPmS2dhjKdP2WVF_7L5yKt4Alzdzfe38",
+  },
 })
 app.use(vue3GoogleLogin, {
   clientId: '533877104669-o315vdo0m8gvp4qr8tqmikhii3sjruqs.apps.googleusercontent.com'

@@ -1,27 +1,24 @@
 
 <template>
-  <section class="main-app" :class="{ 'fixed-body': fixedBody }">
-    <app-header @openHeader="toggle" @login="toggle" />
-    <router-view :class="{ 'overlay': openHeader }" />
-
+  <section class="main-app">
+    <app-header :stays="stays" />
+    <div :class="{ 'overlay1': openHeader }" v-if="stays">
+      <router-view />
+    </div>
     <user-msg />
   </section>
 </template>
 
 
 <script>
-import { RouterView } from 'vue-router'
 import userMsg from './cmps/user-msg.cmp.vue';
 import appFooter from './cmps/app-footer.cmp.vue'
 import appHeader from './cmps/home/app-header.cmp.vue'
-import headerFilter from './cmps/home/header-filter.cmp.vue'
-import { socketService } from './services/socket.service'
 
 export default {
   data() {
     return {
       openHeader: false,
-      fixedBody: false,
 
     }
   },
@@ -30,23 +27,21 @@ export default {
     this.$store.dispatch({ type: 'loadStays' })
     this.$store.dispatch({ type: 'loadLabels' })
     this.$store.dispatch({ type: 'loadOrders' })
-    socketService.on('something-changed', this.alertSomethingChanged)
 
   },
+  mounted() { },
   methods: {
-    toggle(isshown) {
-      this.openHeader = isshown
-    },
-    alertSomethingChanged() {
-      console.log('Admin has updated the store...')
+  },
+  computed: {
+    stays() {
+      return this.$store.getters.stays
     },
   },
-  computed: {},
   components: {
     appFooter,
     appHeader,
     userMsg,
-    headerFilter,
+    // headerFilter,
   },
 }
 </script>

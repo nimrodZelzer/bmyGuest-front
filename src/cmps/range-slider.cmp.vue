@@ -25,7 +25,7 @@ export default {
   },
 
   created() {
-    console.log(this.stays)
+    // console.log(this.stays)
   },
   computed: {
     stays() {
@@ -35,7 +35,7 @@ export default {
       const stayPrices = this.stays.filter((stay => {
         stay === stay.price
       }))
-      console.log(stayPrices)
+      // console.log(stayPrices)
       // this.data.price = stayPrices
       return stayPrices
     },
