@@ -6,7 +6,8 @@ import userModul from "./models/user-model.js"
 const store = createStore({
   strict: true,
   state: {
-    currPage: "homePage",
+    currPage: "",
+    openHeader: true,
   },
   getters: {
     currPage(state) {
@@ -16,6 +17,9 @@ const store = createStore({
   mutations: {
     setCurrPage(state, { page }) {
       state.currPage = page
+    },
+    setOpenHeader(state, { currVal }) {
+      state.openHeader = currVal
     },
   },
   actions: {},

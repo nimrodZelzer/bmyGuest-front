@@ -1,6 +1,6 @@
 <template>
   <ul class="stay-list main-layout">
-    <stay-preview @addToWishList="addToWishList"  v-for="stay in stays" :stay="stay" :key="stay.id" />
+    <stay-preview @addToWishList="addToWishList" v-for="stay in stays" :stay="stay" :key="stay.id" />
   </ul>
 </template>
 
@@ -18,10 +18,9 @@ export default {
     stayPreview,
   },
   methods: {
-     addToWishList(stay) {
-      console.log(stay)
-            this.$emit("addToWishList",stay)
-        }
+    addToWishList(stay) {
+      this.$emit("addToWishList", stay)
+    }
   },
 }
 </script>

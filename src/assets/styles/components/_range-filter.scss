@@ -1,4 +1,4 @@
-.price-filter-container {
+.range-filter1 {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -15,6 +15,31 @@
     padding: 20px;
     border-radius: 12px;
     text-size-adjust: 100%;
+
+}
+
+
+.range-filter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 780px;
+    width: 100%;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    border: 0.5px solid rgba(118, 118, 118, 0.28);
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
+    padding: 20px;
+    border-radius: 12px;
+    text-size-adjust: 100%;
+
+    animation-name: opendesktopfilter;
+    animation-duration: .8s;
+    animation-timing-function: ease;
 
 
     .price-filter {
@@ -47,17 +72,13 @@
 
     .top-of-filter {
         color: black;
-        // display: flex;
         letter-spacing: 0.5px;
         border-bottom: 1px solid $clr8;
-        // margin: 0 0 1rem;
-        // padding: 0 24px;
         min-height: 64px;
 
         svg {
             position: absolute;
             top: 25px;
-            // left: 20px;
             background: inherit;
 
             &:hover {
@@ -69,11 +90,9 @@
             text-align: center;
             font-size: 1rem;
             font-weight: 800;
-            // line-height: 20px;
             background-color: inherit;
             font-family: airbnb-bold;
         }
-
 
     }
 
@@ -186,17 +205,9 @@
 
 .vue-histogram-slider-wrapper {
     position: relative;
-    // padding-left: 10px;
     width: 90% !important;
-
-    // --holder-color: #ddd !important;
-    // --handle-color: #ffffff !important;
-    // --grid-text-color: silver;
-    // --line-height: 6px;
-    // --font-family: Arial, sans-serif;
-    // --font-size: 12;
     --hist-slider-gap: -30px;
-    // --handle-size: 26px;
+
 }
 
 
@@ -220,4 +231,39 @@
 
 .body-modal {
     padding: 32px 0
+}
+
+@media (max-width:$break-narrow) {
+    .range-filter {
+        min-width: 0;
+        height: 100vh;
+        margin: auto;
+        animation-name: openheader;
+        animation-duration: .8s;
+        animation-timing-function: ease;
+
+        @keyframes openheader {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 50%);
+            }
+
+            100% {
+                // transform: translate(0, 100%);
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@keyframes opendesktopfilter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 50%);
+    }
+
+    100% {
+        // transform: translate(0, 100%);
+        opacity: 1;
+    }
 }

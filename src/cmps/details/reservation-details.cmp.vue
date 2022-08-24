@@ -185,12 +185,11 @@ export default {
             this.loggedinUser = await this.$store.getters.loggedinUser
             this.date = this.$store.getters.getCurrDate
             if (this.date.length) this.changeDate()
-
         } catch (err) {
             console.log(" Error in loggedin", err)
             throw err
         }
-        
+
         this.checkIn = new Date(this.date[0]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })
         this.chackOut = new Date(this.date[1]).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })
     },
@@ -225,7 +224,6 @@ export default {
             this.nights = (Math.floor((utc2 - utc1) / _MS_PER_DAY))
         },
         async reserveOrder() {
-
             if (!this.date.length) {
                 showSuccessMsg(`please choose date!`)
                 return
@@ -259,18 +257,19 @@ export default {
             }
             this.$store.dispatch({ type: 'saveOrder', order: orderDet })
             socketService.emit('order-added', orderDet)
-        }
-    },
-    getTotalPrice() {
-        this.totalPrice = +this.stay.price * this.nights
-    },
-    changeDate() {
-        this.reservationValue()
-        this.getTotalPrice()
-    },
-    goToStays() {
-        this.$router.push('/')
+            console.log(this.date)
+        },
+        getTotalPrice() {
+            this.totalPrice = +this.stay.price * this.nights
+        },
+        changeDate() {
+            this.reservationValue()
+            this.getTotalPrice()
+        },
+        goToStays() {
+            this.$router.push('/')
 
+        },
     },
     computed: {
 

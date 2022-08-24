@@ -7,7 +7,8 @@
     font-size: rem(15px);
     padding-top: 20px;
 
-    .superhost-btn{
+
+    .superhost-btn {
         position: absolute;
         top: 16px;
         left: 13px;
@@ -18,7 +19,7 @@
         font-family: "airbnb-medium";
     }
 
-    
+
     // @include for-mobile-layout {
     //     // 375px
     //     .stay-list {
@@ -174,7 +175,7 @@
                         box-shadow: hsl(0deg 0% 100% / 90%) 0px 0px 4px;
                         transition: box-shadow 0.2s ease 0s;
 
-                     
+
 
                     }
 
@@ -195,19 +196,19 @@
     transition: 1s;
 }
 
-@media (max-width: 1566px) {
+@media (max-width: $break-max) {
     .stay-list {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media (max-width: 1086px) {
+@media (max-width: $break-wide) {
     .stay-list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 950px) {
+@media (max-width:$break-normal) {
     .stay-list {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -219,9 +220,18 @@
 //         grid-template-columns: repeat(2, 1fr);
 //     }
 // }
-@media (max-width: 550px) {
+@media (max-width: $break-narrow) {
+    .stay-list {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 24px;
+        margin-top: 5rem;
+    }
+}
+
+@media (max-width:$break-staylist) {
     .stay-list {
         grid-template-columns: repeat(1, 1fr);
+        padding: 0 24px;
     }
 }
 

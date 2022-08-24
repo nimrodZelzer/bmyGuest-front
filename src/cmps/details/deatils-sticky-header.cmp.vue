@@ -35,7 +35,7 @@ export default {
     created() { },
     methods: {
         log() {
-            console.log(this.bottom)
+            // console.log(this.bottom)
         },
         scrollMeTo(refName) {
 

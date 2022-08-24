@@ -1,31 +1,31 @@
-.header-country{
+.header-country {
     position: absolute;
     top: 80px;
     // width: 600px;
     z-index: 45;
     padding: 28px;
     box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
-    
+
     background-color: white;
     border-radius: 32px;
-    h5{
+
+    h5 {
         font-family: airbnb-bold;
         font-size: 14px;
         margin: auto;
-        padding-bottom: 19px ;
-        // margin: 0 5px 28px 5px;
-
+        padding-bottom: 19px;
     }
-  
 
-    .map-image-container-header{
+
+    .map-image-container-header {
         display: grid;
-        grid-template-columns: repeat(3 ,1fr);
-        grid-template-rows: repeat(2 ,1fr);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         margin: auto;
         gap: 10px;
         width: 400px;
-        img{
+
+        img {
             height: 122px;
             width: 122px;
             object-fit: contain;
@@ -33,11 +33,12 @@
             border: 1px solid $clr10;
             cursor: pointer;
 
-            &:hover{
+            &:hover {
                 border-color: $clr2;
             }
         }
-        span{
+
+        span {
             font-size: 14px;
         }
     }

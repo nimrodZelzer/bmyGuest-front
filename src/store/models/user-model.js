@@ -41,7 +41,6 @@ export default {
     async setLoggedinUser({ commit }, { num }) {
       try {
         const user = await userService.getUsers(num)
-        console.log(user)
         commit({ type: "setLoggedinUser", user })
       } catch (err) {
         console.log("userStore: Error in loadloggedinuser", err)

@@ -4,7 +4,8 @@
         </div>
         <labels-select v-if="getLebels" :labels="getLebels" :stays="stays" />
         <stay-list @addToWishList="addToWishList" v-if="stays" :stays="stays" />
-        <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
+        <!-- <img v-else class="loader" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt=""> -->
+        <div v-else class="loader">Loading...</div>
 
     </section>
 </template>
@@ -23,31 +24,24 @@ export default {
     methods: {
         addToWishList(stay) {
             let newStay = { ...stay };
-            console.log(newStay.wished, "newStay")
             newStay.wished = !newStay.wished
-            console.log(newStay.wished)
-
             this.$store.dispatch({ type: 'saveStay', stay: newStay })
-  
-
+            this.$store.dispatch({ type: 'loadStays' })
         }
     },
     computed: {
         stays() {
-            let stay=this.$store.getters.stays
-            console.log(stay)
-            return stay
+            return this.$store.getters.stays
+
         },
         getLebels() {
             return this.$store.getters.getLebels
         },
     },
     created() {
-        this.$store.dispatch({ type: 'loadStays' })
         this.$store.dispatch({ type: 'loadHostOrders' })
-        const page = "homePage";
+        const page = "home-page";
         this.$store.commit({ type: "setCurrPage", page });
-        // this.$store.dispatch({})
     },
 
     components: {

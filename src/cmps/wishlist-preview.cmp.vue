@@ -1,5 +1,4 @@
 <template >
-
     <div class="flex wishlist-preview" @click="goToDetails">
         <img :src="'/img/Images/' + stay.imgUrls[0]" alt="">
         <div class="left-container flex column">
@@ -12,11 +11,12 @@
                 </div>
             </div>
             <div class="bottm-txt">
-                <span class="wish-review"><span><i class="fa fa-star red"></i></span>{{ stay.reviewScores.rating / 2 /10 }}  
-                <span class="gray">({{stay.reviews.length}} reviews)</span></span>
+                <span class="wish-review"><span><i class="fa fa-star red"></i></span>{{ stay.reviewScores.rating / 2 / 10
+                }}
+                    <span class="gray">({{ stay.reviews.length }} reviews)</span></span>
                 <div>
-                <p> <span class="price">${{ stay.price }} &nbsp;</span>night</p>
-                <!-- <p>${{stay.price * nights}} total</p> -->
+                    <p> <span class="price">${{ stay.price }} &nbsp;</span>night</p>
+                    <!-- <p>${{stay.price * nights}} total</p> -->
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@ export default {
     },
     data() {
         return {
-            nights:0
+            nights: 0
         };
     },
     created() {
@@ -42,14 +42,14 @@ export default {
         // this.reservationValue()
     },
     methods: {
-         reservationValue() {
+        reservationValue() {
             const _MS_PER_DAY = 1000 * 60 * 60 * 24;
             // Discard the time and time-zone information.
             const utc1 = Date.UTC(this.order.startDate.getFullYear(), this.order.startDate.getMonth(), this.order.startDate.getDate());
             const utc2 = Date.UTC(this.order.endDate.getFullYear(), this.order.endDate.getMonth(), this.order.endDate.getDate());
             this.nights = (Math.floor((utc2 - utc1) / _MS_PER_DAY))
         },
-        goToDetails(){
+        goToDetails() {
             this.$router.push(`/stay/${this.stay._id}`)
         }
     },

@@ -2,7 +2,7 @@
     <section class="toy-filter">
 
         <div>
-            <el-select @change="filterBy" v-model="filter.status"  placeholder="Select status">
+            <el-select @change="filterBy" v-model="filter.status" placeholder="Select status">
                 <el-option v-for="(status, idx) in this.status" :value="status" :key="idx">
                     {{ status }}
                 </el-option>
@@ -30,7 +30,6 @@ export default {
     },
     methods: {
         filterBy() {
-            console.log(this.filter)
             this.$store.dispatch({
                 type: 'loadOrder',
                 filter: this.filter

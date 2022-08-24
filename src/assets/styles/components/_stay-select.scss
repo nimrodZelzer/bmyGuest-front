@@ -22,10 +22,6 @@
     position: relative;
     max-width: 853.16px;
     width: 100%;
-    // // transition: all 4s;
-    // animation-name: enlarge;
-    // animation-duration: 2s;
-    // animation-delay: 2s;
 
     input[type="search"] {
         min-width: 250px;
@@ -211,36 +207,27 @@
 
 
 
-    @media (max-width: $break-narrow) {
-        .app-header {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
+    // @media (max-width: $break-narrow) {
+    //     .app-header {
+    //         display: none;
+    //         width: 100%;
+    //         height: 100%;
+    //     }
 
 
+    //     @keyframes enlarge {
+    //         from {
+    //             transform: scale(50%);
 
-        @media (max-width: $break-narrow) {
-            .app-header {
-                display: flex;
-                width: 100%;
-                height: 100%;
-            }
-        }
+    //             // transform: translateY(0%);
+    //         }
 
-        @keyframes enlarge {
-            from {
-                transform: scale(50%);
-
-                // transform: translateY(0%);
-            }
-
-            to {
-                transform: scale(100%);
-                // transform: translateY(0%);
+    //         to {
+    //             transform: scale(100%);
+    //             // transform: translateY(0%);
 
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 }

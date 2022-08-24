@@ -40,7 +40,7 @@ export default {
     methods: {
          closeHeader(){
             this.$emit('openHeader', false)
-            console.log("here")
+            // console.log("here")
         },
         filterTo(){ 
             this.$router.push('/explore')

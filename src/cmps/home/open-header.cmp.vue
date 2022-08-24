@@ -4,13 +4,11 @@
             <form @submit.prevent class="main-form">
                 <div class="search-input-container" @click="(whereClick)" :class="{ active: !searchClick }">
                     <label> Where
-                        <input type="text" v-model="filterBy.txt" class="stay-search clickable"
+                        <input type="text" v-model="dest" class="stay-search clickable"
                             placeholder="Start your search" />
                     </label>
                 </div>
-                <!-- <div class="date-header-container"> -->
-                <date-picker />
-                <!-- </div> -->
+                <date-picker @dates="updatedDates" />
                 <div @click.stop="(guestsClick)" :class="{ active: !active }" class="guests-container mini-container">
                     <label class="clickable">Who
                         <input class="guests" placeholder="Add guests" disabled />
@@ -63,7 +61,6 @@
                     </div>
                 </div>
                 <header-map @closeHeader="closeHeader" v-if="!searchClick" class="header-country" />
-
             </form>
         </div>
     </section>
@@ -71,10 +68,13 @@
 <script>
 import headerMap from "../header-map-search.cmp.vue";
 import datePicker from "./date-picker.cmp.vue"
+
+import { toRaw } from 'vue'
+import { eventBus } from "../../services/event-bus.service";
 export default {
     data() {
         return {
-            filterBy: { txt: '' },
+            dest: '',
             showMenu: false,
             scrolldown: 0,
             openSearch: false,
@@ -95,15 +95,26 @@ export default {
     created() { },
     methods: {
         async goExplore() {
-            console.log('filterBy.txt: ', this.filterBy.txt)
-            this.miniSearch = true
-            this.$emit('openHeader', false)
-            this.$router.push(`/explore/${this.filterBy.txt}`)
-            this.filterBy.txt = ''
+            try {
+                this.miniSearch = true
+                this.$emit('openHeader', false)
+                const order = {
+                    dest: this.dest,
+                    dates: toRaw(this.dates),
+                    guests: this.adults + this.children
+                }
+                // console.log(order)
+                this.$store.commit({ type: 'setNewOrder', order })
+                const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: order })
+                // console.log(stays)
+                this.$router.push(`/explore`)
+                // this.dest.txt = ''
+            } catch (err) {
+                console.log(err)
+            }
+
         },
         handleScroll() {
-            console.log(window.scrollY)
-            console.log(this.pageTop)
             if (window.scrollY > this.pageTop + 101 || window.scrollY < this.pageTop) {
                 this.miniSearch = true
                 this.$emit('openHeader', false)
@@ -111,18 +122,12 @@ export default {
         },
         closeHeader(value) {
             this.$emit('openHeader', value)
-            console.log("here")
+
         },
         openSearchBar() {
             this.miniSearch = false
             this.pageTop = window.top.scrollY
-            this.$emit('openHeader', true)
-        },
-        openLoginModal() {
-            this.loginSignup = true
-        },
-        activeSelection() {
-            this.active = !this.active
+            // this.$emit('openHeader', true)
         },
         inc(num) {
             this.adults += num
@@ -139,16 +144,19 @@ export default {
             try {
                 this.count++
                 if (this.count > 1)
-                    // this.active = !this.active
                     this.searchClick = !this.searchClick
                 this.shouldShow = false
             } catch (err) {
                 console.log(err)
             }
         },
+        updatedDates(data) {
+            this.dates = data
+        }
 
     },
-    computed: {},
+    computed: {
+    },
     unmounted() { },
     components: {
         datePicker,
@@ -156,6 +164,3 @@ export default {
     },
 };
 </script>
-<style lang="">
-    
-</style>

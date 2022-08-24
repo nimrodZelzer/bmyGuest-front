@@ -4,7 +4,7 @@ export default {
   state: {
     stays: [],
     currStay: {},
-    filterBy: { txt: "", price: { min: "", max: "" } },
+    filterBy: { dest: "", price: { min: "", max: "" } },
     sortBy: {},
     imgToDisplayCard: {},
     labels: {},
@@ -35,7 +35,7 @@ export default {
       return state.currHostStay
     },
   },
-  
+
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
@@ -63,19 +63,16 @@ export default {
       let stayHost = state.stays.filter((stay) => stay.host.id === id)
       state.currHostStay = stayHost
     },
-    setFilterBy(state, { filterBy }) {
-      state.filterBy = filterBy
-    },
   },
   actions: {
     async loadStays({ commit }, { filterBy }) {
-    
+      // console.log(filterBy)
       commit({ type: "setFilterBy", filterBy })
-      console.log("yoyo", this.filterBy)
       try {
         const stays = await stayService.query(filterBy)
         console.log(stays)
         commit({ type: "setStays", stays })
+        return stays
       } catch (err) {
         console.log("Error in query stays (store)", err)
         throw err
@@ -88,7 +85,6 @@ export default {
     },
 
     async loadById({ commit }, { id }) {
-      console.log(id)
       try {
         const stay = await stayService.getById(id)
         commit({ type: "setStayById", stay })
@@ -108,7 +104,6 @@ export default {
     },
     async saveStay({ commit }, { stay }) {
       try {
-        console.log(stay, "we got it")
         const stayToSave = await stayService.save(stay)
         commit({ type: "setStays" })
         return stayToSave

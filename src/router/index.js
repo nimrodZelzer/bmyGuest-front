@@ -3,8 +3,8 @@ import deshboardHost from "../pages/deshboard-host.vue"
 import explorePage from "../pages/explore-page.vue"
 import homePage from "../pages/home-page.vue"
 import stayDetails from "../pages/stay-details.vue"
-import userWishlist from '../pages/user-wishList.vue'
-import userOrder from '../pages/user-order.vue'
+import userWishlist from "../pages/user-wishlist.vue"
+import userOrder from "../pages/user-order.vue"
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -13,6 +13,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: homePage,
+    },
+    {
+      path: "/wishlist",
+      name: "wish-list-page",
+      component: userWishlist,
     },
     {
       path: "/order",
@@ -29,16 +34,10 @@ const router = createRouter({
       name: "stay-details",
       component: stayDetails,
     },
-
     {
       path: "/orders",
       name: "orders-page",
       component: userOrder,
-    },
-    {
-      path: "/wishlist",
-      name: "wish-list-page",
-      component: userWishlist,
     },
   ],
 })

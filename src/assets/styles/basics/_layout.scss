@@ -1,7 +1,7 @@
 .main-layout {
-    padding: 0 rem(80px);
+    padding: 0 80px;
     margin: 0 auto;
-    max-width: 1280px;
+    // max-width: 1280px;
 
     @include for-mobile-layout {
         // 375px

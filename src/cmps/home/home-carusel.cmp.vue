@@ -1,17 +1,18 @@
 <template>
-  <carousel style="width: 75vw;" :items-to-show="12">
-    <slide v-for="slide in labels.length - 1" :key="slide" class="slide-el flex column">
-      <div class="labels-wrapper">
+  <Carousel :items-to-show="12">
+    <Slide v-for="slide in labels.length - 1" :key="slide">
+      <div class="labels-wrapper carousel__item">
         <img v-bind:src="'/img/lebels/' + labels[slide] + '.jpg'" class="labels-img" />
         <span class="now-rap">{{ labels[slide] }}</span>
       </div>
-    </slide>
+    </Slide>
     <template #addons>
-      <navigation />
-
+      <Navigation />
     </template>
-  </carousel>
+  </Carousel>
 </template>
+
+
  
 <script>
 import 'vue3-carousel/dist/carousel.css';

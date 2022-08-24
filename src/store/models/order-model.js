@@ -4,8 +4,6 @@ import { stayService } from "../../services/stay.service-toback.js"
 import {
   socketService,
   SOCKET_EVENT_ORDER_ADDED,
-  // SOCKET_EVENT_ORDER_ABOUT_YOU,
-  // SOCKET_EVENT_ORDER_UPDATED,
 } from "../../services/socket.service"
 
 export default {
@@ -15,6 +13,7 @@ export default {
     orderByHost: [],
     orderByUser: [],
     totalPriceArry: [],
+    newOrder: {},
   },
   getters: {
     getCurrOrder(state) {
@@ -34,6 +33,10 @@ export default {
     },
   },
   mutations: {
+    setNewOrder(state, { order }) {
+      console.log(order)
+      state.newOrder = order
+    },
     setOrders(state, { orders }) {
       state.orders = orders
     },
@@ -57,7 +60,6 @@ export default {
       const idx = state.orders.findIndex(
         (currOrder) => currOrder._id === order._id
       )
-
       if (idx !== -1) {
         state.orders.splice(idx, 1, order)
       } else {
@@ -78,7 +80,6 @@ export default {
     async loadOrders({ commit }) {
       try {
         const orders = await orderService.query()
-        console.log(orders)
         commit({ type: "setOrders", orders })
       } catch (err) {
         console.log("Cannot load orders from store", err)
@@ -86,17 +87,10 @@ export default {
       }
     },
     async saveOrder({ commit }, { order }) {
-      console.log('here',order)
       try {
         const orderToSave = await orderService.save(order)
         socketService.emit(SOCKET_EVENT_ORDER_ADDED, orderToSave)
-        // socket.emit(SOCKET_EVENT_ORDER_ADDED,, (userId) => {
-        //   logger.debug(`Setting (${socket.id}) socket.userId = ${userId}`)
-        //   socket.userId = userId
-        // })
-
         commit({ type: "saveOrder", order: orderToSave })
-        console.log(orderToSave, "ordertosaveeeee")
         return orderToSave
       } catch (err) {
         console.log("Error: cannot save order", err)
@@ -105,7 +99,6 @@ export default {
     },
     async getOrderByHost({ commit }, { id }) {
       const orders = await orderService.saveOrderByHostId(id)
-      console.log(orders,'ggggggggggggggg')
       commit({ type: "setOrderByHost", orders })
       return orders
     },
@@ -116,28 +109,17 @@ export default {
     },
 
     async loadHostOrders({ commit }, { id }) {
-      console.log(id)
       try {
         const orderByHost = await orderService.saveOrderByHostId(id)
-        console.log(orderByHost)
         commit({ type: "setOrderByHost", orderByHost })
       } catch (err) {
         console.log("Error in query stays (store)", err)
         throw err
       }
-
-      // socketService.off(SOCKET_EVENT_ORDER_ABOUT_YOU)
-      // socketService.on(SOCKET_EVENT_ORDER_ABOUT_YOU, (order) => {
-      //   console.log("New order!", order)
-      //   commit({ type: " saveOrder", order })
-      //   // commit({ type: "newOrder", order })
-      // })
     },
     async loadOrder({ commit }, { filter }) {
-      console.log(filter)
       try {
         const orderByfilter = await orderService.getFilterOrders(filter)
-        console.log(orderByfilter)
         commit({ type: "setOrders", orderByfilter })
       } catch (err) {
         console.log("Error in query stays (store)", err)
@@ -147,7 +129,7 @@ export default {
     async changeOrderStatus({ commit }, { order }) {
       try {
         let orders = await orderService.save(order)
-        console.log(orders)
+
         commit({ type: "setOrderByHost", orders })
       } catch (err) {
         console.log("Error in save orders", err)
@@ -156,9 +138,7 @@ export default {
     },
     async getOrderByUser({ commit }, { id }) {
       try {
-        console.log(id)
         const orders = await orderService.saveOrderByUserId(id)
-        console.log(orders, "from service")
         commit({ type: "setOrdersUsers", orders })
         return orders
       } catch (err) {

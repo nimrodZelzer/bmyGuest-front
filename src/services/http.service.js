@@ -2,7 +2,7 @@ import Axios from "axios"
 // import { router } from "@/router"
 
 const BASE_URL =
-  (process.env.NODE_ENV !== "development") ? "/api/" : "//localhost:3030/api/"
+  process.env.NODE_ENV !== "development" ? "/api/" : "//localhost:3030/api/"
 const axios = Axios.create({
   withCredentials: true,
 })
@@ -25,7 +25,7 @@ export const httpService = {
 }
 
 async function ajax(endpoint, method = "GET", data = null) {
-  console.log(method)
+  // console.log(method)
   try {
     const res = await axios({
       url: `${BASE_URL}${endpoint}`,

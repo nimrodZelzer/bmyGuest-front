@@ -35,14 +35,10 @@ html {
 
 body {
     margin: 0;
-
-
-    @include for-normal-layout {
-        &.sidebar-open {
-            overflow: hidden;
-        }
-    }
+    overflow-x: hidden;
 }
+
+
 
 h1,
 h2,
@@ -66,15 +62,17 @@ h6 {
     opacity: 0.6;
 }
 
-.green{
+.green {
     color: rgb(47, 231, 47);
     font-family: airbnb-medium;
 }
+
 .white {
     fill: white;
     stroke: white;
 }
-.filter{
+
+.filter {
     filter: contrast(0.295455);
     opacity: 0.9;
 }
@@ -89,10 +87,10 @@ h6 {
     margin-bottom: 2.5px;
 }
 
-.loader{
+.loader {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    height:355px;
+    transform: translate(-50%, -50%);
+    height: 355px;
 }

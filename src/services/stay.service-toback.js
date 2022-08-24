@@ -9,7 +9,7 @@ const gLabels = [
   "Camping",
   "Desert",
   "Amazing views",
-  "National parks",
+  "Parks",
   "Cabins",
   "Design",
   "Islands",
@@ -17,7 +17,7 @@ const gLabels = [
   "Arctic",
   "Lakefront",
   "Tropical",
-  "Bed & breakfasts",
+  "Breakfasts",
   "Chef's Kitchens",
   "Ski-in",
   "Windmills",
@@ -36,32 +36,17 @@ export const stayService = {
 }
 
 async function query(filterBy = {}) {
-  // console.log(filterBy)
   return await httpService.get(ENDPOINT, filterBy)
-  // _saveLocalStay(stays)
-  // if (!filterBy) return utilService.loadFromStorage(STAY_KEY)
-  // gStays = utilService.loadFromStorage(STAY_KEY)
-  // const { txt } = filterBy
-  // let filteredStays = gStays.filter((stay) => stay.loc.country.includes(txt))
-  // return filteredStays
-  // const regExp = new RegExp(txt, "i")
-  // let filteredStays = stays.filter((c) => regExp.test(c))
 }
 
 async function getById(stayId) {
-  let stay = await httpService.get(`${ENDPOINT}/${stayId}`)
-  console.log(stay)
-  return stay
-  // const stay = query().find((stay) => stay._id === stayId)
-  // console.log(stay)
-  // return stay
+  return await httpService.get(`${ENDPOINT}/${stayId}`)
 }
 
 async function getHostStays(id) {
   try {
     const stays = await httpService.get(ENDPOINT)
     const stayByHost = stays.filter((stay) => stay.host.id === id)
-    console.log(stayByHost)
     return stayByHost
   } catch (err) {
     console.log("Cannot load stays from store", err)
@@ -78,10 +63,6 @@ async function save(stay) {
 
 async function remove(stayId) {
   return await httpService.delete(`${ENDPOINT}/${stayId}`)
-  // const stays = query()
-  // const idx = stays.findIndex((stay) => stay._id === stayId)
-  // stays.splice(idx, 1)
-  // utilService.saveToStorage(STAY_KEY, stays)
 }
 
 function getEmptyStay() {
@@ -103,27 +84,3 @@ function getLabels() {
 function updateWished(newStay) {
   save(newStay)
 }
-
-// // function addNewstayToHost(stay) {
-// //    await httpService.put("stay", stay)
-
-// // return stay
-// }
-
-// function _createStays() {
-//   let stays = utilService.loadFromStorage(STAY_KEY)
-//   if (!stays || !stays.length) {
-//     stays = new Request("/src/services/stays.json")
-//     fetch(stays)
-//       .then((stay) => stay.json())
-//       .then((stays) => utilService.saveToStorage(STAY_KEY, stays))
-//   }
-//   return stays
-// }
-
-// function update(newStay) {
-//   const gStays = query()
-//   const idx = gStays.findIndex((stay) => stay._id === newStay._id)
-//   gStays.splice(idx, 1, newStay)
-//   utilService.saveToStorage(STAY_KEY, gStays)
-// }
