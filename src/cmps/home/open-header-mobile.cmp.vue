@@ -37,7 +37,7 @@
                     <input type="search" placeholder="Search destination" v-model="dest" />
                 </label>
                 <div class="mob-countries">
-                    <header-map />
+                    <header-map v-model="dest" />
                 </div>
             </div>
         </section>
@@ -59,7 +59,9 @@
                 <button class="btn-airbnb">Search </button>
             </div>
         </section>
-        <date-picker-mobile v-if="openDatePicker" />
+        <div v-if="openDatePicker">
+            <date-picker-mobile @dates="updatedDates" @isOpen="closeDatePicker" />
+        </div>
     </form>
     <!-- <guests-modal /> -->
 </template>
@@ -68,12 +70,18 @@
 import headerMap from "../header-map-search.cmp.vue";
 import datePickerMobile from "../date-picker-mobile.cmp.vue";
 import guestsModal from "../guests-modal.cmp.vue";
+
+import { toRaw } from 'vue'
+
 export default {
     data() {
         return {
             isClicked: false,
             dest: '',
             openDatePicker: false,
+            adult: 0,
+            children: 0,
+            dates: []
         }
     },
     props: {
@@ -82,22 +90,46 @@ export default {
         }
     },
     methods: {
+        closeDatePicker(val) {
+            this.openDatePicker = val
+        },
         toggleMbHdr() {
             this.$emit('isShow', false)
+        },
+        updatedDates(data) {
+            this.dates = data
         },
         submit() {
             console.log('submit')
             const order = {
                 dest: this.dest,
                 dates: toRaw(this.dates),
-                guests: this.adults + this.children
+                guests: this.adult + this.children
             }
             console.log(order)
+            this.$store.commit({ type: 'setNewOrder', order })
+            this.setStays(order)
+        },
+        async setStays(order) {
+            try {
+                const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: order })
+                if (stays.length === 60) {
+                    console.log('no stays dude')
+                    this.$router.push(`/`)
+                }
+                else this.$router.push(`/explore`)
+                this.$emit('isShow', false)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        clearAll() {
+            this.dest = ''
+            this.dates = []
         }
     },
     computed: {},
     created() {
-        console.log(this.isShow)
     },
     components: { headerMap, datePickerMobile, guestsModal }
 }

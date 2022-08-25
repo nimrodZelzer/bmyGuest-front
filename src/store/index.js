@@ -7,18 +7,23 @@ const store = createStore({
   strict: true,
   state: {
     currPage: "",
-    openHeader: true,
+    openHeader: false,
   },
   getters: {
     currPage(state) {
       return state.currPage
     },
+    openHeader(state) {
+      return state.openHeader
+    },
   },
   mutations: {
     setCurrPage(state, { page }) {
       state.currPage = page
+      // console.log(page)
     },
     setOpenHeader(state, { currVal }) {
+      // console.log("openHeader: ", currVal)
       state.openHeader = currVal
     },
   },

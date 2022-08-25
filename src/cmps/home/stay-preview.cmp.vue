@@ -10,9 +10,7 @@
                     d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
                 </path>
             </svg>
-
         </div>
-
         <div class="card-txt">
             <div class="title flex">
                 <span v-if="stay.loc" class="bold score">{{ stay.loc.city }} {{ stay.loc.country }}</span><span
@@ -29,13 +27,8 @@
             <div class="main-txt flex ">
                 <span class="preview-description">{{ stay.description }}</span>
                 <span>{{ stay.capacity.beds }} beds</span>
-                <!-- <span v-if="stay.host.isSuperhost">Professional Host</span> -->
-                <!-- <span v-else>Individual Host</span> -->
             </div>
-
             <span class="price flex gap"><span class="bold">${{ stay.price }}</span>night</span>
-            <!-- <router-link :to="'stay/'+stay._id">Become a Host</router-link> -->
-
         </div>
 
     </div>
@@ -54,7 +47,7 @@ export default {
         return {
             isMouseOver: false,
             description: "",
-            wished: false
+            wished: false,
         }
     },
     created() {
@@ -62,16 +55,20 @@ export default {
     },
     methods: {
         goToDetail() {
+            this.$store.commit({ type: 'setCurrPage', page: 'details-page' })
             this.$router.push(`/stay/${this.stay._id}`)
-            // this.$store.dispatch({ type: 'loadById', id: this.stay._id })
         },
         addToWishList() {
-            // this.wished ? showSuccessMsg("added to wishlist") : showSuccessMsg('removed from wishlist')
+            if (this.currPage === 'home-page') return console.log('only in explore')
             this.$emit("addToWishList", this.stay)
             this.wished = !this.wished
         }
     },
-    computed: {},
+    computed: {
+        currPage() {
+            return this.$store.getters.currPage
+        }
+    },
     components: {
         carusel,
 

@@ -22,19 +22,15 @@ export default {
         };
     },
     created() {
-        this.show()
-        const page = 'wishlist-container'
-        // this.$store.commit({ type: 'setCurrPage', page })
-        this.$store.commit('setCurrPage', { page })
-        console.log(page)
-        // // this.$store.dispatch({ type: 'loadStays' })
-        // this.stays = this.$store.getters.stays
+        this.$store.commit({ type: 'setCurrPage', page: 'wishlist-container' })
+        if (this.wishedStays) this.wishedStays = this.stays.filter((stay) => stay.wished)
+    },
+    mounted() {
 
-        this.wishedStays = this.stays.filter((stay) => stay.wished)
     },
     methods: {
         show() {
-            console.log(this.$route.params)
+            console.log(this.$route)
         }
     },
     computed: {},

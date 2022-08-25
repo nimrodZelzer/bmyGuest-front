@@ -1,34 +1,28 @@
 <template>
-    <div class="app-header main-layout" :class="{
-        'header-container': !miniSearch,
-        'close-header': miniSearch,
-    }">
-        <section :class="{ 'stay-details': isStayDetails, 'explore-page': explorePage }">
-            <section class="top-header flex">
-                <div class="logo">
-                    <h1 @click.stop="goHome">
-                        <span>
-                            <i class="fa-brands fa-airbnb logo-icon"></i>
-                        </span>
-                        <span class="logo-txt">
-                            BmyGuest
-                        </span>
-                    </h1>
+    <section class="app-header main-layout">
+        <section class="top-header flex">
+            <div class="logo">
+                <h1 @click.stop="goHome">
+                    <span>
+                        <i class="fa-brands fa-airbnb logo-icon"></i>
+                    </span>
+                    <span class="logo-txt">
+                        BmyGuest
+                    </span>
+                </h1>
+            </div>
+            <div @click.stop="openSearchBar" class="search-close">
+                <div v-if="!isOpenHeader" class="mini-search clickable">
+                    <label>Anywhere</label>
+                    <label>Any week</label>
+                    <label>Add guests</label>
+                    <span></span>
                 </div>
-                <div @click.stop="openSearchBar" class="search-close">
-                    <div v-if="miniSearch" class="mini-search clickable">
-                        <label>Anywhere</label>
-                        <label>Any week</label>
-                        <label>Add guests</label>
-                        <span></span>
-                    </div>
-                </div>
-                <header-nav :stays="stays" />
-            </section>
-            <open-header v-if="!miniSearch" @openHeader="open(value)" />
+            </div>
+            <header-nav :stays="stays" />
         </section>
-    </div>
-
+        <open-header v-if="isOpenHeader" />
+    </section>
     <template v-if="isShow">
         <section class="mobile clickable">
             <div class="mini-search-mobile">
@@ -40,7 +34,7 @@
                             opacity=".8"></path>
                     </svg>
                 </span>
-                <div class="mobile-content" @click.stop="isShow = !isShow">
+                <div class="mobile-content" @click.stop="openMobSearchBar">
                     <div>
                         <label>where to?</label>
                     </div>
@@ -67,6 +61,7 @@
             <open-header-mobile :isShow="isShow" @isShow="closeOpenHdr" />
         </section>
     </template>
+
 </template>
 
 <script>
@@ -75,6 +70,9 @@ import headerNav from "./header-nav.cmp.vue"
 import openHeader from "./open-header.cmp.vue"
 import openHeaderMobile from "./open-header-mobile.cmp.vue"
 import headerFilter from './header-filter.cmp.vue'
+
+
+
 export default {
     props: {
         stays: {
@@ -83,71 +81,73 @@ export default {
     },
     data() {
         return {
-            showMenu: false,
             scrolldown: 0,
-            openSearch: false,
-            miniSearch: true,
+            isOpenHeader: false,
             pageTop: 0,
             currPage: null,
             dates: [],
-            isStayDetails: false,
             isMobOpen: true,
             isShow: true,
             openFilterMb: false,
         }
     },
     created() {
+        this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
         window.addEventListener("scroll", this.handleScroll)
-        this.miniSearch = true
-        // this.$emit("minisearch", true)
-    },
-    mounted() {
-        this.miniSearch = true
+
     },
     methods: {
-        open(value) {
-            // console.log(value)
+        openMobSearchBar() {
+            this.isShow = !this.isShow
+            window.scrollTo(0, 0);
         },
         closeOpenHdr(val) {
             this.isShow = true
             this.openFilterMb = false
-
         },
         goHome() {
             this.$router.push('/')
+            this.isOpenHeader = false
+            this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
         },
         handleScroll() {
-            if (this.currentPage === 'home-page') document.querySelector('.labels-select').style.display = 'block'
+            if (this.currentPage === 'home-page') this.handleLabels('block')
             if (window.scrollY > this.pageTop + 100 || window.scrollY < this.pageTop) {
-                this.miniSearch = true
-                document.querySelector(`.${this.currentPage}`).classList.remove('overlay')
+                this.isOpenHeader = false
+                if (this.currentPage === 'explore-app') this.handleFilterBtn('flex')
+                this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
+                this.removeOverlay()
             }
         },
         openSearchBar() {
             this.pageTop = window.top.scrollY
-            this.miniSearch = false
+            this.isOpenHeader = true
+            this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
 
-
-            if (this.currentPage === 'home-page') document.querySelector('.labels-select').style.display = 'none'
-            document.querySelector(`.${this.currentPage}`).classList.add('overlay')
-            console.log(this.currentPage)
+            if (this.currentPage === 'explore-app') this.handleFilterBtn('none')
+            if (this.currentPage === 'home-page') this.handleLabels('none')
+            this.addOverlay()
         },
         openMobHeader() {
             this.isMobOpen === !this.isMobOpen
             console.log(this.isMobOpen)
         },
+        handleFilterBtn(val) {
+            document.querySelector('.filter-btn').style.display = val
+        },
+        handleLabels(val) {
+            document.querySelector('.labels-select').style.display = val
+        },
+        addOverlay() {
+            document.querySelector(`.${this.currentPage}`).classList.add('overlay')
+        },
+        removeOverlay() {
+            document.querySelector(`.${this.currentPage}`).classList.remove('overlay')
+        }
     },
     computed: {
         currentPage() {
             return this.$store.getters.currPage
-        },
-        explorePage() {
-            const res = this.currPage === 'explore-page' ? true : false
-            return res
-        },
-        homePage() {
-            const res = this.currPage === 'home-page' ? true : false
-            return res
         },
         currDest() {
             var dest = this.$store.getters.getDest;
@@ -165,33 +165,15 @@ export default {
     unmounted() {
         window.removeEventListener("scroll", this.handleScroll)
     },
-    // watch: {
-    // "$store.state.currPage": {
-    //     handler() {
-    //         this.currPage = this.$store.getters.currPage
-    //         this.miniSearch = this.currPage !== "home-page" && this.currPage !== "explore-page"
-    //         if (this.currPage === "home-page") this.miniSearch = true
-    //     },
-    //     immediate: true,
-    //     deep: true,
-    // },
-    // "$route.name": {
-    //     handler(name) {
-    //         this.isStayDetails = name === 'stay-details'
-    //     },
-    //     immediate: true,
-    //     deep: true,
-    // }
-    // },
     watch: {
-        isModalVisible() {
-            if (this.isShow) {
+        isShow() {
+            if (!this.isShow) {
+                this.pageTop = window.top.scrollY
                 document.body.style.overflow = 'hidden'
                 return
             }
-
             document.body.style.overflow = 'auto'
-        }
+        },
     },
 }
 </script>

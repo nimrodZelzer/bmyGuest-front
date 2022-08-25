@@ -28,9 +28,6 @@ export default {
     this.center.lng = this.stay.loc.location.lan
     this.markers[0].position.lat = this.stay.loc.location.lat
     this.markers[0].position.lng = this.stay.loc.location.lan
-    // this.center.lat = this.stay.loc.location.lat
-    // this.center.lng = this.stay.loc.location.lan
-    // console.log(this.center)
   },
   data() {
     return {

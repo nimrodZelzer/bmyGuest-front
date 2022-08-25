@@ -8,6 +8,10 @@ import userOrder from "../pages/user-order.vue"
 
 const router = createRouter({
   history: createWebHashHistory(),
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0 }
+  },
   routes: [
     {
       path: "/",
@@ -41,5 +45,6 @@ const router = createRouter({
     },
   ],
 })
+// console.log(router)
 
 export default router

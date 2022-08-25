@@ -1,0 +1,43 @@
+.main-filter {
+    .filter-btn {
+        position: fixed;
+        z-index: 1;
+        right: 2%;
+        bottom: 48px;
+        display: flex;
+        align-self: center;
+        border: 1px solid rgb(224, 222, 222);
+        width: 160px;
+        height: 80px;
+        align-items: center;
+        justify-content: space-evenly;
+        font-family: airbnb-regular;
+        border-radius: 45px;
+        background-color: black;
+        color: white;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+        transition: all 0.3s ease 0s;
+
+        &:hover {
+            background-color: #B87C4C;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        &:active {
+            transform: translateY(-1px);
+        }
+    }
+}
+
+
+@media (max-width:$break-narrow) {
+
+    .filter-btn {
+        display: none;
+    }
+}

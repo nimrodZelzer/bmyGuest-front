@@ -114,6 +114,17 @@ export default {
     },
     async savePrices() {
       this.loadStays()
+
+      this.$router.push('/explore')
+    }
+  },
+  watch: {
+    openModal() {
+      if (!this.openModal) {
+        document.body.style.overflow = 'hidden'
+        // return
+      }
+      else document.body.style.overflow = 'auto'
     }
   },
 }

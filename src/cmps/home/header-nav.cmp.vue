@@ -1,9 +1,8 @@
 <template >
-
     <div class="main-nav">
         <nav>
-            <router-link to="/explore">Explore</router-link>
-            <router-link to="/order" :user="user">Become a Host</router-link>
+            <router-link @click="closeHeader" to="/explore">Explore</router-link>
+            <router-link @click="closeHeader" to="/order" :user="user">Become a Host</router-link>
             <button class="user-menu-btns clickable" @click="showMenu = !showMenu">
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                     focusable="false"
@@ -24,7 +23,7 @@
                 <a v-if="!user" @click="isModalLoginSingUp = !isModalLoginSingUp">register</a>
                 <router-link to="#">Notifications</router-link>
                 <router-link v-if="user" :user="user" to="/orders">Orders</router-link>
-                <router-link :stays="stays" v-if="stays" to="/wishlist">Wishlist</router-link>
+                <router-link :stays="stays" @click="closeHeader" to="/wishlist">Wishlist</router-link>
             </div>
         </div>
     </div>
@@ -63,34 +62,38 @@ export default {
     props: {
         stays: {
             type: Array
-        }
+        },
     },
     data() {
         return {
             showMenu: false,
-            currPage: null,
             isShowDropdownMenu: false,
             user: null,
-            stays: null,
             admin: null,
-            isModalLoginSingUp: false
+            isModalLoginSingUp: false,
+            isOpenHeader: false,
         };
     },
     created() {
+        const res = this.$store.getters.openHeader
+        this.isOpenHeader = res
     },
     methods: {
-        closeDropdownMenu() {
-            // console.log(this.isShowDropdownMenu);
-            this.showMenu = false
-        },
         async login() {
             console.log('here');
             const loggedinUser = await this.$store.getters.loggedinUser
             this.user = loggedinUser
             this.isModalLoginSingUp = false
-        }
+        },
+        closeHeader() {
+            this.$store.commit({ type: 'setOpenHeader', currVal: false })
+            this.isOpenHeader = false
+        },
     },
     computed: {
+        currPage() {
+            return this.$store.getters.currPage
+        }
     },
     unmounted() { },
     components: {

@@ -7,11 +7,11 @@
             </div>
             <div class="guest-btns">
                 <button type="button">
-                    <span @click="inc(-1)"> - </span>
+                    <span @click="adultCount(-1)"> - </span>
                 </button>
                 <span class="guests-num">{{ adults }}</span>
                 <button type="button">
-                    <span @click="inc(+1)"> + </span>
+                    <span @click="adultCount(+1)"> + </span>
                 </button>
             </div>
         </div>
@@ -22,11 +22,11 @@
             </div>
             <div class="guest-btns">
                 <button type="button">
-                    <span @click="incChildrens(-1)"> -</span>
+                    <span @click="childrenCount(-1)"> -</span>
                 </button>
                 <span class="guests-num">{{ children }}</span>
                 <button type="button">
-                    <span @click="incChildrens(+1)"> + </span>
+                    <span @click="childrenCount(+1)"> + </span>
                 </button>
             </div>
         </div>
@@ -35,6 +35,7 @@
 
 <script>
 export default {
+    name: 'guests-modal',
     data() {
         return {
             adults: 0,
@@ -43,11 +44,12 @@ export default {
     },
     created() { },
     methods: {
-        inc(num) {
+        adultCount(num) {
             this.adults += num
         },
-        incChildrens(num) {
+        childrenCount(num) {
             this.children += num
+            this.$emit()
         },
     }
 }

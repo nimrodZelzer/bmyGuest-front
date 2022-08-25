@@ -1,14 +1,15 @@
 <template>
-  <section class="explore-app">
-    <div class="header-explore">
-    </div>
+  <main-filter :stays="stays" />
+  <section class="explore-app" v-if="stays">
     <stay-list @addToWishList="addToWishList" v-if="stays" :stays="stays" />
-    <div v-else>Loading...</div>
+    <div v-else class="loader">Loading...</div>
   </section>
+  <section v-else>No stays for display</section>
 </template>
 
 <script>
 import stayList from '../cmps/home/stay-list.cmp.vue'
+import mainFilter from '../cmps/filter.cmp.vue'
 
 export default {
   name: 'explore-page',
@@ -17,8 +18,6 @@ export default {
   },
   data() {
     return {
-      // filterBy: { txt: null },
-      // stays: null
     }
   },
   methods: {
@@ -31,20 +30,16 @@ export default {
       } catch (err) {
         console.log(err)
       }
-
     }
   },
   computed: {
     stays() {
-      // console.log(this.$store.getters.stays)
       return this.$store.getters.stays
     },
-    countries() {
-      return this.$store.getters.staysToShow
-    }
   },
   components: {
     stayList,
+    mainFilter
   },
 }
 </script>

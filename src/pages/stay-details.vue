@@ -12,7 +12,7 @@
       <!-- <details-map class="details-map" :stay="stay" /> -->
       <details-reviews :stay="stay" />
       <div class="map-container">
-        <!-- <details-map class="details-map" :stay="stay" /> -->
+        <details-map class="details-map" :stay="stay" />
       </div>
     </div>
     <!-- <details-map class="details-map" :stay="stay" /> -->
@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-// import detailsMap from '../cmps/details-map.cmp.vue';
+import detailsMap from '../cmps/details-map.cmp.vue';
 import imgGallery from '../cmps/details/image-gallery.cmp.vue';
 import detailsHeader from '../cmps/details/details-header.cmp.vue';
 import reservationDetails from '../cmps/details/reservation-details.cmp.vue';
@@ -90,7 +90,7 @@ export default {
     deatilsStickyHeader,
     detailsReviews,
     appFooter,
-    // detailsMap,
+    detailsMap,
   },
 };
 </script>

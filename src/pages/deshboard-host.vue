@@ -7,7 +7,7 @@
         </div>
         <div class="dash-board-details flex ">
             <div class="order-wrapper">
-                <!-- <order-list @changeStatus='changeStatus' :orders="this.newOrders" /> -->
+
                 <order-list @changeStatus='changeStatus' :orders="this.orders" />
             </div>
             <div class="dash-board-summary">
@@ -19,7 +19,7 @@
                         <span>view details</span>
                     </div>
 
-                    <!-- <img src="src\assets\images\success-svgrepo-com.svg" alt=""> -->
+
                 </div>
                 <div class="earnings-container ">
                     <div class="flex  justify-between"><span>Total earnings</span><span class="green">$2650</span></div>
@@ -78,16 +78,12 @@ export default {
         }
 
     },
-
-
     methods: {
         changeStatus(props) {
             console.log(props)
         }
 
     },
-
-
     components: {
         orderList,
         totalPriceChart,
