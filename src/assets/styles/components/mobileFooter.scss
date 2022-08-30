@@ -1,0 +1,16 @@
+.mobileFooter {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: -60px;
+    height: 125px;
+    background-color: $clr3 ;
+    width: 100%;
+    gap: rem(100px);
+    padding: rem(20px);
+    
+
+    @include for-narrow-layout {
+        display: none;
+    }
+}

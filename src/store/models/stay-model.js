@@ -66,7 +66,7 @@ export default {
   },
   actions: {
     async loadStays({ commit }, { filterBy }) {
-      // console.log(filterBy)
+      console.log(filterBy)
       commit({ type: "setFilterBy", filterBy })
       try {
         const stays = await stayService.query(filterBy)

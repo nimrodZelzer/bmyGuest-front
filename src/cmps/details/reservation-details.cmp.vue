@@ -2,14 +2,14 @@
     <div class="reservation-details flex reservation-layout ">
         <div class="flex reservation-header">
             <h2>
-                ${{ stay.price }}
+                ${{  stay.price  }}
                 <span>night</span>
             </h2>
             <div>
-                <span> <i class=" fa fa-star"></i> {{ (stay.reviewScores.rating / 20).toFixed(2) }} <span
+                <span> <i class=" fa fa-star"></i> {{  (stay.reviewScores.rating / 20).toFixed(2)  }} <span
                         class="dot"></span></span>
                 <span>
-                    {{ stay.reviews.length }} reviews
+                    {{  stay.reviews.length  }} reviews
                 </span>
             </div>
         </div>
@@ -19,16 +19,17 @@
                     <span class="top">CHECKIN</span>
                     <span v-if="!date.length" class="bottom">Add dates</span>
                     <span v-else class="bottom">{{
-                            date[0].getDate()
-                    }}/{{ date[0].getMonth() + 1 }}/{{ date[0].getYear() - 100 }}</span>
+                         date[0].getDate() 
+                        }}/{{  date[0].getMonth() + 1  }}/{{  date[0].getYear() - 100  }}</span>
                 </div>
                 <div class="checkout clickable ">
                     <span class="top" style="padding-bottom: px;">CHECKOUT</span>
                     <span v-if="!date.length" class="bottom">Add dates</span>
-                    <span v-else class="bottom">{{ date[1].getDate() }}/{{ date[1].getMonth() + 1 }}/{{
-                            date[1].getYear() -
-                            100
-                    }}</span>
+                    <span v-else class="bottom">{{  date[1].getDate()  }}/{{  date[1].getMonth() + 1  }}/{{
+                         date[1].getYear() -
+                         100
+
+                        }}</span>
                 </div>
                 <el-date-picker v-model="date" @change="changeDate" start-placeholder="Check in "
                     end-placeholder="Check out " type="daterange" range-separator="|"
@@ -39,8 +40,8 @@
                     <h5>GUESTS</h5>
                     <div class="flex justify-between" style="align-items: center;">
                         <div>
-                            <span v-if="guestAmount <= 1">{{ guestAmount }} guest</span>
-                            <span v-else>{{ guestAmount }} guests</span>
+                            <span v-if="guestAmount <= 1">{{  guestAmount  }} guest</span>
+                            <span v-else>{{  guestAmount  }} guests</span>
                         </div>
                         <span><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                 role="presentation" focusable="false"
@@ -58,7 +59,7 @@
                         <span>Adults</span>
                         <div>
                             <button v-if="adultAmount > 1" @click="inc(-1)">-</button>
-                            <span class="adult-ctr">{{ adultAmount }}</span>
+                            <span class="adult-ctr">{{  adultAmount  }}</span>
                             <button v-if="adultAmount < 9" @click="inc(1)">+</button>
                         </div>
                     </div>
@@ -66,7 +67,7 @@
                         <span>children</span>
                         <div>
                             <button v-if="children > 0" @click="incChildren(-1)">-</button>
-                            <span class="adult-ctr">{{ children }}</span>
+                            <span class="adult-ctr">{{  children  }}</span>
                             <button v-if="children < 9" @click="incChildren(1)">+</button>
                         </div>
                     </div>
@@ -74,7 +75,7 @@
                         <span>infants</span>
                         <div>
                             <button v-if="infants > 0" @click="incInfants(-1)">-</button>
-                            <span class="adult-ctr">{{ infants }}</span>
+                            <span class="adult-ctr">{{  infants  }}</span>
                             <button v-if="infants < 9" @click="incInfants(1)">+</button>
                         </div>
                     </div>
@@ -88,13 +89,13 @@
         <div class="reservation-total-price" v-if="nights">
             <span>you will not be charged yet</span>
             <div class="total">
-                <span>${{ stay.price }} x {{ nights }} nights</span><span>${{ totalPrice }}</span>
+                <span>${{  stay.price  }} x {{  nights  }} nights</span><span>${{  totalPrice  }}</span>
             </div>
             <div class="total-last">
                 <span>service fee</span><span>$300</span>
             </div>
             <p>
-                <span>Total:</span><span>${{ totalPrice + 300 }}</span>
+                <span>Total:</span><span>${{  totalPrice + 300  }}</span>
             </p>
         </div>
     </div>
@@ -118,28 +119,28 @@
 
 
                 <div class="flex justify-between"><span class="bold checkin">Check-In</span>{{
-                        date[0].getDate()
-                }}/{{ date[0].getMonth() + 1 }}/{{ date[0].getYear() - 100 }}</div>
-                <div class="flex justify-between"><span class="bold checkout">Check-Out</span>{{ date[1].getDate()
-                }}/{{
-        date[1].getMonth() + 1
-}}/{{ date[1].getYear() - 100 }}</div>
+                     date[0].getDate() 
+                    }}/{{  date[0].getMonth() + 1  }}/{{  date[0].getYear() - 100  }}</div>
+                <div class="flex justify-between"><span class="bold checkout">Check-Out</span>{{  date[1].getDate() 
+                    }}/{{
+                     date[1].getMonth() + 1 
+                    }}/{{  date[1].getYear() - 100  }}</div>
                 <div class="flex justify-between"><span class="bold  night">Host name:</span>{{
-                        this.stay.host.fullname
-                }}</div>
+                     this.stay.host.fullname 
+                    }}</div>
             </div>
             <div class="flex column">
                 <stayPreview :stay="this.stay" />
                 <div class="price-det">
                     <h3 class="pink bold">Price details</h3>
-                    <div class="flex justify-between"><span class="bold  adult">Adults:</span>{{ this.adultAmount }}
+                    <div class="flex justify-between"><span class="bold  adult">Adults:</span>{{  this.adultAmount  }}
                     </div>
                     <div class="flex justify-between"><span class="bold  price">Total price:</span>${{
-                            this.totalPrice
-                    }}
+                         this.totalPrice 
+                        }}
                     </div>
-                    <div class="flex justify-between"><span class="bold  night">Total nights:</span>{{ this.nights
-                    }}
+                    <div class="flex justify-between"><span class="bold  night">Total nights:</span>{{  this.nights 
+                        }}
                     </div>
                 </div>
             </div>
