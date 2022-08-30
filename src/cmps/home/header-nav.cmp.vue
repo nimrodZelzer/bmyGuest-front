@@ -1,5 +1,4 @@
 <template >
-
     <div class="main-nav">
         <nav>
             <router-link to="/explore">Explore</router-link>
@@ -24,7 +23,7 @@
                 <a v-if="!user" @click="isModalLoginSingUp = !isModalLoginSingUp">register</a>
                 <router-link to="#">Notifications</router-link>
                 <router-link v-if="user" :user="user" to="/orders">Orders</router-link>
-                <router-link :stays="stays" v-if="stays" to="/wishlist">Wishlist</router-link>
+                <router-link to="/wishlist">Wishlist</router-link>
             </div>
         </div>
     </div>
@@ -60,37 +59,44 @@
 <script>
 import register from './register.cpm.vue'
 export default {
+    name: 'header-nav',
     props: {
         stays: {
             type: Array
-        }
+        },
     },
     data() {
         return {
             showMenu: false,
-            currPage: null,
             isShowDropdownMenu: false,
             user: null,
-            stays: null,
             admin: null,
-            isModalLoginSingUp: false
+            isModalLoginSingUp: false,
         };
     },
     created() {
+        window.addEventListener("scroll", this.handleScroll)
+    },
+    unmounted() {
+        window.removeEventListener("scroll", this.handleScroll)
     },
     methods: {
-        closeDropdownMenu() {
-            // console.log(this.isShowDropdownMenu);
-            this.showMenu = false
-        },
         async login() {
             console.log('here');
             const loggedinUser = await this.$store.getters.loggedinUser
             this.user = loggedinUser
             this.isModalLoginSingUp = false
-        }
+        },
+        handleScroll() {
+            if (window.scrollY) {
+                this.showMenu = false
+            }
+        },
     },
     computed: {
+        currPage() {
+            return this.$store.getters.currPage
+        }
     },
     unmounted() { },
     components: {

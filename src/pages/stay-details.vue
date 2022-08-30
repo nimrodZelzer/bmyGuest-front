@@ -1,5 +1,5 @@
 <template >
-  <div class="details-page" v-if="detailsPage && stay">
+  <div class="details-page" v-if="stay">
     <div id="photos" class="stay-details main-layout">
       <deatils-sticky-header @scrollTo="scrollTo" :bottom="bottom" :priceSummary="priceSummary"
         v-if="windowTop > 660" />
@@ -9,20 +9,19 @@
         <details-description :stay="stay" />
         <reservation-details :stay="stay" />
       </div>
-      <!-- <details-map class="details-map" :stay="stay" /> -->
       <details-reviews :stay="stay" />
       <div class="map-container">
-        <!-- <details-map class="details-map" :stay="stay" /> -->
+        <details-map class="details-map" :stay="stay" />
       </div>
     </div>
-    <!-- <details-map class="details-map" :stay="stay" /> -->
-
-    <!-- <details-reviews :stay="stay" /> -->
     <app-footer />
+  </div>
+  <div class="details-page-mobile-container">
+    <stay-details-mobile :stay="stay" v-if="stay" />
   </div>
 </template>
 <script>
-// import detailsMap from '../cmps/details-map.cmp.vue';
+import detailsMap from '../cmps/details-map.cmp.vue';
 import imgGallery from '../cmps/details/image-gallery.cmp.vue';
 import detailsHeader from '../cmps/details/details-header.cmp.vue';
 import reservationDetails from '../cmps/details/reservation-details.cmp.vue';
@@ -30,7 +29,9 @@ import detailsDescription from '../cmps/details/details-description.cmp.vue';
 import deatilsStickyHeader from '../cmps/details/deatils-sticky-header.cmp.vue';
 import detailsReviews from '../cmps/details/details-reviews.cmp.vue';
 import appFooter from '../cmps/app-footer.cmp.vue';
+import stayDetailsMobile from '../cmps/details/stay-details-mobile.cmp.vue'
 export default {
+
   data() {
     return {
       stay: null,
@@ -42,6 +43,7 @@ export default {
         rating: 0
       },
       bottom: null,
+      // isMobile: false,
 
     };
   },
@@ -55,8 +57,8 @@ export default {
       this.priceSummary.price = this.stay.price
       this.priceSummary.reviewsLength = this.stay.reviews.length
       this.priceSummary.rating = this.stay.reviewScores.rating
-      const page = "details-page";
-      this.$store.commit({ type: "setCurrPage", page });
+
+      this.$store.commit({ type: "setCurrPage", page: "details-page" });
     } catch (err) {
       console.log("Error in getById stays (store)", err)
       throw err
@@ -80,6 +82,9 @@ export default {
     detailsPage() {
       return this.$store.getters.currPage === 'details-page' ? true : false
     },
+    isMobile() {
+      // return windo
+    }
   },
   unmounted() { },
   components: {
@@ -90,7 +95,8 @@ export default {
     deatilsStickyHeader,
     detailsReviews,
     appFooter,
-    // detailsMap,
+    detailsMap,
+    stayDetailsMobile
   },
 };
 </script>

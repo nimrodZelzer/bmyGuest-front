@@ -11,10 +11,14 @@ export default {
     currDate: [],
     orders: [],
     currHostStay: [],
+    totalStays: [],
   },
   getters: {
     stays(state) {
       return state.stays
+    },
+    totalStays(state) {
+      return state.totalStays
     },
     getImg(state) {
       return state.imgToDisplay
@@ -35,15 +39,16 @@ export default {
       return state.currHostStay
     },
   },
-
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
     },
+    setTotalStays(state, { tStays }) {
+      state.totalStays = tStays
+    },
     setLabels(state, { labels }) {
       state.labels = labels
     },
-
     setStayById(state, { stay }) {
       state.currStay = { ...stay }
     },
@@ -66,11 +71,18 @@ export default {
   },
   actions: {
     async loadStays({ commit }, { filterBy }) {
+<<<<<<< HEAD
       console.log(filterBy)
+=======
+>>>>>>> 5aa15bad4e0844eb3d0f4d950ec16f7174f7e3a5
       commit({ type: "setFilterBy", filterBy })
       try {
         const stays = await stayService.query(filterBy)
-        console.log(stays)
+        if (stays.length === 60) {
+          const tStays = structuredClone(stays)
+          commit({ type: "setTotalStays", tStays })
+        }
+
         commit({ type: "setStays", stays })
         return stays
       } catch (err) {
@@ -80,10 +92,8 @@ export default {
     },
     loadLabels({ commit }) {
       let labels = stayService.getLabels()
-      // console.log(labels)
       commit({ type: "setLabels", labels })
     },
-
     async loadById({ commit }, { id }) {
       try {
         const stay = await stayService.getById(id)

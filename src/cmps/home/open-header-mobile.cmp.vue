@@ -1,8 +1,8 @@
 <template>
     <form class="mob-open-header" @submit.prevent="submit">
         <section class="top">
-            <div class="exit-btn">
-                <button @click.stop="toggleMbHdr">
+            <div class="exit-btn" @click.prevent="toggleMbHdr">
+                <button>
                     <span v-if="!isClicked">
                         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                             role="presentation" focusable="false"
@@ -37,13 +37,13 @@
                     <input type="search" placeholder="Search destination" v-model="dest" />
                 </label>
                 <div class="mob-countries">
-                    <header-map />
+                    <header-map v-model="dest" />
                 </div>
             </div>
         </section>
         <section class="bottom">
             <div class="dates-container">
-                <button @click.prevent="openDatePicker = !openDatePicker" class="clickable">
+                <button @click.prevent="openDatePicker = !openDatePicker" class="clickable btn-open-dp">
                     <span>When</span>
                     <span>Add dates</span>
                 </button>
@@ -59,50 +59,79 @@
                 <button class="btn-airbnb">Search </button>
             </div>
         </section>
-        <date-picker-mobile v-if="openDatePicker" />
+        <div v-if="openDatePicker">
+            <date-picker-mobile @dates="updatedDates" @isOpen="closeDatePicker" />
+        </div>
     </form>
+    <!-- <guests-modal /> -->
 </template>
 
 <script>
 import headerMap from "../header-map-search.cmp.vue";
 import datePickerMobile from "../date-picker-mobile.cmp.vue";
+import guestsModal from "../guests-modal.cmp.vue";
+
+import { toRaw } from 'vue'
+
 export default {
     data() {
         return {
             isClicked: false,
             dest: '',
             openDatePicker: false,
+            adult: 0,
+            children: 0,
+            dates: []
         }
     },
     props: {
-        isShow: {
+        isMobile: {
             type: Boolean
         }
     },
     methods: {
+        closeDatePicker(val) {
+            this.openDatePicker = val
+        },
         toggleMbHdr() {
-            this.$emit('isShow', false)
+            this.$emit('isMobile', false)
+        },
+        updatedDates(data) {
+            this.dates = data
         },
         submit() {
             console.log('submit')
             const order = {
                 dest: this.dest,
                 dates: toRaw(this.dates),
-                guests: this.adults + this.children
+                guests: this.adult + this.children
             }
             console.log(order)
+            this.$store.commit({ type: 'setNewOrder', order })
+            this.setStays(order)
+        },
+        async setStays(order) {
+            try {
+                const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: order })
+                if (stays.length === 60) {
+                    console.log('no stays dude')
+                    this.$router.push(`/`)
+                }
+                else this.$router.push(`/explore`)
+                this.$emit('isMobile', false)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        clearAll() {
+            this.dest = ''
+            this.dates = []
         }
     },
     computed: {},
     created() {
-        console.log(this.isShow)
     },
-    components: { headerMap, datePickerMobile }
+    components: { headerMap, datePickerMobile, guestsModal }
 }
 </script>
 
-<style>
-.movearea {
-    transition: 0.3s background-color ease;
-}
-</style>

@@ -8,15 +8,15 @@
                 <p>{{ stay.roomType }} in {{ stay.propertyType }} hosted by {{ stay.host.fullname }}</p>
             </div>
             <div class="order-date-container">
-              <span>
-                {{order.startDate.toLocaleString('default', { month: 'short' })}}
-                {{this.order.startDate.getDate()}}
-              </span>
-               <span>
-                {{order.endDate.toLocaleString('default', { month: 'short' })}}
-                {{this.order.endDate.getDate()}}
-              </span>
-              <span></span>
+                <span>
+                    {{ order.startDate.toLocaleString('default', { month: 'short' }) }}
+                    {{ this.order.startDate.getDate() }}
+                </span>
+                <span>
+                    {{ order.endDate.toLocaleString('default', { month: 'short' }) }}
+                    {{ this.order.endDate.getDate() }}
+                </span>
+                <span></span>
             </div>
         </div>
     </div>

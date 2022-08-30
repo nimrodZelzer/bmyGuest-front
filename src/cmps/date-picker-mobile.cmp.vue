@@ -2,13 +2,13 @@
     <section class="date-picker-mobile">
         <div class="top">When's your trip?</div>
         <Datepicker v-model="date" modelType="dd.MM.yyyy" vertical @update:modelValue="handleDate" autoApply inline
-            textInput inlineWithInput inputClassName="dp-custom-input" menuClassName="dp-custom-menu" hideInputIcon
-            calendarClassName="dp-custom-calendar" calendarCellClassName="dp-custom-cell">
+            textInput inlineWithInput inputClassName="dp-custom-input" menuClassName="dp-custom-menu" range
+            multiCalendars hideInputIcon calendarClassName="dp-custom-calendar" calendarCellClassName="dp-custom-cell">
         </Datepicker>
 
         <div class="btns-action clickable">
-            <button class="skip">Skip</button>
-            <button class="next">Next</button>
+            <button @click.prevent class="skip">Skip</button>
+            <button @click.prevent="goBack" class="next">Next</button>
         </div>
 
     </section>
@@ -32,6 +32,9 @@ export default {
             const res = toRaw(state)
             console.log(res)
             this.$emit('dates', res)
+        },
+        goBack() {
+            this.$emit('isOpen', false)
         }
     }
 }

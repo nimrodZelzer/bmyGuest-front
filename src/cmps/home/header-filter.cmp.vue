@@ -1,6 +1,6 @@
 <template >
-  <div class="modal-overlay" v-if="!openModal"></div>
-  <section class="range-filter" style="z-index:50" v-if="!openModal">
+  <div class="modal-overlay" v-if="openModal"></div>
+  <section class="range-filter" style="z-index:50" v-if="openModal">
     <div class="price-filter-container">
       <div class="top-of-filter">
         <div>Filters</div>
@@ -69,7 +69,7 @@ export default {
       histogramMainColor: "#b0b0b0",
       histogramSecondaryColor: "#dddddd",
       activeBtn: "",
-      openModal: false,
+      openModal: true,
       isPriceRange: false,
       priceRange: "",
     }
@@ -96,7 +96,7 @@ export default {
       this.filterBy.min = this.filterBy.price.min
       this.filterBy.max = this.filterBy.price.max
       this.$store.dispatch({ type: 'loadStays', filterBy: this.filterBy })
-      this.openModal = true
+      this.openModal = false
     },
     sliderChanged(values) {
       console.log(values)
@@ -110,10 +110,21 @@ export default {
       this.filterBy.price.max = 3000;
     },
     closeModal() {
-      this.openModal = true
+      this.openModal = false
     },
     async savePrices() {
       this.loadStays()
+
+      this.$router.push('/explore')
+    }
+  },
+  watch: {
+    openModal() {
+      if (this.openModal) {
+        document.body.style.overflow = 'hidden'
+        // return
+      }
+      document.body.style.overflow = 'auto'
     }
   },
 }

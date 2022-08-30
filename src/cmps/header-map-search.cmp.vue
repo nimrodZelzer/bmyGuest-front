@@ -31,46 +31,45 @@
 </template>
 <script>
 export default {
+    name: 'header-map-search',
+    props: {
+        modelValue: String // previously was `value: String`
+    },
+    emits: ['update:modelValue'],
     data() {
         return {
-            searchVal:""
         };
     },
     created() { },
     methods: {
-         closeHeader(){
-            this.$emit('openHeader', false)
-            // console.log("here")
+        filterTo() {
+            console.log('yay')
+            this.$emit('update:modelValue', 'canada')
+
         },
-        filterTo(){ 
-            this.$router.push('/explore')
-            this.closeHeader
-            },
-        filterToItaly(){ 
-            this.$router.push('/explore/Italy')
-            this.closeHeader
-            },
-        filterToFrance(){ 
-            this.$router.push('/explore/France')
-            this.closeHeader
-            },
-        filterToIsrael(){ 
-            this.$router.push('/explore/Israel')
-            this.closeHeader
-            },
-        filterToSa(){ 
-            this.$router.push('/explore/South America')
-            this.closeHeader
-            },
-        filterToUs(){
-             this.$router.push('/explore/United States')
-             this.closeHeader
-             }
+        filterToItaly() {
+            this.$emit('update:modelValue', 'Italy')
+
+        },
+        filterToFrance() {
+            this.$emit('update:modelValue', 'France')
+
+        },
+        filterToIsrael() {
+            this.$emit('update:modelValue', 'Israel')
+
+        },
+        filterToSa() {
+            this.$emit('update:modelValue', 'South America')
+
+        },
+        filterToUs() {
+            this.$emit('update:modelValue', 'United States')
+        }
     },
     computed: {},
     unmounted() { },
 };
 </script>
 <style >
-    
 </style>

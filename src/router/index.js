@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router"
+import { isNavigationFailure } from "vue-router"
 import deshboardHost from "../pages/deshboard-host.vue"
 import explorePage from "../pages/explore-page.vue"
 import homePage from "../pages/home-page.vue"
@@ -8,6 +9,10 @@ import userOrder from "../pages/user-order.vue"
 
 const router = createRouter({
   history: createWebHashHistory(),
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0 }
+  },
   routes: [
     {
       path: "/",
@@ -41,5 +46,15 @@ const router = createRouter({
     },
   ],
 })
+
+// router.afterEach((to, from, failure) => {
+//   console.log("to: ", to)
+//   console.log("from: ", from)
+//   if (isNavigationFailure(failure)) {
+//     console.log("failed navigation", failure)
+//   }
+// })
+
+// console.log(router)
 
 export default router

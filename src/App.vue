@@ -2,7 +2,7 @@
 <template>
   <section class="main-app">
     <app-header :stays="stays" />
-    <div :class="{ 'overlay1': openHeader }" v-if="stays">
+    <div v-if="stays">
       <router-view />
     </div>
     <mobileFooter/>
@@ -21,7 +21,6 @@ export default {
   data() {
     return {
       openHeader: false,
-
     }
   },
   name: 'app',
@@ -29,7 +28,6 @@ export default {
     this.$store.dispatch({ type: 'loadStays' })
     this.$store.dispatch({ type: 'loadLabels' })
     this.$store.dispatch({ type: 'loadOrders' })
-
   },
   mounted() { },
   methods: {

@@ -60,17 +60,18 @@
                         </div>
                     </div>
                 </div>
-                <header-map @closeHeader="closeHeader" v-if="!searchClick" class="header-country" />
+                <header-map v-if="!searchClick" v-model="dest" class="header-country" />
             </form>
         </div>
     </section>
+    <!-- <guests-modal /> -->
 </template>
 <script>
 import headerMap from "../header-map-search.cmp.vue";
 import datePicker from "./date-picker.cmp.vue"
+import guestsModal from "../guests-modal.cmp.vue";
 
 import { toRaw } from 'vue'
-import { eventBus } from "../../services/event-bus.service";
 export default {
     data() {
         return {
@@ -78,7 +79,6 @@ export default {
             showMenu: false,
             scrolldown: 0,
             openSearch: false,
-            miniSearch: true,
             hideSearch: true,
             pageTop: true,
             currPage: null,
@@ -94,40 +94,34 @@ export default {
     },
     created() { },
     methods: {
-        async goExplore() {
+        goExplore() {
             try {
-                this.miniSearch = true
-                this.$emit('openHeader', false)
                 const order = {
-                    dest: this.dest,
+                    dest: this.dest.trim(),
                     dates: toRaw(this.dates),
                     guests: this.adults + this.children
                 }
-                // console.log(order)
+                if (!this.dest) return alert('inValid')
+                this.$store.commit({ type: 'setOpenHeader', currVal: false })
                 this.$store.commit({ type: 'setNewOrder', order })
-                const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: order })
-                // console.log(stays)
-                this.$router.push(`/explore`)
-                // this.dest.txt = ''
+                this.setStays(order)
+                this.dest = ''
             } catch (err) {
                 console.log(err)
             }
 
         },
-        handleScroll() {
-            if (window.scrollY > this.pageTop + 101 || window.scrollY < this.pageTop) {
-                this.miniSearch = true
-                this.$emit('openHeader', false)
+        async setStays(order) {
+            try {
+                const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: order })
+                if (stays.length === 60) {
+                    console.log('no stays dude')
+                    this.$router.push(`/`)
+                }
+                else this.$router.push(`/explore`)
+            } catch (err) {
+                console.log(err)
             }
-        },
-        closeHeader(value) {
-            this.$emit('openHeader', value)
-
-        },
-        openSearchBar() {
-            this.miniSearch = false
-            this.pageTop = window.top.scrollY
-            // this.$emit('openHeader', true)
         },
         inc(num) {
             this.adults += num
@@ -152,15 +146,18 @@ export default {
         },
         updatedDates(data) {
             this.dates = data
-        }
-
+        },
     },
     computed: {
+        isExplorePage() {
+            return this.$store.getters.currPage === 'explore-app' ? true : false
+        }
     },
     unmounted() { },
     components: {
         datePicker,
         headerMap,
+        guestsModal
     },
 };
 </script>

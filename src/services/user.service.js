@@ -13,18 +13,6 @@ export const userService = {
   adminLog,
 }
 
-// async function getUsers(num) {
-//   try {
-//     const users = await httpService.get(`user`)
-//     _saveLocalUser(users[num])
-//     socketService.emit("set-user-socket", users[num]._id)
-//     return users
-//   } catch (err) {
-//     console.log("Cannot load orders from store", err)
-//     throw err
-//   }
-// }
-
 async function getUsers(num) {
   try {
     const users = await httpService.get(`user`)
