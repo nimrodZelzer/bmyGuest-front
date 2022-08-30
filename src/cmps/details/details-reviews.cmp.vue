@@ -6,7 +6,8 @@
         <div class="details-review-container">
             <div v-for="review in reviews">
                 <div class="details-review-header flex">
-                    <img class="avatar" :src="'/img/peopleImages/' + review.by.imgUrl" alt="">
+                    <img class="avatar" :src="review.by.imgUrl" alt="">
+                    <!-- <img class="avatar" :src="randomPersonImg"> -->
                     &nbsp;
                     &nbsp;
                     <div class="review-name-container flex column">
@@ -46,7 +47,12 @@ export default {
     },
     methods: {
     },
-    computed: {},
+    computed: {
+        randomPersonImg() {
+            if (Math.random() < 0.5) return "https://xsgames.co/randomusers/avatar.php?g=male"
+            return "https://xsgames.co/randomusers/avatar.php?g=female"
+        }
+    },
     unmounted() { },
     components: {
         detailsRatingBars

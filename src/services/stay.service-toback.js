@@ -1,7 +1,6 @@
 import { httpService } from "./http.service.js"
 
 const ENDPOINT = "stay"
-const STAYS_KEY = "staydb"
 
 const gLabels = [
   "Amazing pools",
@@ -28,7 +27,6 @@ export const stayService = {
   query,
   remove,
   save,
-  getEmptyStay,
   getById,
   getLabels,
   updateWished,
@@ -64,18 +62,6 @@ async function save(stay) {
 async function remove(stayId) {
   return await httpService.delete(`${ENDPOINT}/${stayId}`)
 }
-
-function getEmptyStay() {
-  return Promise.resolve({})
-}
-
-function _saveLocalStay(stays) {
-  sessionStorage.setItem(STAYS_KEY, JSON.stringify(stays))
-  return stays
-}
-
-// // function addNewOrderToHost(order) {
-// //    await httpService.put("stay", order)
 
 function getLabels() {
   return gLabels

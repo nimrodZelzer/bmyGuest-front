@@ -7,7 +7,7 @@
         <div class="guest-details-container flex column">
           <img :src="(order.guest?.imgUrl) ? order.guest.imgUrl : setupImgUrl()" alt="">
           <div class="content flex column">
-            <span class="username">{{ order.guestsDetails.guestName }}</span>
+            <span class="username">{{ order.guestsDetails?.guestName }}</span>
             <span>{{ (order.guestsDetails?.phone) ? order.guestsDetails.phone : "054-55338323" }}</span>
             <span>{{ (order.guestsDetails?.email) ? order.guestsDetails.email : "snfjcw@gmail.com" }}</span>
 

@@ -83,3 +83,22 @@
         font-family: airbnb-medium;
     }
 }
+
+@media (max-width:$break-narrow) {
+    .wishlist-preview {
+        flex-direction: column;
+        gap: 1rem;
+
+        h5 {
+            display: none;
+        }
+    }
+
+    .wishlist-container {
+        margin-block-end: 90px;
+
+        h1 {
+            margin-block-start: 70px;
+        }
+    }
+}

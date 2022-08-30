@@ -23,7 +23,8 @@
         </section>
         <open-header v-if="isOpenHeader" />
     </section>
-    <template v-if="isShow">
+
+    <template v-if="isMobile">
         <section class="mobile clickable">
             <div class="mini-search-mobile">
                 <span>
@@ -55,10 +56,24 @@
                 <header-filter v-if="openFilterMb" :stays="stays" />
             </div>
         </section>
+        <div class="footer-mobile">
+            <button @click="goHome">
+                <i class="fa-thin fa-house-user"></i>
+                Home
+            </button>
+            <button @click="goToExplore">
+                <i class="fa-thin fa-magnifying-glass"></i>
+                Explore
+            </button>
+            <button @click="goWishlist">
+                <i class="fa-thin fa-heart"></i>
+                Wishlist
+            </button>
+        </div>
     </template>
     <template v-else>
         <section class="mobile-open-header">
-            <open-header-mobile :isShow="isShow" @isShow="closeOpenHdr" />
+            <open-header-mobile :isMobile="isMobile" @isMobile="closeOpenHdr" />
         </section>
     </template>
 
@@ -74,6 +89,7 @@ import headerFilter from './header-filter.cmp.vue'
 
 
 export default {
+    name: 'app-header',
     props: {
         stays: {
             type: Array
@@ -86,51 +102,54 @@ export default {
             pageTop: 0,
             currPage: null,
             dates: [],
-            isMobOpen: true,
-            isShow: true,
+            isMobile: true,
             openFilterMb: false,
         }
     },
     created() {
-        this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
+        console.log(this.$store.getters.openHeader)
         window.addEventListener("scroll", this.handleScroll)
 
     },
     methods: {
         openMobSearchBar() {
-            this.isShow = !this.isShow
+            this.isMobile = false
             window.scrollTo(0, 0);
         },
-        closeOpenHdr(val) {
-            this.isShow = true
+        closeOpenHdr() {
+            this.isMobile = true
             this.openFilterMb = false
+            this.isOpenHeader = false
         },
         goHome() {
             this.$router.push('/')
             this.isOpenHeader = false
-            this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
+            this.$store.commit({ type: 'setOpenHeader', currVal: false })
         },
         handleScroll() {
             if (this.currentPage === 'home-page') this.handleLabels('block')
             if (window.scrollY > this.pageTop + 100 || window.scrollY < this.pageTop) {
                 this.isOpenHeader = false
-                if (this.currentPage === 'explore-app') this.handleFilterBtn('flex')
                 this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
+                if (this.currentPage === 'explore-app') this.handleFilterBtn('flex')
                 this.removeOverlay()
             }
+
+            if (window.scrollY === 0) {
+                document.querySelector('.footer-mobile').style.display = 'none'
+            } else {
+                document.querySelector('.footer-mobile').style.display = 'flex'
+            }
+
         },
         openSearchBar() {
-            this.pageTop = window.top.scrollY
+            this.pageTop = window.scrollY
             this.isOpenHeader = true
             this.$store.commit({ type: 'setOpenHeader', currVal: this.isOpenHeader })
 
             if (this.currentPage === 'explore-app') this.handleFilterBtn('none')
             if (this.currentPage === 'home-page') this.handleLabels('none')
             this.addOverlay()
-        },
-        openMobHeader() {
-            this.isMobOpen === !this.isMobOpen
-            console.log(this.isMobOpen)
         },
         handleFilterBtn(val) {
             document.querySelector('.filter-btn').style.display = val
@@ -143,6 +162,15 @@ export default {
         },
         removeOverlay() {
             document.querySelector(`.${this.currentPage}`).classList.remove('overlay')
+        },
+        goWishlist() {
+            this.$router.push('/wishlist')
+        },
+        goToExplore() {
+            this.$router.push('/explore')
+        },
+        closeOpenDesktopHdr(val) {
+            console.log(val)
         }
     },
     computed: {
@@ -166,8 +194,18 @@ export default {
         window.removeEventListener("scroll", this.handleScroll)
     },
     watch: {
-        isShow() {
-            if (!this.isShow) {
+        isMobile() {
+            if (!this.isMobile) {
+                document.body.style.overflow = 'hidden'
+                if (window.top.scrollY > 0) {
+                    document.querySelector('.filter-btn').style.display = 'none'
+                }
+                return
+            }
+            document.body.style.overflow = 'auto'
+        },
+        openFilterMb() {
+            if (this.openFilterMb) {
                 this.pageTop = window.top.scrollY
                 document.body.style.overflow = 'hidden'
                 return

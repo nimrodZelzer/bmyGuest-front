@@ -1,30 +1,31 @@
 <template >
     <div class="description-container-right">
         <header class="flex">
-            <div class="txt-container" >
-                <h3>{{stay.propertyType}} hosted by {{stay.host.fullname}}</h3>
-                <p>{{stay.capacity.guests}}  guests  <span class="dot"></span> {{stay.capacity.bedrooms}} bedrooms <span class="dot"></span>  
-                    {{stay.capacity.beds}} beds <span class="dot"></span> {{stay.capacity.bathrooms}} bathrooms</p>
+            <div class="txt-container">
+                <h3>{{ stay.propertyType  }} hosted by {{ stay.host.fullname }}</h3>
+                <p>{{ stay.capacity.guests }} guests <span class="dot"></span> {{ stay.capacity.bedrooms }} bedrooms
+                    <span class="dot"></span>
+                    {{ stay.capacity.beds }} beds <span class="dot"></span> {{ stay.capacity.bathrooms }} bathrooms</p>
             </div>
             <div>
                 <img :src="'/img/peopleImages/' + this.avatarImg" class="avatar" alt="">
             </div>
         </header>
-         <extras-details />
-         <div class="summary-container" id="here">
-             <p>{{stay.description}}</p>
-         </div>
-         <amenities-details :stay="stay" id="reviews" />
+        <extras-details />
+        <div class="summary-container" id="here">
+            <p>{{ stay.description }}</p>
+        </div>
+        <amenities-details :stay="stay" id="reviews" />
     </div>
 </template>
 <script>
 
-import  extrasDetails  from "./extras-details.cmp.vue";
-import  amenitiesDetails  from "./details-amenities.cmp.vue";
+import extrasDetails from "./extras-details.cmp.vue";
+import amenitiesDetails from "./details-amenities.cmp.vue";
 
 
 export default {
-     props: {
+    props: {
         stay: {
             type: Object,
             required: true,
@@ -39,7 +40,7 @@ export default {
     methods: {},
     computed: {},
     unmounted() { },
-    components:{
+    components: {
         extrasDetails,
         amenitiesDetails
     }

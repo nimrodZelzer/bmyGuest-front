@@ -49,8 +49,14 @@ export default {
         },
         childrenCount(num) {
             this.children += num
-            this.$emit()
+            // this.$emit()
         },
+    },
+    unmounted() {
+        const guestsAmount = this.children + this.adults
+        this.$emit('guestsAmount', guestsAmount)
+        console.log(guestsAmount)
+
     }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
     <form class="mob-open-header" @submit.prevent="submit">
         <section class="top">
-            <div class="exit-btn">
-                <button @click.stop="toggleMbHdr">
+            <div class="exit-btn" @click.prevent="toggleMbHdr">
+                <button>
                     <span v-if="!isClicked">
                         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                             role="presentation" focusable="false"
@@ -43,7 +43,7 @@
         </section>
         <section class="bottom">
             <div class="dates-container">
-                <button @click.prevent="openDatePicker = !openDatePicker" class="clickable">
+                <button @click.prevent="openDatePicker = !openDatePicker" class="clickable btn-open-dp">
                     <span>When</span>
                     <span>Add dates</span>
                 </button>
@@ -85,7 +85,7 @@ export default {
         }
     },
     props: {
-        isShow: {
+        isMobile: {
             type: Boolean
         }
     },
@@ -94,7 +94,7 @@ export default {
             this.openDatePicker = val
         },
         toggleMbHdr() {
-            this.$emit('isShow', false)
+            this.$emit('isMobile', false)
         },
         updatedDates(data) {
             this.dates = data
@@ -118,7 +118,7 @@ export default {
                     this.$router.push(`/`)
                 }
                 else this.$router.push(`/explore`)
-                this.$emit('isShow', false)
+                this.$emit('isMobile', false)
             } catch (err) {
                 console.log(err)
             }

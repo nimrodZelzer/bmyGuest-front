@@ -10,7 +10,7 @@ import labelsSelect from '../cmps/home/labels-select.vue'
 import stayList from '../cmps/home/stay-list.cmp.vue'
 
 export default {
-    name: 'stay-app',
+    name: 'home-page',
     data() {
         return {
 
@@ -29,9 +29,6 @@ export default {
     created() {
         this.$store.commit({ type: "setCurrPage", page: "home-page" });
         this.$store.dispatch({ type: 'loadHostOrders' })
-
-        // const res = this.$store.dispatch({ type: 'loadTotalStays' })
-        // this.stays = res
     },
 
     components: {

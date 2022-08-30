@@ -1,8 +1,8 @@
 <template >
     <div class="main-nav">
         <nav>
-            <router-link @click="closeHeader" to="/explore">Explore</router-link>
-            <router-link @click="closeHeader" to="/order" :user="user">Become a Host</router-link>
+            <router-link to="/explore">Explore</router-link>
+            <router-link to="/order" :user="user">Become a Host</router-link>
             <button class="user-menu-btns clickable" @click="showMenu = !showMenu">
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                     focusable="false"
@@ -23,7 +23,7 @@
                 <a v-if="!user" @click="isModalLoginSingUp = !isModalLoginSingUp">register</a>
                 <router-link to="#">Notifications</router-link>
                 <router-link v-if="user" :user="user" to="/orders">Orders</router-link>
-                <router-link :stays="stays" @click="closeHeader" to="/wishlist">Wishlist</router-link>
+                <router-link to="/wishlist">Wishlist</router-link>
             </div>
         </div>
     </div>
@@ -59,6 +59,7 @@
 <script>
 import register from './register.cpm.vue'
 export default {
+    name: 'header-nav',
     props: {
         stays: {
             type: Array
@@ -71,12 +72,13 @@ export default {
             user: null,
             admin: null,
             isModalLoginSingUp: false,
-            isOpenHeader: false,
         };
     },
     created() {
-        const res = this.$store.getters.openHeader
-        this.isOpenHeader = res
+        window.addEventListener("scroll", this.handleScroll)
+    },
+    unmounted() {
+        window.removeEventListener("scroll", this.handleScroll)
     },
     methods: {
         async login() {
@@ -85,9 +87,10 @@ export default {
             this.user = loggedinUser
             this.isModalLoginSingUp = false
         },
-        closeHeader() {
-            this.$store.commit({ type: 'setOpenHeader', currVal: false })
-            this.isOpenHeader = false
+        handleScroll() {
+            if (window.scrollY) {
+                this.showMenu = false
+            }
         },
     },
     computed: {
