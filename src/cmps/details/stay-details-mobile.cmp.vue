@@ -44,6 +44,7 @@
         </div>
         <div class="main-mob-details" v-if="!isReservationOpen">
             <div class="images-mob">
+                <!-- <img v-bind:src="'/img/Images/' + stay.imgUrls[0]" alt="" class="ratio-card" /> -->
                 <carousel :autoplay="5000" :items-to-show="1">
                     <slide v-for="slide in stay.imgUrls.length" :key="slide">
                         <img v-bind:src="'/img/Images/' + stay.imgUrls[slide - 1]" alt="" class="ratio-card" />
@@ -135,7 +136,7 @@ export default {
     },
     created() {
         this.handleHeader('none')
-        this.handleFooter('hidden')
+        // this.handleFooter('hidden')
         console.log(this.stay)
 
         this.wished = this.stay.wished
@@ -165,7 +166,6 @@ export default {
                 newStay.wished = !newStay.wished
                 this.$store.dispatch({ type: 'saveStay', stay: newStay })
                 await this.$store.dispatch({ type: 'loadStays' })
-                // this.$router.push('/wishlist')
             } catch (err) {
                 console.log(err)
             }
@@ -179,9 +179,9 @@ export default {
         handleHeader(val) {
             document.querySelector('.mini-search-mobile').style.display = val
         },
-        handleFooter(val) {
-            document.querySelector('.footer-mobile').style.visibility = val
-        },
+        // handleFooter(val) {
+        //     document.querySelector('.footer').style.visibility = val
+        // },
     },
     computed: {
         format() {
@@ -204,10 +204,4 @@ export default {
 }
 </script>
 
-<style>
-.carousel__prev,
-.carousel__next {
-    margin: 0 10px;
-}
-</style>
 

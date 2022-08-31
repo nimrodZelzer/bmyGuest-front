@@ -71,10 +71,9 @@ export default {
   },
   actions: {
     async loadStays({ commit }, { filterBy }) {
-<<<<<<< HEAD
+
       console.log(filterBy)
-=======
->>>>>>> 5aa15bad4e0844eb3d0f4d950ec16f7174f7e3a5
+
       commit({ type: "setFilterBy", filterBy })
       try {
         const stays = await stayService.query(filterBy)

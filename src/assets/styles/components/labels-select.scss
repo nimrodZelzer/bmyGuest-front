@@ -25,7 +25,7 @@
         justify-content: flex-start;
         // margin-inline-start: 25px;
         width: 100%;
-        overflow-x:scroll;
+
 
         .carousel {
             width: 100%;
@@ -70,10 +70,13 @@
         border-top-color: rgb(0, 0, 0, 0.3);
         border-radius: 50%;
         border-width: 0.05px;
-
+        margin: 0 10px;
         &:hover {
             box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px;
             transition: box-shadow 0.2s ease 0s;
+        }
+        @include for-narrow-layout {
+            display: flex;
         }
     }
 

@@ -1,5 +1,6 @@
 <template >
-  <div class="details-page" v-if="stay">
+ 
+  <div class="details-page" v-if="stay||!this.isMobile">
     <div id="photos" class="stay-details main-layout">
       <deatils-sticky-header @scrollTo="scrollTo" :bottom="bottom" :priceSummary="priceSummary"
         v-if="windowTop > 660" />
@@ -16,9 +17,10 @@
     </div>
     <app-footer />
   </div>
-  <div class="details-page-mobile-container">
+  <div class="details-page-mobile-container" v-if="this.isMobile">
     <stay-details-mobile :stay="stay" v-if="stay" />
   </div>
+
 </template>
 <script>
 import detailsMap from '../cmps/details-map.cmp.vue';
@@ -43,7 +45,7 @@ export default {
         rating: 0
       },
       bottom: null,
-      // isMobile: false,
+      isMobile: false,
 
     };
   },
@@ -68,6 +70,9 @@ export default {
     onScroll(e) {
       this.windowTop = window.top.scrollY
       window.addEventListener("scroll", this.windowTop)
+      if (window.scrollY === 0) {
+        this.isMobile=!this.isMobile
+      }
     },
     scrollTo(refName) {
       var element = this.$refs[refName];

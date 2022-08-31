@@ -1,9 +1,9 @@
-.mobileFooter {
+.footer-mobile {
     position: fixed;
     display: flex;
     justify-content: center;
-    bottom: -60px;
-    height: 125px;
+    bottom: -120px;
+    height: 60px;
     background-color: $clr3 ;
     width: 100%;
     gap: rem(100px);

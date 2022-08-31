@@ -5,7 +5,7 @@
     <div v-if="stays">
       <router-view />
     </div>
-    <mobileFooter/>
+
     <user-msg />
   </section>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import userMsg from './cmps/user-msg.cmp.vue';
 import appFooter from './cmps/app-footer.cmp.vue'
-import mobileFooter from './cmps/home/footer.cmp.vue'
+
 import appHeader from './cmps/home/app-header.cmp.vue'
 
 export default {
@@ -41,7 +41,7 @@ export default {
     appFooter,
     appHeader,
     userMsg,
-    mobileFooter,
+
     // headerFilter,
   },
 }

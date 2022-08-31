@@ -1,0 +1,76 @@
+.footer-mobile-app {
+    line-height: 20px;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    background-color: $clr3;
+    bottom: 0px;
+    z-index: 3000;
+    display:flex;
+    justify-content: center;
+    border-top: 1px solid hsl(0deg 0% 92%);
+    @include for-narrow-layout {
+        display:none;
+    }
+
+    .btn-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+
+
+
+    button {
+        -webkit-box-align: center !important;
+        -webkit-box-direction: normal !important;
+        -webkit-box-orient: vertical !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        cursor: pointer !important;
+        background-color: hsl(0deg 0% 0% / 0%) !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        border: 0px !important;
+        max-width: 20% !important;
+        min-width: 0px !important;
+        -webkit-tap-highlight-color: hsl(0deg 0% 0% / 0%) !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        padding: 0px 2px !important;
+        // color: hsl(349deg 100% 61%) !important;
+        margin-right: 40px;
+        margin-bottom: 0;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        
+
+        svg {
+            display: block;
+            fill: none;
+            height: 18px;
+            width: 18px;
+            stroke-width: 4;
+            overflow: visible;
+            margin-bottom: 5px;
+
+        }
+        a{
+            text-decoration: none;
+            color: hsl(0deg 0% 44%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+           
+            &:active{
+                color: $clr7;
+                cursor: default;
+
+            }
+        }
+    }
+}
