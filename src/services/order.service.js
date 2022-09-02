@@ -41,7 +41,12 @@ async function saveOrderByHostId(hostId) {
 async function saveOrderByUserId(Id) {
   try {
     const orders = await httpService.get(ENDPOINT)
-    const orderByUser =  orders.filter((order)=>order.guestsDetails.guestId===Id)
+    console.log(orders)
+    const orderByDet =  orders.filter((order)=>order.guestsDetails==! {})
+    const orderByUser=orders
+ 
+    
+    if(!orderByUser)return []
     return orderByUser
   } catch (err) {
     console.log("Cannot load user orders from store", err)

@@ -184,7 +184,9 @@
     animation-duration: 1s;
     animation-timing-function: ease;
 
-
+    @include for-narrow-layout {
+        // display: none;
+    }
 
 }
 
@@ -211,27 +213,37 @@
         font-weight: 700;
         line-height: 20px;
     }
+
     .mobile-content {
         font-size: 12px;
         padding-left: 2px;
         white-space: nowrap;
         margin-top: 6px;
+
         .mspans {
             display: flex;
             gap: 5px;
+
             label {
                 cursor: pointer;
                 opacity: 0.6;
             }
         }
+
     }
+
 }
+
+
+
+
+
 @media (max-width: $break-narrow) {
+
     .app-header,
     .top-header {
         display: none;
     }
-  
 }
 
 
@@ -387,12 +399,13 @@
                 cursor: pointer;
                 font-family: 'Circular', -apple-system, 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 1rem;
-                
+                line-height: 20px;
                 font-weight: 600;
                 outline: none;
                 padding: 14px 35px;
                 color: rgb(255, 255, 255);
                 border-radius: 8px;
+                
             }
         }
     }
@@ -431,5 +444,3 @@
         transform: translate(0);
     }
 }
-
-

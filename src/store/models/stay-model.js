@@ -42,6 +42,7 @@ export default {
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
+      console.log(state.stays)
     },
     setTotalStays(state, { tStays }) {
       state.totalStays = tStays
@@ -71,18 +72,18 @@ export default {
   },
   actions: {
     async loadStays({ commit }, { filterBy }) {
-
-      console.log(filterBy)
-
-      commit({ type: "setFilterBy", filterBy })
+      // commit({ type: "setFilterBy", filterBy })
       try {
+        console.log(filterBy);
         const stays = await stayService.query(filterBy)
+        console.log(stays);
+        commit({ type: "setStays", stays })
         if (stays.length === 60) {
           const tStays = structuredClone(stays)
           commit({ type: "setTotalStays", tStays })
         }
 
-        commit({ type: "setStays", stays })
+       
         return stays
       } catch (err) {
         console.log("Error in query stays (store)", err)

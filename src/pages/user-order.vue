@@ -1,7 +1,5 @@
-
-
 <template >
-    <section v-if="user" class="order-page main-layout">
+    <section v-if="this.user" class="order-page main-layout">
         <div class="dash-board-header">
             <h1>Your Reservation</h1>
             <span>{{ this.orders.length }} items</span>
@@ -30,6 +28,7 @@ export default {
     async created() {
         try {
             this.user = await this.$store.getters.loggedinUser
+            console.log(this.user)
         } catch (err) {
             console.log(" Error in read orders", err)
             throw err
@@ -41,8 +40,11 @@ export default {
             throw err
         }
         socketService.on("order-added", async (order) => {
-            // this.orders.push(order)
             this.orders = this.$store.dispatch({ type: 'getOrderByUser', id: this.user._id })
+        })
+        socketService.on("loginUser", async (user) => {
+            this.user =this.$store.getters.loggedinUser
+            this.orders = this.$store.dispatch({ type: 'getOrderByUser', id: user._id })
         })
     },
     methods: {

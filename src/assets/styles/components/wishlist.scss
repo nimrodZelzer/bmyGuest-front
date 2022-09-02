@@ -72,7 +72,7 @@
 }
 
 .wishlist-container {
-    margin: auto;
+    margin:  auto;
     min-height: 85vh;
 
     h1 {
@@ -95,7 +95,8 @@
     }
 
     .wishlist-container {
-        margin-block-end: 90px;
+        // margin-block-end: 90px;
+        margin: 0px auto;
 
         h1 {
             margin-block-start: 70px;

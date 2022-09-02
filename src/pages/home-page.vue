@@ -20,7 +20,7 @@ export default {
     },
     computed: {
         stays() {
-            return this.$store.getters.totalStays
+            return this.$store.getters.stays
         },
         getLebels() {
             return this.$store.getters.getLebels

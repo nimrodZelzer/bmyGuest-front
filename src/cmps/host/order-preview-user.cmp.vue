@@ -3,14 +3,15 @@
   <div class="order-card flex">
     <div class="flex align-center order-right-card">
       <div class="left flex column">
-        <div class="guest-details-container flex">
+        <div class="guest-details-container flex align-center">
           <div class="content flex column">
-            <div :class="order.status">
+            <div :class="this.classStatus">
               {{ order.status }}
             </div>
             <span>Host name: {{ order.host.hostName }}</span>
             <span class="username">{{ order.stay.name }}</span>
             <span>{{ order.totalNight }}</span>
+            <span>{{order.createAt}}</span>
             <span style="font-family: airbnb-medium">Total price: <span>${{ order.totalPrice }}</span></span>
           </div>
         </div>
@@ -23,9 +24,6 @@
     </div>
     <div class="right flex column">
       <img :src="'/img/Images/' + order.stay.imgUrl" alt="" />
-
-
-
 
     </div>
   </div>
@@ -41,14 +39,14 @@ export default {
 
   data() {
     return {
-      newOrder: null
+      newOrder: null,
+      classStatus:null
     }
   },
   created() {
     this.newOrder = { ...this.order }
-    socketService.on('order-change', (newOrder) => {
-      this.order.status = newOrder.status
-    })
+    this.classStatus=this.newOrder.status
+
   },
   methods: {
     changeStatus() {

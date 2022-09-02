@@ -25,8 +25,8 @@ $dp__time_inc_dec_button_size: 32px !default; // Sizing for arrow buttons in the
 
 // Font sizes
 $dp__font_size: 1rem !default; // overall font-size
-$dp__preview_font_size: 0.8rem !default;
-$dp__time_font_size: 1rem !default; 
+$dp__preview_font_size: 0.8rem !default; // font size of the date preview in the action row
+$dp__time_font_size: 1rem !default; // font size in the time picker
 
 
 @import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';

@@ -81,6 +81,7 @@ export default {
       try {
         const orders = await orderService.query()
         commit({ type: "setOrders", orders })
+        return orders
       } catch (err) {
         console.log("Cannot load orders from store", err)
         throw err
@@ -136,8 +137,10 @@ export default {
         throw err
       }
     },
-    async getOrderByUser({ commit }, { id }) {
+    async getOrderByUser({ commit },  {id} ) {
+    
       try {
+        console.log(id)
         const orders = await orderService.saveOrderByUserId(id)
         commit({ type: "setOrdersUsers", orders })
         return orders

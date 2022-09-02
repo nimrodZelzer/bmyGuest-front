@@ -38,6 +38,8 @@ export default {
         labels: label
       }
       this.$store.dispatch({ type: 'loadStays', filterBy })
+      socketService.emit('filterStays', filterBy)
+            console.log(this.date)
 
     }
 

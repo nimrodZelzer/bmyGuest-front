@@ -42,10 +42,10 @@
                 </div>
             </div>
         </div>
-        <div class="main-mob-details" v-if="!isReservationOpen">
+        <div class="main-mob-details" v-if="!isReservationOpen&&!isGalleryOpen">
             <div class="images-mob">
-                <!-- <img v-bind:src="'/img/Images/' + stay.imgUrls[0]" alt="" class="ratio-card" /> -->
-                <carousel :autoplay="5000" :items-to-show="1">
+                <img v-bind:src="'/img/Images/' + stay.imgUrls[0]" alt="" class="ratio-card" @click="openGalleryMob" />
+                <!-- <carousel :autoplay="5000" :items-to-show="1">
                     <slide v-for="slide in stay.imgUrls.length" :key="slide">
                         <img v-bind:src="'/img/Images/' + stay.imgUrls[slide - 1]" alt="" class="ratio-card" />
                     </slide>
@@ -53,7 +53,7 @@
                         <navigation />
                         <pagination />
                     </template>
-                </carousel>
+                </carousel> -->
             </div>
             <hr />
             <div class="host-sec">
@@ -102,14 +102,20 @@
             </div>
             <div class="footer">
                 <h2>
-                    ${{ stay.price }}
-                    <span>night</span>
+                    <span class="price">
+                        ${{ stay.price }}
+                    </span>
+                    
+                    <span class="night">night</span>
                 </h2>
                 <button class="reserve-btn" @click="openOrderMob">Reserve </button>
             </div>
         </div>
         <div v-if="isReservationOpen">
             <reservation-details-mobile :stay="stay" />
+        </div>
+        <div v-if="isGalleryOpen">
+            <galleryMobile :stay="stay"/>
         </div>
     </section>
 </template>
@@ -118,6 +124,7 @@
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import { toRaw } from 'vue'
+import galleryMobile from './gallery-mobile.cmp.vue'
 
 import imageGallery from './image-gallery.cmp.vue'
 import ExtrasDetails from './extras-details.cmp.vue'
@@ -136,7 +143,7 @@ export default {
     },
     created() {
         this.handleHeader('none')
-        // this.handleFooter('hidden')
+        this.handleFooter('hidden')
         console.log(this.stay)
 
         this.wished = this.stay.wished
@@ -151,6 +158,7 @@ export default {
             date: null,
             isReservationOpen: false,
             wished: false,
+            isGalleryOpen:false
         }
     },
     methods: {
@@ -160,12 +168,16 @@ export default {
         openOrderMob() {
             this.isReservationOpen = !this.isReservationOpen
         },
+        openGalleryMob() {
+            this.isGalleryOpen = !this.isGalleryOpen
+        },
         async saveToWishlist() {
             try {
                 let newStay = { ...this.stay }
                 newStay.wished = !newStay.wished
                 this.$store.dispatch({ type: 'saveStay', stay: newStay })
                 await this.$store.dispatch({ type: 'loadStays' })
+                // this.$router.push('/wishlist')
             } catch (err) {
                 console.log(err)
             }
@@ -179,9 +191,9 @@ export default {
         handleHeader(val) {
             document.querySelector('.mini-search-mobile').style.display = val
         },
-        // handleFooter(val) {
-        //     document.querySelector('.footer').style.visibility = val
-        // },
+        handleFooter(val) {
+            document.querySelector('.footer-mobile').style.visibility = val
+        },
     },
     computed: {
         format() {
@@ -199,9 +211,16 @@ export default {
         Slide,
         Pagination,
         Navigation,
-        reservationDetailsMobile
+        reservationDetailsMobile,
+        galleryMobile
     }
 }
 </script>
 
+<style>
+.carousel__prev,
+.carousel__next {
+    margin: 0 10px;
+}
+</style>
 

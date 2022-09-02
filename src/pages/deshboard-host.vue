@@ -8,6 +8,7 @@
         <div class="dash-board-details flex ">
             <div class="order-wrapper">
 
+                <order-list @changeStatus='changeStatus' :orders="this.newOrders" />
                 <order-list @changeStatus='changeStatus' :orders="this.orders" />
             </div>
             <div class="dash-board-summary">
@@ -62,6 +63,7 @@ export default {
         socketService.on("order-added", (order) => {
             this.newOrders.push(order)
         })
+
         try {
             const ordersByHost = await this.$store.dispatch({ type: 'getOrderByHost', id: '62e0e9b1dd13b00af4e80283' })
             this.orders = ordersByHost

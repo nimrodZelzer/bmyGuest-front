@@ -16,8 +16,9 @@ export default {
     users({ users }) {
       return users
     },
-    loggedinUser({ loggedinUser }) {
-      return loggedinUser
+    loggedinUser(state){
+      console.log(state.loggedinUser)
+      return state.loggedinUser
     },
     watchedUser({ watchedUser }) {
       return watchedUser
@@ -28,6 +29,7 @@ export default {
   },
   mutations: {
     setLoggedinUser(state, { user }) {
+      console.log(user,'user to save')
       state.loggedinUser = user
     },
     setWatchedUser(state, { user }) {

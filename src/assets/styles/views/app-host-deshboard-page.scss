@@ -84,6 +84,7 @@
 
     .order-card {
         justify-content: space-between;
+        // flex-wrap: wrap;
         align-items: center;
         min-height: 150px;
         margin: 0;
@@ -112,6 +113,9 @@
 
         .order-right-card {
             gap: 25px;
+            justify-content: space-between;
+            width: 100%;
+            
 
             .left {
                 display: flex;
@@ -120,6 +124,7 @@
 
                 .guest-details-container {
                     gap: 20px;
+                    
 
                     img {
                         height: 80px;
@@ -153,6 +158,11 @@
                     font-family: airbnb-medium;
                 }
             }
+
+            @include for-mobile-layout {
+                flex-direction: column;
+            }
+        
         }
 
         h3 {
@@ -164,7 +174,7 @@
         }
 
         .right {
-            height: 150px;
+            // height: 150px;
             justify-content: space-between;
 
             // align-items: flex-end;
@@ -239,4 +249,11 @@
             margin-block-end: 70px;
         }
     }
+    .order-card {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-block: rem(5px);
+    }
+
 }

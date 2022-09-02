@@ -6,24 +6,13 @@
       </div>
       <div class="form-control">
         <label for="username" class="form-label fw-600">Username</label>
-        <input
-          id="username"
-          type="text"
-          class="form-input"
-          placeholder="Enter you username"
-          v-model="newUser.username"
-          autocomplete="off"
-        />
+        <input id="username" type="text" class="form-input" placeholder="Enter you username" v-model="newUser.username"
+          autocomplete="off" />
       </div>
       <div class="form-control">
         <label for="password" class="form-label fw-600">Password</label>
-        <input
-          id="password"
-          type="password"
-          class="form-input"
-          v-model="newUser.password"
-          placeholder="Enter your password"
-        />
+        <input id="password" type="password" class="form-input" v-model="newUser.password"
+          placeholder="Enter your password" />
       </div>
 
       <div class="btn-group">
@@ -42,36 +31,18 @@
       </div>
       <div class="form-control">
         <label for="fullname" class="form-label fw-600">Fullname</label>
-        <input
-          id="fullname"
-          type="text"
-          class="form-input"
-          placeholder="Enter your fullname"
-          v-model="newUser.fullname"
-          v-focus
-          autocomplete="off"
-        />
+        <input id="fullname" type="text" class="form-input" placeholder="Enter your fullname" v-model="newUser.fullname"
+          v-focus autocomplete="off" />
       </div>
       <div class="form-control">
         <label for="username" class="form-label fw-600">Username</label>
-        <input
-          id="username"
-          type="text"
-          class="form-input"
-          placeholder="Enter you username"
-          v-model="newUser.username"
-          autocomplete="off"
-        />
+        <input id="username" type="text" class="form-input" placeholder="Enter you username" v-model="newUser.username"
+          autocomplete="off" />
       </div>
       <div class="form-control">
         <label for="password" class="form-label fw-600">Password</label>
-        <input
-          id="password"
-          type="password"
-          class="form-input"
-          v-model="newUser.password"
-          placeholder="Enter your password"
-        />
+        <input id="password" type="password" class="form-input" v-model="newUser.password"
+          placeholder="Enter your password" />
       </div>
 
       <div class="btn-group">
@@ -91,7 +62,9 @@
   </section>
 </template>
 
+
 <script>
+import { socketService } from '../services/socket.service.js'
 export default {
   name: 'login',
   data() {
@@ -107,7 +80,8 @@ export default {
   },
   methods: {
     async login() {
-      await this.$store.dispatch({ type: 'login', cred: this.newUser })
+      const userLogin = await this.$store.dispatch({ type: 'login', cred: this.newUser })
+      socketService.emit('loginUser', userLogin)
       this.$router.push('/')
     },
     async signup() {

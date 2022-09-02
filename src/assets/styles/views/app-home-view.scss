@@ -42,7 +42,8 @@
     justify-content: space-evenly;
     width: 100%;
     padding: 1rem;
-    background-color: rgb(248, 244, 244);
+    background-color: $clr3;
+    
 
     @include for-narrow-layout {
         visibility: hidden;
@@ -54,17 +55,12 @@
         flex-direction: column;
         align-items: center;
         cursor: pointer;
-        background-color: transparent;
+        background-color: $clr3;
+        color: hsl(0deg 0% 44%);
         border: 0px;
         padding: 0px 2px;
-        color: rgb(255, 56, 92);
-
-        i {
-            font-family: fontAwesome;
-            font-size: 1.4rem;
-            content: e1b0;
-        }
-
+        font-size: em(10px);
+        font-weight: 400;
         &:active {
             outline: 0px;
             color: rgb(255, 56, 92);
